@@ -1,0 +1,27 @@
+.app__header{
+    width: 100%;
+    height: calc(100vh - 50px);
+    display: flex;
+}
+.app__header-left{
+     flex: 1;
+     height: 100%;
+     position: relative;
+}
+.app__header-right{
+     flex: 1;
+     height: 100%;
+     position: relative;
+}
+.app__header-container{
+    position: absolute;
+    left: 9%;
+    bottom: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.app__header-container h2{
+    font-size: 2.8rem;
+    color: #fff;
+}

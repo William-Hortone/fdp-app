@@ -1,0 +1,10 @@
+.app__cardImg{
+    width: 100%;
+    height: 100%;
+
+}
+.app__cardImg-box img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
