@@ -1,0 +1,44 @@
+.app__presentation {
+  width: 100%;
+  height: 70vh;
+  display: flex;
+  /* background-color: aquamarine; */
+  padding: 6rem 2rem 1rem 2rem;
+}
+.app__presentation-left {
+  flex: 1.5;
+  display: flex;
+  flex-direction: column;
+  /* background-color: rgb(43, 226, 89); */
+}
+.app__presentation-left h1 {
+  font-size: 6rem;
+  letter-spacing: 20px;
+  color: var(--color-crimson);
+}
+.app__presentation-left-container {
+  display: flex;
+  flex-direction: column;
+  /* align-items: flex-end; */
+  /* background-color: blanchedalmond; */
+  margin-top: 3rem;
+  margin-left: 6rem;
+}
+.app__presentation-left-container h2 {
+  font-size: 3rem;
+  font-family: var(--font-base);
+  font-weight: 900;
+  line-height: 2;
+}
+.presentation-p {
+  /* font-size: 18px;
+  line-height: 1.4; */
+  margin-bottom: 3rem;
+
+  /* letter-spacing: 1px; */
+}
+
+.app__presentation-right {
+  flex: 1;
+  background-color: blueviolet;
+}

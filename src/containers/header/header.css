@@ -1,6 +1,6 @@
 .app__header {
   width: 100%;
-  height: calc(100vh - 50px);
+  height: calc(100vh);
   display: flex;
   position: relative;
   /* background-color: black; */
