@@ -5,7 +5,8 @@ const CardImg = ({ linkImg }) => {
   return (
     <div className="app__cardImg">
       <div className="app__cardImg-box">
-        <img src={linkImg} alt="Banner Image"></img>
+        {/* <span /> */}
+        <img className="card-img" src={linkImg} alt="Banner Image " />
       </div>
     </div>
   );

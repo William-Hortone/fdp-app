@@ -1,83 +1,88 @@
-.app__navbar{
-    position: absolute;
+.app__navbar {
+  position: absolute;
+  top: -80px;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: transparent;
+  padding: 0 2rem;
+  z-index: 10;
+  animation: navbar-appear 2s forwards ease-out;
+  animation-delay: 1s;
+}
+@keyframes navbar-appear {
+  to {
     top: 50px;
-    left: 0;
-    width: 100%;
-    height: 100px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: transparent;
-    padding: 0 2rem;
-    z-index: 10;
+    /* transform: translateY(80px); */
+  }
 }
-.app__navbar-burger-btm{
-    width: 60px;
-    height: 60px;
-    background-color: brown;
+.app__navbar-burger-btm {
+  width: 60px;
+  height: 60px;
+  background-color: brown;
+  display: none;
+}
+.app__navbar-logo {
+  width: 80px;
+  height: 80px;
+}
+.app__navbar-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.app__navbar-list {
+  display: flex;
+  gap: 2.5rem;
+}
+.app__navbar-list li {
+  list-style: none;
+  font-size: 1.4rem;
+  font-family: var(--font-alt);
+  color: #fff;
+}
+.link {
+}
+.app__navbar-smallScreen-overlay {
+  width: 300px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: -100px;
+  background-color: bisque;
+  gap: 2rem;
+}
+.overlay-header {
+  width: 100%;
+  height: 80px;
+  background-color: var(--color-red);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 2rem;
+}
+.app__navbar-list-overlay {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0 1.5rem;
+  gap: 1.8rem;
+}
+.app__navbar-list-overlay li {
+  list-style: none;
+  font-size: 1.5rem;
+}
+
+@media screen and (max-width: 1050px) {
+  .app__navbar-list {
     display: none;
-}
-.app__navbar-logo{
-    width: 80px;
-    height: 80px;
-    
-}
-.app__navbar-logo img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-.app__navbar-list{
-    display: flex;
-    gap: 2.5rem;
-}
-.app__navbar-list li{
-    list-style: none;
-    font-size: 1.4rem;
-    font-family: var(--font-alt);
-    color: #fff;
-}
-.link{
-
-}
-.app__navbar-smallScreen-overlay{
-    width: 300px;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 0;
-    left: -100px;
-    background-color: bisque;
-    gap: 2rem;
-}
-.overlay-header{
-    width: 100%;
-    height: 80px;
-    background-color: var(--color-red);
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 0 2rem;
-}
-.app__navbar-list-overlay{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    padding: 0 1.5rem;
-    gap: 1.8rem;
-}
-.app__navbar-list-overlay li{
-    list-style: none;
-    font-size: 1.5rem;
-}
-
-@media screen and  (max-width: 1050px) {
-    .app__navbar-list{
-        display: none;
-    }
-    .app__navbar-burger-btm{
-        display: block;
-    }
-
+  }
+  .app__navbar-burger-btm {
+    display: block;
+  }
 }
