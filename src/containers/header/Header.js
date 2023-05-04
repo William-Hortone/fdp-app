@@ -17,7 +17,7 @@ const Header = () => {
         <span />
         <CardImg linkImg="https://wpbingosite.com/wordpress/prido/wp-content/uploads/2022/01/banner-16.jpg" />
         <div className="app__header-container">
-          <h2>MEN’S CLOTHING</h2>
+          <h2>WOMEN’S CLOTHING</h2>
           <Button />
         </div>
       </div>

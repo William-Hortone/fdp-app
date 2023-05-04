@@ -1,8 +1,15 @@
 .app__presentation {
   width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* background-color: aquamarine; */
+}
+.app__presentation-container-one {
+  width: 100%;
   height: 70vh;
   display: flex;
-  /* background-color: aquamarine; */
+  /* background-color: aqua; */
   padding: 6rem 2rem 1rem 2rem;
 }
 .app__presentation-left {
@@ -40,5 +47,24 @@
 
 .app__presentation-right {
   flex: 1;
-  background-color: blueviolet;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: blueviolet; */
+}
+.app__presentation-container-tow {
+  width: 100%;
+  height: 30vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-red);
+}
+.app__presentation-container-tow h2 {
+  font-size: 3rem;
+  text-transform: uppercase;
+  color: #fff;
+  font-family: var(--font-base);
 }
