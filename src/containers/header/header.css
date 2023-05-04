@@ -111,3 +111,38 @@
     z-index: 11;
   }
 } */
+
+@media screen and (max-width: 1050px) {
+  .app__header {
+    flex-direction: column;
+    height: auto;
+  }
+  .app__header-container h2 {
+    font-size: 2rem;
+  }
+}
+@media screen and (max-width: 800px) {
+  .app__header {
+    flex-direction: column;
+    height: auto;
+  }
+  .app__header-container h2 {
+    font-size: 1.8rem;
+  }
+  .app__header-container {
+    position: absolute;
+    left: 9%;
+    bottom: 70px;
+    gap: 1rem;
+  }
+}
+@media screen and (max-width: 550px) {
+  .app__header-container {
+    bottom: 30px;
+    gap: 1rem;
+  }
+  .app__header-container h2 {
+    font-size: 1rem;
+    color: #fff;
+  }
+}

@@ -9,18 +9,26 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 2rem;
-  border-bottom: 1px solid #ffffff28;
+  border-bottom: 1px solid #ffffff38;
   color: #fff;
   z-index: 10;
   animation: infos-appear 2s forwards ease-out;
   animation-delay: 1.7s;
 }
-.app__infos-left {
+.app__infos-left,
+.app__infos-right {
   display: flex;
-  align-items: center;
+  align-items: baseline;
+  gap: 10px;
+  /* font-family: var(--font-base); */
 }
 @keyframes infos-appear {
   to {
     top: 0px;
+  }
+}
+@media screen and (max-width: 1050px) {
+  .app__infos {
+    display: none;
   }
 }

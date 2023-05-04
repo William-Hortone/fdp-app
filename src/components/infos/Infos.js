@@ -1,4 +1,5 @@
 import React from "react";
+import { FaPhoneAlt, FaMapMarkedAlt } from "react-icons/fa";
 import "./Infos.css";
 
 const Infos = () => {
@@ -6,10 +7,13 @@ const Infos = () => {
     <div className="app__infos">
       <div className="app__infos-left">
         <p>Willhortone@gmail.com | </p>
-        <p> 00000000000</p>
+        <p>
+          <FaPhoneAlt /> +241 158523056
+        </p>
       </div>
       <div className="app__infos-right">
-        <p>Aide & Contact</p>
+        <FaMapMarkedAlt />
+        <p>Libreville / Nzeng-Ayong</p>
       </div>
     </div>
   );

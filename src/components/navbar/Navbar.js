@@ -2,25 +2,32 @@ import React, { useState } from "react";
 import "./navbar.css";
 import images from "../../constants/images";
 import { Link, NavLink } from "react-router-dom";
-// import { FaBars, FaTimes } from "react-icons/fa";
+import { FaBars, FaTimes, FaFacebookF, FaWhatsapp } from "react-icons/fa";
 
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
   const navLinkStyle = ({ isActive }) => {
     return {
       fontWeight: isActive ? "bold" : "normal",
-      color: isActive ? "#A90A0A" : "#fff",
+      color: isActive ? "#A90A0A" : "",
     };
   };
 
   return (
     <div className="app__navbar">
-      <button
+      <div className="app__navbar-burger-btm">
+        <FaBars
+          color="#fff"
+          fontSize={27}
+          onClick={() => setToggleMenu(true)}
+        />
+      </div>
+      {/* <button
         className="app__navbar-burger-btm"
         onClick={() => setToggleMenu(true)}
       >
         click
-      </button>
+      </button> */}
       <div className="app__navbar-logo">
         <img src={images.logo} alt="logo images" />
       </div>
@@ -46,12 +53,20 @@ const Navbar = () => {
           </NavLink>
         </li>
       </ul>
-      <div className="app__navbar-icons">{/* <FaBars /> */}</div>
+      <div className="app__navbar-icons">
+        <FaFacebookF color="#fff" fontSize={20} />
+        <FaWhatsapp color="#fff" fontSize={20} />
+      </div>
 
       {toggleMenu && (
         <div className="app__navbar-smallScreen-overlay slide-right">
           <div className="overlay-header">
-            <p onClick={() => setToggleMenu(false)}>close X</p>
+            <FaTimes
+              color="#fff"
+              fontSize={27}
+              onClick={() => setToggleMenu(false)}
+            />
+            {/* <p onClick={() => setToggleMenu(false)}>close X</p> */}
           </div>
           <ul className="app__navbar-list-overlay">
             <li>

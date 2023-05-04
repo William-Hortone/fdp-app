@@ -61,10 +61,63 @@
   align-items: center;
   justify-content: center;
   background-color: var(--color-red);
+  padding: 0 1rem;
 }
 .app__presentation-container-tow h2 {
   font-size: 3rem;
   text-transform: uppercase;
   color: #fff;
   font-family: var(--font-base);
+  text-align: center;
+}
+
+@media screen and (max-width: 1050px) {
+  .app__presentation-left h1 {
+    font-size: 4rem;
+    letter-spacing: 20px;
+  }
+  .app__presentation-left-container h2 {
+    font-size: 2rem;
+
+    line-height: 2;
+  }
+  .app__presentation-left-container {
+    margin-top: 3rem;
+    margin-left: 2rem;
+  }
+  .app__presentation-container-tow h2 {
+    font-size: 2rem;
+  }
+}
+@media screen and (max-width: 850px) {
+  .app__presentation {
+    /* width: 100%; */
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    background-color: aquamarine;
+  }
+  .app__presentation-container-one {
+    height: auto;
+    flex-direction: column;
+    background-color: rgb(117, 161, 111);
+  }
+  .app__presentation-right {
+    /* height: 100vh; */
+  }
+
+  .app__presentation-left h1 {
+    font-size: 3rem;
+    letter-spacing: 18px;
+  }
+  .app__presentation-left-container h2 {
+    font-size: 1.8rem;
+  }
+  .app__presentation-left-container {
+    margin-top: 1rem;
+    /* margin-left: 2rem; */
+  }
+  /* .app__presentation-container-tow h2 {
+    font-size: 2rem;
+  } */
 }
