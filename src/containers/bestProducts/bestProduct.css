@@ -6,7 +6,7 @@
   flex-direction: column;
   padding: 8rem 2rem 3rem 2rem;
   gap: 4rem;
-  /* background-color: aqua; */
+  background-color: aqua;
 }
 
 .app__bestProduct h2 {
@@ -24,13 +24,14 @@
 }
 .product-container {
   flex: 1;
-  width: 22%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   aspect-ratio: 1/1;
   gap: 1rem;
   background-color: aquamarine;
+  position: relative;
 }
 .product-box {
   /* flex: 1; */
@@ -43,4 +44,84 @@
   flex-direction: column;
   align-items: center;
   text-transform: uppercase;
+}
+
+.container {
+  width: auto;
+  display: flex;
+  position: absolute;
+  top: 0;
+  /* overflow-x: auto;
+  white-space: nowrap; */
+}
+
+.btn-container {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+}
+
+.app__bestProduct-images {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  background-color: green;
+  padding: 1rem;
+  overflow: hidden;
+}
+.app__bestProduct-images_container {
+  display: flex;
+  width: auto;
+  /* grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); */
+  /* grid-gap: 20px; */
+  padding: 20px;
+  scroll-behavior: smooth;
+  transition: scroll-left 0.5s ease-in-out;
+  /* overflow-x: scroll; */
+  /* scrollbar-width: none; */
+  /* -ms-overflow-style: none; */
+  /* background-color: blueviolet; */
+  /* overflow: hidden; */
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.app__bestProduct-images-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+  /* background-color: aquamarine; */
+  width: 400px;
+  aspect-ratio: 1/1;
+  /* height: 100%; */
+}
+/* .app__bestProduct-images_arrows {
+  width: 200px;
+  height: 30px;
+
+} */
+
+.bestProduct__prevArrow-icon {
+  font-size: 50px;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: -2px;
+  transform: translateY(-50%);
+  /* background-color: yellow; */
+}
+.bestProduct__nextArrow-icon {
+  position: absolute;
+  top: 50%;
+  right: -15px;
+  font-size: 50px;
+  transform: translateY(-50%);
+  font-size: 50px;
+  cursor: pointer;
 }
