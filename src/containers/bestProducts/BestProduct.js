@@ -35,15 +35,13 @@ const BestProduct = () => {
       setCurrentSlide(currentSlide - 1);
     } else if (deltaX < -sensitivity && currentSlide < gallery.length - 1) {
       setCurrentSlide(currentSlide + 1);
-    } else if (deltaX < -sensitivity && currentSlide < gallery.length) {
-      setCurrentSlide(currentSlide - 1);
     }
   };
 
   return (
     <div className="app__bestProduct" onTouchStart={handleSwipe}>
-      {/* <h2> Mieux Vendus</h2>
-      <div className="app__bestProduct-container">
+      <h2> Mieux Vendus</h2>
+      {/*<div className="app__bestProduct-container">
         <div className="product-container">
           <div className="product-box">
             <Product imgOne={images.machine5} imgTow={images.machine2} />

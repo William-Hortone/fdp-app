@@ -7,7 +7,7 @@
   align-items: center;
   overflow: hidden;
   cursor: pointer;
-  border: 2px solid #000;
+  /* border: 2px solid #000; */
 }
 .app__buttonBorder:hover .app__buttonBorder-box-one p {
   transform: translateY(100%);
@@ -29,8 +29,8 @@
 .app__buttonBorder-box-one {
   height: 100%;
   position: relative;
-  background-color: #fff;
-  color: #000;
+  background-color: transparent;
+  /* color: #000; */
   /* transition: all .5s ease; */
 }
 .app__buttonBorder-box-one p {

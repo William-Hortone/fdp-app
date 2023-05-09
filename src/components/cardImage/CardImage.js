@@ -15,7 +15,3 @@ const CardImage = ({ linkImg }) => {
 };
 
 export default CardImage;
-
-{
-  /* <img width="960" height="905" src="https://wpbingosite.com/wordpress/prido/wp-content/uploads/2022/01/banner-16.jpg" alt="Banner Image"></img> */
-}

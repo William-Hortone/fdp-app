@@ -1,7 +1,18 @@
 import React from "react";
 import "./banner.css";
+import { images } from "../../constants";
+import { ButtonBorder } from "../../components";
+
 const Banner = () => {
-  return <div>Banner</div>;
+  return (
+    <div className="app__banner">
+      <div className="app__banner-container">
+        <p className="p__cormorant">Sale up to 70%</p>
+        <h2>FITNESS & YOGA</h2>
+        <ButtonBorder color="#fff" />
+      </div>
+    </div>
+  );
 };
 
 export default Banner;

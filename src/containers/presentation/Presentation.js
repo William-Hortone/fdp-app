@@ -8,16 +8,15 @@ const Presentation = () => {
     <div className="app__presentation">
       <div className="app__presentation-container-one">
         <div className="app__presentation-left">
-          <h1>FOR MEN</h1>
+          <h1>SPORTS</h1>
           <div className="app__presentation-left-container">
-            <h2>SPRING COLLECTION</h2>
-            <p className="presentation-p p__opensans">
-              Donec ornare, nunc quis cursus hendrerit, tortor turpis sodales
-              turpis, quis sodales est eros id mi. Nam placerat mauris nulla,
-              sed vulputate magna rutrum at. Sed eu augue tempor, porttitor
-              metus eget, convallis odio.
+            <h2>Machines de Sport</h2>
+            <p className="presentation-p p__opensan">
+              " Obtenez votre équipement de sport de qualité supérieure chez
+              nous, des machines de sport, machines a laver, des accessoires et
+              tout le nécessaire pour un mode de vie actif! "
             </p>
-            <ButtonBorder />
+            <ButtonBorder color="#000" />
           </div>
         </div>
         <div className="app__presentation-right">

@@ -2,7 +2,7 @@ import React from "react";
 import { FaPhoneAlt, FaMapMarkedAlt } from "react-icons/fa";
 import "./Infos.css";
 
-const Infos = () => {
+const Infos = ({ color }) => {
   return (
     <div className="app__infos">
       <div className="app__infos-left">

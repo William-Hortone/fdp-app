@@ -1,0 +1,33 @@
+.app__articles {
+  width: 100%;
+  /* height: auto; */
+  display: flex;
+  overflow-x: hidden;
+  margin-top: 4rem;
+}
+.app__articles-left {
+  /* flex: 1; */
+  width: 50%;
+  aspect-ratio: 1/1;
+  /* background-color: blueviolet; */
+}
+.app__articles-right {
+  /* flex: 1; */
+  width: 50%;
+  aspect-ratio: 1/1;
+  /* background-color: rgb(226, 95, 43); */
+}
+@media screen and (min-width: 1300px) {
+  .app__articles {
+    height: 80vh;
+  }
+}
+@media screen and (max-width: 800px) {
+  .app__articles {
+    flex-direction: column;
+  }
+  .app__articles-left,
+  .app__articles-right {
+    width: 100%;
+  }
+}

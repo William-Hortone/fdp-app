@@ -1,0 +1,70 @@
+.app__banner {
+  width: 100%;
+  /* aspect-ratio: 1/ 1; */
+  height: 90vh;
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  align-items: center;
+  background: url("https://wpbingosite.com/wordpress/prido/wp-content/uploads/2022/04/add-1.jpg");
+  background-position: center center;
+  background-size: cover;
+}
+.app__banner-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+/* .app__banner-container p {
+  font-size: 20px;
+  text-align: center;
+  text-transform: uppercase;
+ 
+} */
+.app__banner-container h2 {
+  font-size: 3rem;
+  font-family: var(--font-base);
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 900;
+  color: #fff;
+}
+
+@media screen and (max-width: 1000px) {
+  .app__banner {
+    height: 70vh;
+  }
+  /* .app__banner-container {
+    gap: 1rem;
+  }
+  .app__banner-container h2 {
+    font-size: 2rem;
+  } */
+}
+@media screen and (max-width: 808px) {
+  .app__banner {
+    width: 100%;
+    height: 50vh;
+  }
+  .app__banner-container {
+    gap: 1rem;
+  }
+  .app__banner-container h2 {
+    font-size: 2rem;
+  }
+}
+@media screen and (max-width: 550px) {
+  .app__banner {
+    width: 100%;
+    height: 40vh;
+  }
+  .app__banner-container {
+    gap: 1rem;
+  }
+  .app__banner-container h2 {
+    font-size: 1.5rem;
+  }
+}

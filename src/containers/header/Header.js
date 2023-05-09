@@ -9,7 +9,7 @@ const Header = () => {
         <span />
         <CardImg linkImg="https://wpbingosite.com/wordpress/prido/wp-content/uploads/2022/01/banner-15.jpg" />
         <div className="app__header-container">
-          <h2>MEN’S CLOTHING</h2>
+          <h2>POUR HOMME</h2>
           <Button />
         </div>
       </div>
@@ -17,7 +17,7 @@ const Header = () => {
         <span />
         <CardImg linkImg="https://wpbingosite.com/wordpress/prido/wp-content/uploads/2022/01/banner-16.jpg" />
         <div className="app__header-container">
-          <h2>WOMEN’S CLOTHING</h2>
+          <h2>POUR FEMMES</h2>
           <Button />
         </div>
       </div>
