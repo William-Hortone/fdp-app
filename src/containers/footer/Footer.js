@@ -9,9 +9,9 @@ import {
 import "./footer.css";
 import { images } from "../../constants";
 
-const Footer = () => {
+const Footer = ({ color }) => {
   return (
-    <div className="app__footer">
+    <div className="app__footer" style={{ backgroundColor: `${color}` }}>
       <div className="app__footer-container">
         <div className="footer-content">
           <div className="footer-content-logo">

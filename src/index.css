@@ -1,6 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Upright:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap");
 
+@font-face {
+  font-family: "CustomFontFamily";
+  src: url("./fonts/Redwing-Medium.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
+  --font-link: "CustomFontFamily", serif;
   --font-base: "Cormorant Upright", serif;
   --font-alt: "Open Sans", sans-serif;
 
@@ -17,6 +25,9 @@
   padding: 0;
   margin: 0;
   scroll-behavior: smooth;
+}
+body {
+  overflow-x: hidden;
 }
 a {
   color: unset;

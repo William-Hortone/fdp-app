@@ -7,6 +7,9 @@ import Infos from "./infos/Infos";
 import Logo from "./logo/Logo";
 import Navbar from "./navbar/Navbar";
 import Product from "./product/Product";
+import ProductBox from "./productBox/ProductBox";
+import Carousel from "./carousel/Carousel";
+import CardCategory from "./cardCategory/CardCategory";
 
 export {
   Button,
@@ -18,4 +21,7 @@ export {
   ButtonBorder,
   Product,
   ArticleImg,
+  Carousel,
+  ProductBox,
+  CardCategory,
 };

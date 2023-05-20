@@ -5,5 +5,15 @@ import Header from "./header/Header";
 import Presentation from "./presentation/Presentation";
 import Team from "./team/Team";
 import Footer from "./footer/Footer";
+import CategoryArticles from "./CategoryArticles/CategoryArticles";
 
-export { Articles, Banner, BestProducts, Header, Footer, Presentation, Team };
+export {
+  Articles,
+  Banner,
+  BestProducts,
+  Header,
+  Footer,
+  CategoryArticles,
+  Presentation,
+  Team,
+};

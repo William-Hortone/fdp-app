@@ -39,11 +39,13 @@
   display: flex;
   gap: 2.5rem;
 }
-.app__navbar-list li {
+.app__navbar-list li,
+.link {
   list-style: none;
-  font-size: 1.4rem;
-  font-family: var(--font-alt);
-  color: #fff;
+  font-size: 1.1rem;
+  font-family: var(--font-link);
+  font-weight: 100;
+  /* color: #fff; */
 }
 .link {
   transition: all 0.3s ease;
@@ -58,15 +60,17 @@
   gap: 20px;
 }
 .app__navbar-smallScreen-overlay {
-  width: 300px;
+  width: 270px;
   height: 100vh;
   display: flex;
   flex-direction: column;
   position: fixed;
   top: 0px;
   left: -100px;
-  background-color: bisque;
+  background-color: #ffff;
+  box-shadow: 2px 2px 10px 1px #2222224d;
   gap: 2rem;
+  z-index: 10000;
 }
 .overlay-header {
   width: 100%;

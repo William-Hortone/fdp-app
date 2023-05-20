@@ -26,7 +26,7 @@
   background-color: var(--color-red);
   animation: slide-in 0.75s ease-out forwards,
     slide-out 0.75s 1s ease-out forwards;
-  z-index: 1000;
+  z-index: 9;
 }
 
 @keyframes slide-in {
@@ -61,7 +61,7 @@
   background-color: var(--color-red);
   animation: right-slide-in 0.75s ease-out forwards,
     right-slide-out 0.75s 1s ease-out forwards;
-  z-index: 1000;
+  z-index: 9;
 }
 
 @keyframes right-slide-in {
@@ -85,7 +85,8 @@
   animation: box-appearance 0s 1s forwards;
 }
 .app__header-container h2 {
-  font-size: 2.8rem;
+  font-size: 2.5rem;
+  font-family: var(--font-link);
   color: #fff;
 }
 .blur-element {

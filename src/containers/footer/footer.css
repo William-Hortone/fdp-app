@@ -32,11 +32,12 @@
   text-transform: uppercase;
   font-family: var(--font-base);
   font-weight: 900;
+  font-size: 1.2rem;
 }
 .footer-content p,
 .footer-content li {
   display: flex;
-  font-size: 20px;
+  font-size: 17px;
   color: #000000a8;
   list-style-type: none;
   gap: 0.5rem;

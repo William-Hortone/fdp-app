@@ -1,0 +1,156 @@
+.app__carousel {
+  width: 100%;
+  height: auto;
+  /* overflow-x: hidden; */
+  /* overflow-y: hidden; */
+  /* background-color: rgb(17, 0, 255); */
+  overflow: hidden;
+  /* padding-bottom: 2rem; */
+  /* margin: auto; */
+}
+
+.app__carousel-container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  margin-right: 1rem;
+  /* background-color: aquamarine; */
+}
+/* .carousel-smallScreen {
+  width: 100%;
+  height: auto;
+  display: none;
+  flex-direction: row;
+  margin-right: 1rem;
+  background-color: aquamarine;
+} */
+.app__carousel-container_box {
+  width: 100%;
+  /* height: 70vh; */
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  /* background-color: rgb(165, 42, 138); */
+}
+/*  ! I changed the height */
+
+.carousel-content {
+  flex: 1;
+  /* width: 52%; */
+  height: 60vh;
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+  overflow: hidden;
+  /* background-color: blueviolet; */
+}
+.carousel-content-description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-transform: uppercase;
+  margin-top: 1rem;
+  gap: 0.5rem;
+}
+.carousel-content-description h3 {
+  /* display: flex;
+  flex-direction: column;
+  align-items: center; */
+  text-transform: capitalize;
+  font-family: var(--font-base);
+}
+.carousel-content-box {
+  width: 100%;
+  aspect-ratio: 1/1;
+  background-color: var(--color-grey);
+}
+/* .stars {
+  font-size: 15px;
+  width: 40px;
+  height: 25px;
+  margin-top: 1rem;
+} */
+/* #carousel-smallScreen {
+  display: none;
+  background-color: blueviolet;
+} */
+.slider-tow {
+  display: none;
+}
+@media screen and (max-width: 1100px) {
+  .app__carousel {
+    width: 200%;
+    /* height: 100vh; */
+    /* display: flex;
+    justify-content: flex-start; */
+  }
+  .carousel-content {
+    /* flex: 1; */
+    /* width: 52%; */
+    height: 80vh;
+  }
+}
+@media screen and (max-width: 700px) {
+  .app__carousel {
+    width: 85%;
+    height: 85vh;
+    overflow-x: hidden;
+  }
+
+  .carousel-content {
+    height: 85vh;
+  }
+
+  .carousel-largeScreen {
+    display: none;
+  }
+  .slider {
+    display: none;
+  }
+  .slider-tow {
+    display: block;
+    padding-bottom: 6rem;
+    /* background-color: red; */
+    overflow-y: hidden;
+  }
+}
+@media screen and (max-width: 600px) {
+  /* .app__carousel {
+    width: 400%;
+  } */
+  /* .carousel-smallScreen {
+    display: flex;
+  } */
+
+  .app__carousel {
+    width: 95%;
+    /* height: auto; */
+
+    /* aspect-ratio: 1/1; */
+  }
+
+  /* .carousel-content {
+    height: 40vh;
+  } */
+}
+@media screen and (max-width: 550px) {
+  .app__carousel {
+    width: 95%;
+    /* height: 90vh; */
+    /* aspect-ratio: 1/1; */
+  }
+  .carousel-content {
+    height: 75vh;
+  }
+}
+@media screen and (max-width: 450px) {
+  .app__carousel {
+    /* height: 80vh; */
+  }
+}
+@media screen and (max-width: 350px) {
+  .app__carousel {
+    /* height: 65vh; */
+  }
+}

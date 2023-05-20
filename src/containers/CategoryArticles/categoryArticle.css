@@ -1,0 +1,21 @@
+.app__categoryArticle {
+  width: 100%;
+  height: 100%;
+  /* background-color: blueviolet; */
+}
+.app__categoryArticle-container {
+  width: 100%;
+  display: flex;
+  /* justify-content: center; */
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.article {
+  width: 32%;
+  aspect-ratio: 1/1;
+}
+@media screen and (max-width: 800px) {
+  .article {
+    width: 48%;
+  }
+}

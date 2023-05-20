@@ -29,7 +29,8 @@
 }
 .app__team-container h3 {
   font-size: 3rem;
-  font-weight: 900;
+  font-family: var(--font-link);
+  font-weight: 100;
   text-transform: uppercase;
   text-align: center;
 }
@@ -53,24 +54,15 @@
   }
 }
 @media screen and (max-width: 850px) {
-  .app__team {
-    /* height: 50vh; */
-  }
-  .app__team-container h3 {
-    font-size: 1.3rem;
-  }
-  .app__team-container p {
-    font-size: 17px;
-  }
-}
-@media screen and (max-width: 850px) {
-  .app__team {
-    /* height: 50vh; */
-  }
   .app__team-container h3 {
     font-size: 1.3rem;
   }
   .app__team-container p {
     font-size: 15px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .app__team-container {
+    width: 90%;
   }
 }

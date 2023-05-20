@@ -24,7 +24,7 @@ const Presentation = () => {
         </div>
       </div>
       <div className="app__presentation-container-tow">
-        <h2>adipisicing elcommodi eos nulla. Animi ut magni error?</h2>
+        <h2>la qualité a un prix tres execible</h2>
       </div>
     </div>
   );

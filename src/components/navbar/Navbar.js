@@ -4,7 +4,7 @@ import images from "../../constants/images";
 import { Link, NavLink } from "react-router-dom";
 import { FaBars, FaTimes, FaFacebookF, FaWhatsapp } from "react-icons/fa";
 
-const Navbar = () => {
+const Navbar = ({ colorLink, colorBorder }) => {
   const [toggleMenu, setToggleMenu] = useState(false);
   const navLinkStyle = ({ isActive }) => {
     return {
@@ -14,7 +14,10 @@ const Navbar = () => {
   };
 
   return (
-    <div className="app__navbar">
+    <div
+      className="app__navbar "
+      style={{ borderBottom: ` 1px solid ${colorBorder}` }}
+    >
       <div className="app__navbar-burger-btm">
         <FaBars
           color="#fff"
@@ -32,23 +35,23 @@ const Navbar = () => {
         <img src={images.logo} alt="logo images" />
       </div>
       <ul className="app__navbar-list">
-        <li>
+        <li style={{ color: `${colorLink}` }}>
           <NavLink className="link" style={navLinkStyle} to="/">
             Accueil
           </NavLink>
         </li>
-        <li>
+        <li style={{ color: `${colorLink}` }}>
           <NavLink className="link" to="">
             A propos
           </NavLink>
         </li>
-        <li>
+        <li style={{ color: `${colorLink}` }}>
           <NavLink className="link" style={navLinkStyle} to="/products">
             Produits
           </NavLink>
         </li>
-        <li>
-          <NavLink className="link" to="">
+        <li style={{ color: `${colorLink}` }}>
+          <NavLink className="link" to="#contact">
             Contact
           </NavLink>
         </li>
@@ -85,7 +88,7 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink className="link" to="">
+              <NavLink className="link" to="#contact">
                 Contact
               </NavLink>
             </li>

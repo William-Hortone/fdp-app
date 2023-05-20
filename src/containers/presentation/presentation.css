@@ -16,11 +16,13 @@
   flex: 1.5;
   display: flex;
   flex-direction: column;
+
   /* background-color: rgb(43, 226, 89); */
 }
 .app__presentation-left h1 {
   font-size: 6rem;
-  letter-spacing: 20px;
+  letter-spacing: 30px;
+  font-family: var(--font-link);
   color: var(--color-crimson);
 }
 .app__presentation-left-container {
@@ -33,8 +35,8 @@
 }
 .app__presentation-left-container h2 {
   font-size: 3rem;
-  font-family: var(--font-base);
-  font-weight: 900;
+  font-family: var(--font-link);
+  font-weight: 100;
   line-height: 2;
 }
 .presentation-p {
@@ -71,6 +73,19 @@
   text-align: center;
 }
 
+@media screen and (min-width: 2000px) {
+  .app__presentation-left-container {
+    margin-top: 2rem;
+    margin-left: 2rem;
+  }
+}
+@media screen and (max-width: 1450px) {
+  .app__presentation-left-container {
+    margin-top: 2.5rem;
+    margin-left: 3rem;
+  }
+}
+
 @media screen and (max-width: 1050px) {
   .app__presentation-left h1 {
     font-size: 4rem;
@@ -78,7 +93,6 @@
   }
   .app__presentation-left-container h2 {
     font-size: 2rem;
-
     line-height: 2;
   }
   .app__presentation-left-container {
@@ -115,9 +129,9 @@
     margin-top: 1rem;
     /* margin-left: 2rem; */
   }
-  /* .app__presentation-container-tow h2 {
-    font-size: 2rem;
-  } */
+  .app__presentation-container-tow h2 {
+    font-size: 1.5rem;
+  }
 }
 @media screen and (max-width: 550px) {
   .app__presentation-left h1 {
@@ -130,6 +144,9 @@
 
   .app__presentation-left-container {
     margin-left: 0.6rem;
+  }
+  .app__presentation-container-tow {
+    height: 20vh;
   }
   .app__presentation-container-tow h2 {
     font-size: 1.2rem;
