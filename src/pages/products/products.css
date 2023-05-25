@@ -1,3 +1,10 @@
+.app__products {
+  width: 100%;
+  height: auto;
+  position: relative;
+  /* background-color: aqua; */
+}
+
 .app__products-navbar {
   height: 80px;
   width: 100%;
@@ -165,7 +172,9 @@
 
 .app__products-container-right {
   flex: 3;
-  /* background-color: burlywood; */
+  /* align-self: center;
+  justify-self: center; */
+  /* background-color: rgb(18, 184, 26); */
 }
 .toggle-categories {
   width: fit-content;
@@ -194,6 +203,7 @@
   height: 200px;
   /* background-color: tomato; */
   display: none;
+  overflow: hidden;
 }
 .slider-categories {
   width: 100%;
@@ -230,6 +240,98 @@
   height: 200px;
   background-color: red;
 } */
+
+.app__loader {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  animation: loader 0.5s ease forwards;
+  animation-delay: 4s;
+  background-color: blue;
+}
+@keyframes loader {
+  to {
+    z-index: -2;
+    display: none;
+  }
+}
+.app__loader-left,
+.app__loader-right {
+  flex: 1;
+  position: relative;
+}
+
+.app__loader-span_left {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform: translateY(-100%);
+  z-index: 2;
+  background-color: var(--color-red);
+  animation: slide-in 0.75s ease-out forwards,
+    slide-out 0.75s 1s ease-out forwards;
+  z-index: 9;
+}
+
+.app__loader-span_right {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform: translateY(100%);
+  z-index: 2;
+  background-color: var(--color-red);
+  animation: right-slide-in 0.75s ease-out forwards,
+    right-slide-out 0.75s 1s ease-out forwards;
+  z-index: 9;
+}
+@keyframes slide-in {
+  100% {
+    transform: translateY(0%);
+    /* z-index: -1; */
+  }
+}
+@keyframes slide-out {
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.blur-element-page {
+  display: block;
+  position: absolute;
+  /* top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0; */
+  height: 100vh;
+  width: 100%;
+  background-color: black;
+  z-index: 8;
+  opacity: 1;
+  animation: blur-element-go 1s ease-out forwards;
+  animation-delay: 1s !important;
+}
+@keyframes blur-element-go {
+  100% {
+    opacity: 0;
+    display: none !important;
+    /* height: 0; */
+    z-index: -1;
+  }
+}
 
 @media screen and (max-width: 1250px) {
   .app__products-container {
@@ -270,6 +372,12 @@
   }
   .toggle-categories {
     display: block;
+  }
+}
+@media screen and (max-width: 1050px) {
+  .app__loader {
+    height: 200vh;
+    flex-direction: column;
   }
 }
 @media screen and (max-width: 850px) {

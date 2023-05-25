@@ -51,14 +51,14 @@ const Navbar = ({ colorLink, colorBorder }) => {
           </NavLink>
         </li>
         <li style={{ color: `${colorLink}` }}>
-          <NavLink className="link" to="#contact">
+          <a href="#contact" className="link">
             Contact
-          </NavLink>
+          </a>
         </li>
       </ul>
       <div className="app__navbar-icons">
-        <FaFacebookF color="#fff" fontSize={20} />
-        <FaWhatsapp color="#fff" fontSize={20} />
+        <FaFacebookF color={colorLink} fontSize={20} />
+        <FaWhatsapp color={colorLink} fontSize={20} />
       </div>
 
       {toggleMenu && (

@@ -2,6 +2,7 @@ import React from "react";
 import "./presentation.css";
 import { ButtonBorder, CardImage } from "../../components";
 import images from "../../constants/images";
+import { Link } from "react-router-dom";
 
 const Presentation = () => {
   return (
@@ -16,7 +17,9 @@ const Presentation = () => {
               nous, des machines de sport, machines a laver, des accessoires et
               tout le nécessaire pour un mode de vie actif! "
             </p>
-            <ButtonBorder color="#000" />
+            <Link to="products">
+              <ButtonBorder color="#000" />
+            </Link>
           </div>
         </div>
         <div className="app__presentation-right">

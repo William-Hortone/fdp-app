@@ -15,7 +15,7 @@ const Home = () => {
   return (
     <div className="app__home">
       <Infos />
-      <Navbar />
+      <Navbar colorLink="#ffffff" />
       <Header />
       <Presentation />
       <BestProducts />

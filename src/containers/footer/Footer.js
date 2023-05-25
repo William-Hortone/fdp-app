@@ -11,7 +11,11 @@ import { images } from "../../constants";
 
 const Footer = ({ color }) => {
   return (
-    <div className="app__footer" style={{ backgroundColor: `${color}` }}>
+    <div
+      className="app__footer"
+      id="contact"
+      style={{ backgroundColor: `${color}` }}
+    >
       <div className="app__footer-container">
         <div className="footer-content">
           <div className="footer-content-logo">

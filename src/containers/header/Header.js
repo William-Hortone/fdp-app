@@ -1,6 +1,7 @@
 import React from "react";
 import "./header.css";
 import { CardImg, Button } from "../../components";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -10,7 +11,9 @@ const Header = () => {
         <CardImg linkImg="https://wpbingosite.com/wordpress/prido/wp-content/uploads/2022/01/banner-15.jpg" />
         <div className="app__header-container">
           <h2>POUR HOMME</h2>
-          <Button />
+          <Link to="/products">
+            <Button />
+          </Link>
         </div>
       </div>
       <div className="app__header-right">
@@ -18,7 +21,9 @@ const Header = () => {
         <CardImg linkImg="https://wpbingosite.com/wordpress/prido/wp-content/uploads/2022/01/banner-16.jpg" />
         <div className="app__header-container">
           <h2>POUR FEMMES</h2>
-          <Button />
+          <Link to="/products">
+            <Button />
+          </Link>
         </div>
       </div>
       <span className="blur-element" />

@@ -99,11 +99,11 @@
   bottom: 0;
   background-color: #000;
   z-index: -1;
-  animation: blur 0.1s linear;
+  /* animation: blur 0.1s linear; */
 }
 @keyframes box-appearance {
   100% {
-    opacity: 11;
+    opacity: 1;
   }
 }
 

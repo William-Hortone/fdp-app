@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Navbar, Infos, CardCategory } from "../../components";
+import { Navbar, Infos, CardCategory, Loader } from "../../components";
 import { Link } from "react-router-dom";
 import "./products.css";
 import { images } from "../../constants";
@@ -55,10 +55,21 @@ const Products = () => {
 
   return (
     <div className="app__products">
+      {/* <Loader /> */}
       <Infos colorLink={colorLink} colorBorder={colorBorder} />
       <div className="app__products-navbar">
         <Navbar colorLink={colorLink} colorBorder={colorBorder} />
       </div>
+
+      {/* <div className="app__loader">
+        <div className="app__loader-left">
+          <span className="app__loader-span_left span"></span>
+        </div>
+        <div className="app__loader-right">
+          <span className="app__loader-span_right span"></span>
+        </div>
+        <span className="blur-element-page" />
+      </div> */}
       <div className="app__products-header">
         <div className="app__products-header_box-one">
           <h1>Boutique</h1>
@@ -121,7 +132,7 @@ const Products = () => {
               <li onClick={() => handleCategory("machines")}>
                 machines <span>{machineNumber.length}</span>
               </li>
-              <li>
+              <li onClick={() => handleCategory("sport")}>
                 sport <span>{sportNumber.length}</span>
               </li>
               <li onClick={() => handleCategory("casque")}>

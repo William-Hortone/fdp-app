@@ -10,6 +10,7 @@ import Product from "./product/Product";
 import ProductBox from "./productBox/ProductBox";
 import Carousel from "./carousel/Carousel";
 import CardCategory from "./cardCategory/CardCategory";
+import Loader from "./loader/Loader";
 
 export {
   Button,
@@ -24,4 +25,5 @@ export {
   Carousel,
   ProductBox,
   CardCategory,
+  Loader,
 };

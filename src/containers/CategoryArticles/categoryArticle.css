@@ -9,6 +9,7 @@
   /* justify-content: center; */
   flex-wrap: wrap;
   gap: 1rem;
+  /* background-color: red; */
 }
 .article {
   width: 32%;
@@ -17,5 +18,10 @@
 @media screen and (max-width: 800px) {
   .article {
     width: 48%;
+  }
+}
+@media screen and (max-width: 550px) {
+  .article {
+    width: 100%;
   }
 }

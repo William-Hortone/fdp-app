@@ -50,7 +50,13 @@ const description = [
     price: " 199.900 fcfa",
     img: [images.machine24, images.machine25],
   },
-
+  {
+    id: "7",
+    category: "sport",
+    name: "Machine de sport ",
+    price: " 399.900 fcfa",
+    img: [images.sport4, images.sport7],
+  },
   {
     id: "7",
     category: "sport",
@@ -78,13 +84,6 @@ const description = [
     name: "Machine de sport ",
     price: " 399.900 fcfa",
     img: [images.sport3, images.sport9],
-  },
-  {
-    id: "7",
-    category: "sport",
-    name: "Machine de sport ",
-    price: " 399.900 fcfa",
-    img: [images.sport4, images.sport7],
   },
 
   {
