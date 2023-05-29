@@ -6,6 +6,7 @@ import Presentation from "./presentation/Presentation";
 import Team from "./team/Team";
 import Footer from "./footer/Footer";
 import CategoryArticles from "./CategoryArticles/CategoryArticles";
+import Description from "./description/Description";
 
 export {
   Articles,
@@ -16,4 +17,5 @@ export {
   CategoryArticles,
   Presentation,
   Team,
+  Description,
 };

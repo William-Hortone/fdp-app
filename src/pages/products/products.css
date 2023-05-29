@@ -252,8 +252,14 @@
   overflow: hidden;
   animation: loader 0.5s ease forwards;
   animation-delay: 4s;
-  background-color: blue;
+  /* background-color: blue; */
 }
+/* .app__loader-left {
+  background-color: yellow;
+}
+.app__loader-right {
+  background-color: rgb(234, 0, 255);
+} */
 @keyframes loader {
   to {
     z-index: -2;
@@ -264,6 +270,7 @@
 .app__loader-right {
   flex: 1;
   position: relative;
+  overflow: hidden;
 }
 
 .app__loader-span_left {
@@ -281,8 +288,31 @@
     slide-out 0.75s 1s ease-out forwards;
   z-index: 9;
 }
-
+@keyframes slide-in {
+  100% {
+    transform: translateY(0%);
+    /* z-index: -1; */
+  }
+}
+@keyframes slide-out {
+  100% {
+    transform: translateY(100%);
+  }
+}
 .app__loader-span_right {
+  /* position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform: translateY(100%);
+  z-index: 2;
+  background-color: var(--color-red);
+  animation: right-slide-in 0.75s ease-out forwards,
+    right-slide-out 0.75s 1s ease-out forwards;
+  z-index: 9; */
   position: absolute;
   width: 100%;
   height: 100%;
@@ -297,15 +327,14 @@
     right-slide-out 0.75s 1s ease-out forwards;
   z-index: 9;
 }
-@keyframes slide-in {
+@keyframes right-slide-in {
   100% {
     transform: translateY(0%);
-    /* z-index: -1; */
   }
 }
-@keyframes slide-out {
+@keyframes right-slide-out {
   100% {
-    transform: translateY(100%);
+    transform: translateY(-100%);
   }
 }
 

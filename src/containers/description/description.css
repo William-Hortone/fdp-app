@@ -1,0 +1,23 @@
+.app__description {
+  width: 100%;
+  height: 300px;
+  background-color: #fbf3f3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4rem;
+}
+.app__description-box {
+  width: fit-content;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+}
+.app__description-box h3 {
+  font-size: 1.4rem;
+  font-family: var(--font-link);
+  text-transform: capitalize;
+}

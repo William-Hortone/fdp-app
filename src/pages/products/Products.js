@@ -61,7 +61,7 @@ const Products = () => {
         <Navbar colorLink={colorLink} colorBorder={colorBorder} />
       </div>
 
-      {/* <div className="app__loader">
+      <div className="app__loader">
         <div className="app__loader-left">
           <span className="app__loader-span_left span"></span>
         </div>
@@ -69,7 +69,8 @@ const Products = () => {
           <span className="app__loader-span_right span"></span>
         </div>
         <span className="blur-element-page" />
-      </div> */}
+      </div>
+
       <div className="app__products-header">
         <div className="app__products-header_box-one">
           <h1>Boutique</h1>

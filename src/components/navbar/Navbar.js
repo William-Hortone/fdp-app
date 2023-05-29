@@ -41,7 +41,7 @@ const Navbar = ({ colorLink, colorBorder }) => {
           </NavLink>
         </li>
         <li style={{ color: `${colorLink}` }}>
-          <NavLink className="link" to="">
+          <NavLink className="link" style={navLinkStyle} to="/about">
             A propos
           </NavLink>
         </li>
@@ -78,7 +78,7 @@ const Navbar = ({ colorLink, colorBorder }) => {
               </NavLink>
             </li>
             <li>
-              <NavLink className="link" to="">
+              <NavLink className="link" to="/about">
                 A propos
               </NavLink>
             </li>
