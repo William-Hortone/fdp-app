@@ -7,7 +7,7 @@ const About = () => {
   return (
     <div className="app__about">
       <Infos colorLink="#000000" colorBorder="#000000" />
-      <Navbar colorBorder="#000000" />
+      <Navbar colorBorder="#000000" colorIcon="#ffffff" />
       <div className="app__about-about_us">
         <img
           src="	https://wpbingosite.com/wordpress/prido/wp-content/uploads/2022/01/background-11.jpg"
@@ -27,7 +27,7 @@ const About = () => {
         <span className="blur-element-page" />
       </div>
 
-      <Footer color="#222222" />
+      <Footer color="#222222" colorLink="#ffff" />
     </div>
   );
 };

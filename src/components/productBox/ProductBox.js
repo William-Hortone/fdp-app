@@ -4,7 +4,7 @@ import { Product } from "../";
 import { images, data } from "../../constants";
 import "./productBox.css";
 
-const ProductBox = ({ imgOne, imgTow }) => {
+const ProductBox = ({ imgOne, imgTow, price, name }) => {
   const [rating, setRating] = useState(4);
 
   return (
@@ -14,8 +14,8 @@ const ProductBox = ({ imgOne, imgTow }) => {
           <Product imgOne={imgOne} imgTow={imgTow} />
         </div>
         <div className="carousel-content-description">
-          <h3>{data[0].name}</h3>
-          <h3>{data[0].price}</h3>
+          <h3>{name}</h3>
+          <h3>{price}</h3>
           <div className="star">
             <StarRatings
               rating={rating}

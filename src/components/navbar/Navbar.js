@@ -1,18 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./navbar.css";
 import images from "../../constants/images";
 import { Link, NavLink } from "react-router-dom";
 import { FaBars, FaTimes, FaFacebookF, FaWhatsapp } from "react-icons/fa";
 
-const Navbar = ({ colorLink, colorBorder }) => {
+const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
   const [toggleMenu, setToggleMenu] = useState(false);
+  const [isWidthLessThan1000, setIsWidthLessThan1000] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const { body } = document;
+      setIsWidthLessThan1000(body.clientWidth < 1050);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  // let bodyWidthView = document.body.style.width;
+
+  // if (bodyWidthView <= 800px)
   const navLinkStyle = ({ isActive }) => {
     return {
       fontWeight: isActive ? "bold" : "normal",
       color: isActive ? "#A90A0A" : "",
     };
   };
-
+  console.log("the body width is ", isWidthLessThan1000);
   return (
     <div
       className="app__navbar "
@@ -57,8 +75,18 @@ const Navbar = ({ colorLink, colorBorder }) => {
         </li>
       </ul>
       <div className="app__navbar-icons">
-        <FaFacebookF color={colorLink} fontSize={20} />
-        <FaWhatsapp color={colorLink} fontSize={20} />
+        <a href="https://www.facebook.com/Fournisseurdeproximite">
+          <FaFacebookF
+            color={isWidthLessThan1000 ? `${colorIcon}` : `${colorLink}`}
+            fontSize={20}
+          />
+        </a>
+        <a target="blank" href="https://wa.me/24177066605">
+          <FaWhatsapp
+            color={isWidthLessThan1000 ? `${colorIcon}` : `${colorLink}`}
+            fontSize={20}
+          />
+        </a>
       </div>
 
       {toggleMenu && (
@@ -78,7 +106,7 @@ const Navbar = ({ colorLink, colorBorder }) => {
               </NavLink>
             </li>
             <li>
-              <NavLink className="link" to="/about">
+              <NavLink className="link" style={navLinkStyle} to="/about">
                 A propos
               </NavLink>
             </li>

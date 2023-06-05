@@ -54,6 +54,11 @@ import brand2 from "../assets/brand2.png";
 import brand3 from "../assets/brand3.png";
 import brand4 from "../assets/brand4.png";
 import brand5 from "../assets/brand5.png";
+import lavage1 from "../assets/lavage1.jpg";
+import lavage2 from "../assets/lavage2.jpg";
+import lavage3 from "../assets/lavage3.jpg";
+import lavage4 from "../assets/lavage4.jpg";
+import accessoire from "../assets/accessoire.jpg";
 
 export default {
   logo,
@@ -112,4 +117,9 @@ export default {
   brand3,
   brand4,
   brand5,
+  lavage1,
+  lavage2,
+  lavage3,
+  lavage4,
+  accessoire,
 };

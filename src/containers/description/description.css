@@ -21,3 +21,37 @@
   font-family: var(--font-link);
   text-transform: capitalize;
 }
+.app__description-box p {
+  font-size: 14px;
+  color: #222222c5;
+  /* font-family: var(--font-alt); */
+  text-transform: capitalize;
+}
+.app__description-box span {
+  font-size: 3rem;
+  color: #222222;
+  color: var(--color-red);
+}
+
+@media screen and (max-width: 1000px) {
+  .app__description-box h3 {
+    font-size: 1.1rem;
+  }
+  .app__description-box span {
+    font-size: 2.4rem;
+  }
+}
+@media screen and (max-width: 650px) {
+  .app__description {
+    height: auto;
+    padding-block: 2rem;
+    gap: 1.5rem;
+    flex-direction: column;
+  }
+  .app__description-box h3 {
+    font-size: 1.1rem;
+  }
+  .app__description-box span {
+    font-size: 2.4rem;
+  }
+}

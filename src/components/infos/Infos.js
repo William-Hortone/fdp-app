@@ -9,9 +9,9 @@ const Infos = ({ color, colorLink, colorBorder }) => {
       style={{ borderBottom: ` 1px solid ${colorBorder}` }}
     >
       <div className="app__infos-left">
-        <p style={{ color: `${colorLink}` }}>fournisseur@gmail.com | </p>
+        <p style={{ color: `${colorLink}` }}> fournisseurdp@gmail.com | </p>
         <p style={{ color: `${colorLink}` }}>
-          <FaPhoneAlt /> +241 158523056
+          <FaPhoneAlt /> +241 77066605
         </p>
       </div>
       <div className="app__infos-right">

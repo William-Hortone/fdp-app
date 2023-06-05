@@ -10,7 +10,12 @@ const CategoryArticles = ({ articles }) => {
         {articles.map((article, index) => (
           <Link key={index} className="article">
             <article className="">
-              <ProductBox imgOne={article.img[0]} imgTow={article.img[1]} />
+              <ProductBox
+                imgOne={article.img[0]}
+                price={article.price}
+                name={article.name}
+                imgTow={article.img[1]}
+              />
             </article>
           </Link>
         ))}

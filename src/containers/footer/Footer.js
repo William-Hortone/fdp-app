@@ -9,7 +9,7 @@ import {
 import "./footer.css";
 import { images } from "../../constants";
 
-const Footer = ({ color }) => {
+const Footer = ({ color, colorLink }) => {
   return (
     <div
       className="app__footer"
@@ -17,37 +17,42 @@ const Footer = ({ color }) => {
       style={{ backgroundColor: `${color}` }}
     >
       <div className="app__footer-container">
-        <div className="footer-content">
+        <div className="footer-content" style={{ color: `${colorLink}` }}>
           <div className="footer-content-logo">
             <img src={images.logo} alt="logo image" />
           </div>
-          <p>
+          <p style={{ color: `${colorLink}` }}>
             Trouver l'équipement parfait pour vos besoins et profiter d'un style
             de vie plus sain et plus heureux dès aujourd'hui !
           </p>
-          <p>
-            <span>
-              <FaFacebook />
-            </span>
-            facebook
-          </p>
+          <a
+            target="blank"
+            href="https://www.facebook.com/Fournisseurdeproximite"
+          >
+            <p style={{ color: `${colorLink}` }}>
+              <span>
+                <FaFacebook />
+              </span>
+              Facebook
+            </p>
+          </a>
         </div>
-        <div className="footer-content">
+        <div className="footer-content" style={{ color: `${colorLink}` }}>
           <h2>Caracteristique</h2>
           <ul>
-            <li>
+            <li style={{ color: `${colorLink}` }}>
               <span>
                 <FaCaretRight />
               </span>
-              Produits de qualite
+              Produits de qualité
             </li>
-            <li>
+            <li style={{ color: `${colorLink}` }}>
               <span>
                 <FaCaretRight />
               </span>
               Livraison gratuite
             </li>
-            <li>
+            <li style={{ color: `${colorLink}` }}>
               <span>
                 <FaCaretRight />
               </span>
@@ -56,31 +61,31 @@ const Footer = ({ color }) => {
             <li></li>
           </ul>
         </div>
-        <div className="footer-content">
+        <div className="footer-content" style={{ color: `${colorLink}` }}>
           <h2>Contacts</h2>
-          <p>
+          <p style={{ color: `${colorLink}` }}>
             <span>
               <FaPhoneAlt />
             </span>
-            +91-9871833367
+            +241 77066605
           </p>
-          <p>
+          <p style={{ color: `${colorLink}` }}>
             <span>
               <FaEnvelope />
             </span>
-            support@prido.com
+            fournisseurdp@gmail.com
           </p>
-          <p>
+          <p style={{ color: `${colorLink}` }}>
             <span>
               <FaMapMarkedAlt />
             </span>
-            Gyan Singh Market, Sector 22 Noida, UP 201301
+            Libreville / Nzeng-Ayong
           </p>
         </div>
       </div>
       <div className="app__footer-copyright">
-        <p>Fournisseur de Proximite © 2023</p>
-        <p>
+        <p style={{ color: `${colorLink}` }}>Fournisseur de Proximite © 2023</p>
+        <p style={{ color: `${colorLink}` }}>
           Developed by
           <a
             href="https://williamhortone.com/"

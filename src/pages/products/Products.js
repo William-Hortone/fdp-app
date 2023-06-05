@@ -58,7 +58,11 @@ const Products = () => {
       {/* <Loader /> */}
       <Infos colorLink={colorLink} colorBorder={colorBorder} />
       <div className="app__products-navbar">
-        <Navbar colorLink={colorLink} colorBorder={colorBorder} />
+        <Navbar
+          colorLink={colorLink}
+          colorIcon="#ffffff"
+          colorBorder={colorBorder}
+        />
       </div>
 
       <div className="app__loader">
@@ -88,8 +92,8 @@ const Products = () => {
           <div onClick={() => handleCategory("sport")}>
             <CardCategory img={images.sport4} title="sports" />
           </div>
-          <div onClick={() => handleCategory("sport")}>
-            <CardCategory img={images.alters} title="accessoires" />
+          <div onClick={() => handleCategory("accessoires")}>
+            <CardCategory img={images.corde11} title="accessoire" />
           </div>
         </div>
         <div className="head-category-smallScreen">
@@ -114,7 +118,7 @@ const Products = () => {
                 <div onClick={() => handleCategory("sport")}>
                   <CardCategory img={images.sport4} title="sports" />
                 </div>
-                <div onClick={() => handleCategory("sport")}>
+                <div onClick={() => handleCategory("accessoires")}>
                   <CardCategory img={images.alters} title="accessoires" />
                 </div>
               </div>
