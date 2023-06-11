@@ -13,10 +13,14 @@
 
 .app__bestProduct h2 {
   font-size: 3rem;
+  /* line-height: 160px; */
+  /* color: transparent; */
+
   font-family: var(--font-link);
-  text-transform: uppercase;
+
   font-weight: 100;
 }
+
 /* .app__bestProduct-container {
   width: 100%;
   height: auto;

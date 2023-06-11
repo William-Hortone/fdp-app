@@ -23,7 +23,7 @@ const Carousel = ({ linkImg, img }) => {
           <div className="app__carousel-container_box">
             <div className="carousel-content">
               <ProductBox
-                price={data[6].price}
+                // price={data[6].price}
                 name={data[6].name}
                 imgOne={images.machine23}
                 imgTow={images.machine18}
@@ -31,7 +31,7 @@ const Carousel = ({ linkImg, img }) => {
             </div>
             <div className="carousel-content">
               <ProductBox
-                price={data[3].price}
+                // // price={data[3].price}
                 name={data[3].name}
                 imgOne={images.machine3}
                 imgTow={images.machine15}
@@ -39,7 +39,7 @@ const Carousel = ({ linkImg, img }) => {
             </div>
             <div className="carousel-content">
               <ProductBox
-                price={data[4].price}
+                // // price={data[4].price}
                 name={data[4].name}
                 imgOne={images.machine16}
                 imgTow={images.machine17}
@@ -47,7 +47,7 @@ const Carousel = ({ linkImg, img }) => {
             </div>
             <div className="carousel-content">
               <ProductBox
-                price={data[5].price}
+                // // price={data[5].price}
                 name={data[5].name}
                 imgOne={images.machine20}
                 imgTow={images.machine5}
@@ -59,7 +59,7 @@ const Carousel = ({ linkImg, img }) => {
           <div className="app__carousel-container_box">
             <div className="carousel-content">
               <ProductBox
-                price={data[14].price}
+                // // price={data[14].price}
                 name={data[14].name}
                 imgOne={images.casque7}
                 imgTow={images.casque8}
@@ -67,7 +67,7 @@ const Carousel = ({ linkImg, img }) => {
             </div>
             <div className="carousel-content">
               <ProductBox
-                price={data[12].price}
+                // // price={data[12].price}
                 name={data[12].name}
                 imgOne={images.casque1}
                 imgTow={images.casque}
@@ -75,7 +75,7 @@ const Carousel = ({ linkImg, img }) => {
             </div>
             <div className="carousel-content">
               <ProductBox
-                price={data[13].price}
+                // // price={data[13].price}
                 name={data[13].name}
                 imgOne={images.casque3}
                 imgTow={images.casque2}
@@ -83,7 +83,7 @@ const Carousel = ({ linkImg, img }) => {
             </div>
             <div className="carousel-content">
               <ProductBox
-                price={data[12].price}
+                // // price={data[12].price}
                 name={data[12].name}
                 imgOne={images.casque}
                 imgTow={images.casque4}
@@ -95,7 +95,7 @@ const Carousel = ({ linkImg, img }) => {
           <div className="app__carousel-container_box">
             <div className="carousel-content">
               <ProductBox
-                price={data[15].price}
+                // // price={data[15].price}
                 name={data[15].name}
                 imgOne={images.corde}
                 imgTow={images.corde3}
@@ -103,7 +103,7 @@ const Carousel = ({ linkImg, img }) => {
             </div>
             <div className="carousel-content">
               <ProductBox
-                price={data[16].price}
+                // // price={data[16].price}
                 name={data[16].name}
                 imgOne={images.corde10}
                 imgTow={images.corde9}
@@ -111,7 +111,7 @@ const Carousel = ({ linkImg, img }) => {
             </div>
             <div className="carousel-content">
               <ProductBox
-                price={data[17].price}
+                // // price={data[17].price}
                 name={data[17].name}
                 imgOne={images.sport4}
                 imgTow={images.sport7}
@@ -119,7 +119,7 @@ const Carousel = ({ linkImg, img }) => {
             </div>
             <div className="carousel-content">
               <ProductBox
-                price={data[16].price}
+                // // price={data[16].price}
                 name={data[16].name}
                 imgOne={images.corde12}
                 imgTow={images.corde11}

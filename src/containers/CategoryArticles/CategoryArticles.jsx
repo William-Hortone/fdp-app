@@ -12,7 +12,7 @@ const CategoryArticles = ({ articles }) => {
             <article className="">
               <ProductBox
                 imgOne={article.img[0]}
-                price={article.price}
+                // price={article.price}
                 name={article.name}
                 imgTow={article.img[1]}
               />

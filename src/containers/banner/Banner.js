@@ -7,7 +7,7 @@ const Banner = () => {
   return (
     <div className="app__banner">
       <div className="app__banner-container">
-        <p className="p__cormorant">Sale up to 70%</p>
+        <p className="p__cormorant">Promotion de 10%</p>
         <h2>FITNESS & YOGA</h2>
         <ButtonBorder color="#fff" />
       </div>

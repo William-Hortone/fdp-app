@@ -1,7 +1,9 @@
 .section__padding {
   padding: 4rem 6rem;
 }
-
+html {
+  scroll-behavior: smooth;
+}
 .p__cormorant {
   font-family: var(--font-base);
   color: var(--color-white);

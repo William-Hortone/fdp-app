@@ -23,7 +23,22 @@
   font-size: 6vw;
   font-family: var(--font-link);
   text-transform: uppercase;
-  color: #ffff;
+
+  color: transparent;
+  -webkit-text-stroke: 1px #fff;
+  background: url(../../assets/back.png);
+  -webkit-background-clip: text;
+  background-position: 0 0;
+  font-family: var(--font-link);
+  text-transform: uppercase;
+  animation: back 20s linear infinite;
+  font-weight: 900;
+}
+
+@keyframes back {
+  100% {
+    background-position: 2000px 0;
+  }
 }
 
 .app__loader {
