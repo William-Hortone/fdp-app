@@ -19,23 +19,12 @@ mongoose
 
   app.use(errorHandler);
 
-
-// Enable CORS for all routes or
-app.use(cors({
-  origin: "https://score-client.vercel.app",
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true
-}));
-
-
 // Routes
 app.use("/api/", authRouter);
 app.use("/api/users/", userRouter);
 
 
 app.get("/", (req, res) => res.send("William Hortone!"));
-
 
 
 const port = process.env.PORT || 3000;

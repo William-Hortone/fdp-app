@@ -2,23 +2,18 @@
   width: 100%;
   height: 100vh;
   display: flex;
-  /* gap: 2rem; */
   flex-direction: column;
-  /* background-color: aquamarine; */
 }
 .app__presentation-container-one {
   width: 100%;
   height: 70vh;
   display: flex;
-  /* background-color: aqua; */
   padding: 6rem 2rem 1rem 2rem;
 }
 .app__presentation-left {
   flex: 1.5;
   display: flex;
   flex-direction: column;
-
-  /* background-color: rgb(43, 226, 89); */
 }
 .app__presentation-left h1 {
   font-size: 6rem;
@@ -29,8 +24,6 @@
 .app__presentation-left-container {
   display: flex;
   flex-direction: column;
-  /* align-items: flex-end; */
-  /* background-color: blanchedalmond; */
   margin-top: 3rem;
   margin-left: 6rem;
 }
@@ -44,10 +37,7 @@
   font-size: 20px;
   line-height: 1.4;
   margin-bottom: 3rem;
-
-  /* letter-spacing: 1px; */
 }
-
 .app__presentation-right {
   flex: 1;
   height: 100%;
@@ -55,11 +45,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  /* background-color: blueviolet; */
 }
 .app__presentation-container-tow {
   width: 100%;
-  height: 30vh;
+  flex: 1;
+  /* height: 30vh; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -81,12 +71,17 @@
   }
 }
 @media screen and (max-width: 1450px) {
+  .app__presentation-container-one {
+    width: 100%;
+    height: auto ;
+    display: flex;
+    padding: 6rem 2rem 1rem 2rem;
+  }
   .app__presentation-left-container {
     margin-top: 2.5rem;
     margin-left: 3rem;
   }
 }
-
 @media screen and (max-width: 1050px) {
   .app__presentation-left h1 {
     font-size: 4rem;
@@ -115,9 +110,6 @@
     height: auto;
     flex-direction: column;
   }
-  .app__presentation-right {
-    /* height: 100vh; */
-  }
 
   .app__presentation-left h1 {
     font-size: 3rem;
@@ -128,7 +120,6 @@
   }
   .app__presentation-left-container {
     margin-top: 1rem;
-    /* margin-left: 2rem; */
   }
   .app__presentation-container-tow h2 {
     font-size: 1.5rem;

@@ -1,15 +1,15 @@
 import React from "react";
 import {
-  Header,
   Articles,
   Banner,
   BestProducts,
   Footer,
+  Header,
   Presentation,
   Team,
 } from "../../containers";
 
-import { Navbar, Infos } from "../../components";
+import { Infos, Navbar } from "../../components";
 
 const Home = () => {
   return (

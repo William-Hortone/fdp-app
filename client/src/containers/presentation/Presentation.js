@@ -1,8 +1,8 @@
 import React from "react";
-import "./presentation.css";
+import { Link } from "react-router-dom";
 import { ButtonBorder, CardImage } from "../../components";
 import images from "../../constants/images";
-import { Link } from "react-router-dom";
+import "./presentation.css";
 
 const Presentation = () => {
   return (

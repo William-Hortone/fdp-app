@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import "./navbar.css";
+import React, { useEffect, useState } from "react";
+import { FaBars, FaFacebookF, FaTimes, FaWhatsapp } from "react-icons/fa";
+import { NavLink } from "react-router-dom";
 import images from "../../constants/images";
-import { Link, NavLink } from "react-router-dom";
-import { FaBars, FaTimes, FaFacebookF, FaWhatsapp } from "react-icons/fa";
+import "./navbar.css";
 
 const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
   const [toggleMenu, setToggleMenu] = useState(false);
@@ -74,7 +74,10 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
           </a>
         </li>
       </ul>
+
+     
       <div className="app__navbar-icons">
+      
         <a href="https://www.facebook.com/Fournisseurdeproximite">
           <FaFacebookF
             color={isWidthLessThan1000 ? `${colorIcon}` : `${colorLink}`}
@@ -87,6 +90,9 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
             fontSize={20}
           />
         </a>
+        <button className="btn-connection">Login</button>
+        <button className="btn-connection btn-register">Sign Up</button>
+
       </div>
 
       {toggleMenu && (
