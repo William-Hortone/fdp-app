@@ -6,7 +6,7 @@ const Infos = ({ color, colorLink, colorBorder }) => {
   return (
     <div
       className="app__infos "
-      style={{ borderBottom: ` 1px solid ${colorBorder}` }}
+      // style={{ borderBottom: ` 1px solid ${colorBorder}` }}
     >
       <div className="app__infos-left">
         <p style={{ color: `${colorLink}` }}> fournisseurdp@gmail.com | </p>

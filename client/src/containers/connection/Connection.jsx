@@ -1,7 +1,7 @@
 import React from "react";
 import { FaPhoneAlt, FaMapMarkedAlt } from "react-icons/fa";
 import { images } from "../../constants";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import './connection.css'
 
 
@@ -10,7 +10,9 @@ const Connection = () => {
     <>
       <div className="app__connection">
         <div className="app__connection-header">
-          <div className="app__infos">
+          <div className="app__infos"
+        //   style={{ borderBottom: ` 1px solid #000000` }}
+          >
             <div className="app__infos-left">
               <p style={{ color: "#000000" }}> fournisseurdp@gmail.com | </p>
               <p style={{ color: "#000000" }}>
@@ -25,6 +27,10 @@ const Connection = () => {
               <p style={{ color: "#000000" }}>Libreville / Nzeng-Ayong</p>
             </div>
           </div>
+        </div>
+
+        <div className="app__connection-container">
+            <Outlet />
         </div>
       </div>
     </>
