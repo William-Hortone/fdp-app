@@ -7,6 +7,9 @@ import Team from "./team/Team";
 import Footer from "./footer/Footer";
 import CategoryArticles from "./CategoryArticles/CategoryArticles";
 import Description from "./description/Description";
+import Login from "./connection/Login";
+import Signup from "./connection/Signup";
+import Connection from "./connection/Connection";
 
 export {
   Articles,
@@ -18,4 +21,8 @@ export {
   Presentation,
   Team,
   Description,
+  Login,
+  Signup,
+  Connection
+
 };

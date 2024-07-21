@@ -1,0 +1,15 @@
+
+.app__connection{
+    width: 100%;
+    height: 100vh;
+background-color:blue ;
+}
+.app__connection-header .app__infos{
+    width: 100%;
+    height: auto;
+    margin: 0.3rem 0 !important;
+    /* background-color: red; */
+}
+/* .app__infos{
+
+} */

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaBars, FaFacebookF, FaTimes, FaWhatsapp } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import images from "../../constants/images";
 import "./navbar.css";
 
@@ -90,8 +90,8 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
             fontSize={20}
           />
         </a>
-        <button className="btn-connection">Login</button>
-        <button className="btn-connection btn-register">Sign Up</button>
+        <Link className="btn-connection" to='/connection/login'>Login</Link>
+        <Link className="btn-connection btn-register" to='/connection/signup'>Sign Up</Link>
 
       </div>
 
