@@ -2,13 +2,24 @@ import React from "react";
 import { images } from "../../constants";
 import "./connection.css";
 import { Link } from "react-router-dom";
+import { FaArrowLeft } from "react-icons/fa6";
 
 const Signup = () => {
+
+  const goBack = () => {
+    window.history.back();
+  };
+
   return (
     <>
       <div className="app__signIn">
         <div className="app__signIn-container">
           <div className="app__signIn-container-form">
+         
+              <div className="go-back-btn" onClick={goBack}>
+                <FaArrowLeft color="black" size={17} /> Retourer
+              </div>
+        
             <form>
               <h1>S'isncrire</h1>
               <label>Nom</label>
@@ -37,7 +48,11 @@ const Signup = () => {
               </button>
               <h2>Vous avez deja un compte?</h2>
 
-              <Link to='/connection/login' type="submit" className="register-btn">
+              <Link
+                to="/connection/login"
+                type="submit"
+                className="register-btn"
+              >
                 Se connecter
               </Link>
             </form>
@@ -51,6 +66,4 @@ const Signup = () => {
   );
 };
 
-
-
-export default Signup
+export default Signup;
