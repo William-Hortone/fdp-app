@@ -1,15 +1,18 @@
 import React from "react";
 import {
-  FaPhoneAlt,
-  FaMapMarkedAlt,
-  FaFacebook,
   FaCaretRight,
   FaEnvelope,
+  FaFacebook,
+  FaMapMarkedAlt,
+  FaPhoneAlt,
 } from "react-icons/fa";
-import "./footer.css";
 import { images } from "../../constants";
+import "./footer.css";
 
 const Footer = ({ color, colorLink }) => {
+  const newDate = new Date();
+  const currentYear = newDate.getFullYear();
+
   return (
     <div
       className="app__footer"
@@ -19,7 +22,7 @@ const Footer = ({ color, colorLink }) => {
       <div className="app__footer-container">
         <div className="footer-content" style={{ color: `${colorLink}` }}>
           <div className="footer-content-logo">
-            <img src={images.logo} alt="logo image" />
+            <img src={images.logo} alt="logo" />
           </div>
           <p style={{ color: `${colorLink}` }}>
             Trouver l'équipement parfait pour vos besoins et profiter d'un style
@@ -84,7 +87,7 @@ const Footer = ({ color, colorLink }) => {
         </div>
       </div>
       <div className="app__footer-copyright">
-        <p style={{ color: `${colorLink}` }}>Fournisseur de Proximite © 2023</p>
+        <p style={{ color: `${colorLink}` }}>Fournisseur de Proximite © {currentYear}</p>
         <p style={{ color: `${colorLink}` }}>
           Developed by
           <a

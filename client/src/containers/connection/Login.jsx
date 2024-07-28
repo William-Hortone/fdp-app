@@ -1,6 +1,7 @@
 import React from "react";
 import { images } from "../../constants";
 import "./connection.css";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
@@ -9,7 +10,7 @@ const Login = () => {
         <div className="app__signIn-container">
           <div className="app__signIn-container-form">
             <form>
-              <h1>S'identifier</h1>
+              <h1>Se connecter</h1>
               <label>Email</label>
               <input
                 type="email"
@@ -25,17 +26,17 @@ const Login = () => {
                 placeholder="Enter your password"
               />
               <button type="submit" className="login-btn">
-                Login
+                Se connecter
               </button>
-              <h2>Don't have an account?</h2>
+              <h2>Vous n'avez pas de compte?</h2>
 
-              <button type="submit" className="register-btn">
-                Register Now
-              </button>
+              <Link type="submit" to='/connection/signup' className="register-btn">
+                S'inscrire maintenant
+              </Link>
             </form>
           </div>
           <div className="app__signIn-container-img">
-            <img src={images.casque1} alt="casque" />
+            <img src={images.machine9} alt="casque" />
           </div>
         </div>
       </div>

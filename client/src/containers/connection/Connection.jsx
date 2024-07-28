@@ -3,6 +3,7 @@ import { FaPhoneAlt, FaMapMarkedAlt } from "react-icons/fa";
 import { images } from "../../constants";
 import { Link, Outlet } from "react-router-dom";
 import './connection.css'
+import Footer from "../footer/Footer";
 
 
 const Connection = () => {
@@ -32,6 +33,8 @@ const Connection = () => {
         <div className="app__connection-container">
             <Outlet />
         </div>
+
+        <Footer />
       </div>
     </>
   );
