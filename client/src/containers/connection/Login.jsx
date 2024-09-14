@@ -9,6 +9,8 @@ const Login = () => {
       <div className="app__signIn">
         <div className="app__signIn-container">
           <div className="app__signIn-container-form">
+
+            {/* Login form */}
             <form>
               <h1>Se connecter</h1>
               <label>Email</label>
@@ -16,14 +18,16 @@ const Login = () => {
                 type="email"
                 className="input"
                 name="email"
-                placeholder="Enter your email"
+                required
+                placeholder="Entrer votre email"
               />
-              <label>Password</label>
+              <label>Mot de passe</label>
               <input
                 type="password"
                 name="password"
+                required
                 className="input"
-                placeholder="Enter your password"
+                placeholder="Enter Votre mot de passe"
               />
               <button type="submit" className="login-btn">
                 Se connecter

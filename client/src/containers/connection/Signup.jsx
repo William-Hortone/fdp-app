@@ -1,8 +1,8 @@
 import React from "react";
+import { FaArrowLeft } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 import { images } from "../../constants";
 import "./connection.css";
-import { Link } from "react-router-dom";
-import { FaArrowLeft } from "react-icons/fa6";
 
 const Signup = () => {
 
@@ -19,7 +19,8 @@ const Signup = () => {
               <div className="go-back-btn" onClick={goBack}>
                 <FaArrowLeft color="black" size={17} /> Retourer
               </div>
-        
+              
+        {/* Sing Up form */}
             <form>
               <h1>S'isncrire</h1>
               <label>Nom</label>

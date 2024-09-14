@@ -4,6 +4,7 @@ import { images } from "../../constants";
 import { Link, Outlet } from "react-router-dom";
 import './connection.css'
 import Footer from "../footer/Footer";
+import Infos from './../../components/infos/Infos';
 
 
 const Connection = () => {
@@ -11,7 +12,7 @@ const Connection = () => {
     <>
       <div className="app__connection">
         <div className="app__connection-header">
-          <div className="app__infos"
+          <div id="connection__infos" className="app__infos"
           >
             <div className="app__infos-left">
               <p style={{ color: "#000000" }}> fournisseurdp@gmail.com | </p>
@@ -22,11 +23,12 @@ const Connection = () => {
             <Link to="/" className="app__navbar-logo">
               <img src={images.logo} alt="logo images" />
             </Link>
-            <div className="app__infos-right">
+            <div className="app__infos-right connection-info-right">
               <FaMapMarkedAlt style={{ color: "#000000" }} />
               <p style={{ color: "#000000" }}>Libreville / Nzeng-Ayong</p>
             </div>
           </div>
+
         </div>
 
         <div className="connection-smallScreen">

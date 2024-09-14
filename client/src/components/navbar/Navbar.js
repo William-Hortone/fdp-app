@@ -30,7 +30,7 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
       color: isActive ? "#A90A0A" : "",
     };
   };
-  console.log("the body width is ", isWidthLessThan1000);
+  // console.log("the body width is ", isWidthLessThan1000);
   return (
     <div
       className="app__navbar "
@@ -75,24 +75,32 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
         </li>
       </ul>
 
-     
       <div className="app__navbar-icons">
-      
-        <a href="https://www.facebook.com/Fournisseurdeproximite">
+        <a
+          className="social-icon"
+          href="https://www.facebook.com/Fournisseurdeproximite"
+        >
           <FaFacebookF
             color={isWidthLessThan1000 ? `${colorIcon}` : `${colorLink}`}
             fontSize={20}
           />
         </a>
-        <a target="blank" href="https://wa.me/24177066605">
+        <a
+          className="social-icon"
+          target="blank"
+          href="https://wa.me/24177066605"
+        >
           <FaWhatsapp
             color={isWidthLessThan1000 ? `${colorIcon}` : `${colorLink}`}
             fontSize={20}
           />
         </a>
-        <Link className="btn-connection" to='/connection/login'>Login</Link>
-        <Link className="btn-connection btn-register" to='/connection/signup'>Sign Up</Link>
-
+        <Link className="btn-connection" to="/connection/login">
+          Login
+        </Link>
+        <Link className="btn-connection btn-register" to="/connection/signup">
+          Sign Up
+        </Link>
       </div>
 
       {toggleMenu && (
@@ -127,7 +135,13 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
               </NavLink>
             </li>
           </ul>
-          <div className="app__navbar-icons">{/* <FaBars /> */}</div>
+          <Link className="btn-connection" to="/connection/login">
+            Login
+          </Link>
+          <Link className="btn-connection btn-register" to="/connection/signup">
+            Sign Up
+          </Link>
+
         </div>
       )}
     </div>

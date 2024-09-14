@@ -32,6 +32,11 @@
   background: transparent;
   color: white;
 }
+.btn-connection:hover{
+  transition: all .3s ease;
+  color: var(--color-red);
+  border: 1px ;
+}
 .btn-register{
   background-color: var(--color-red);
   color: white;

@@ -1,7 +1,6 @@
 .app__connection {
   width: 100%;
   height: auto;
-  /* padding: 2rem; */
   background-color: #f6f5ee;
 }
 .app__connection-header {
@@ -37,15 +36,11 @@
   width: 100%;
   height: auto;
   display: flex;
-
-  /* justify-content: center; */
   align-items: center;
 }
 .app__signIn-container-form {
   flex: 1;
-  /* padding-top: 10rem; */
   height: 100%;
-  /* background-color: aqua; */
 }
 .go-back-btn{
   width: 100%;
@@ -54,7 +49,6 @@
   align-items: center;
   font-family: var(--font-base);
   border-bottom: 2px solid #3a3a3a67;
-  /* border-bottom: 5px solid #ffffff38; */
   padding-left: 2rem;
   font-weight: 900;
 }
@@ -79,7 +73,6 @@ padding: 1.5rem 0;
     border-right: 1px solid #00000038 ;
     background-color: transparent !important;
 }
-
 .app__signIn-container-form form label{
     text-align:left !important;
     margin-top: 2rem;
@@ -132,19 +125,27 @@ padding: 1.5rem 0;
   border-left: 2px solid #0000008c ;
   border-right: 2px solid #00000063 ;
 }
-
 .app__signIn-container-img {
   flex: 1;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: rgb(255, 0, 212); */
 }
 .app__signIn-container-img img {
   width: 80%;
   aspect-ratio: 1/1;
 }
+.app__navbar-smallScreen-overlay .btn-connection{
+  padding: .5rem;
+  width: 70%;
+  margin: 0 auto;
+  color: black;
+}
+.app__navbar-smallScreen-overlay .btn-register{
+  color: white;
+}
+
 
 @media screen and (max-width: 1000px) {
  .app__signIn-container {
@@ -179,5 +180,25 @@ padding: 1.5rem 0;
   }
   .app__signIn-container-form form h2{
  font-size: 1rem;
+  }
+}
+
+@media screen  and (max-width: 1050px) {
+  #connection__infos{
+    display: flex;
+    flex-direction: row-reverse;
+   
+  }
+  .connection-info-right{
+    display: none;
+  }
+  .app__connection-container {
+
+    padding-top: 0;
+ 
+  }
+  .social-icon,
+  .app__navbar-icons .btn-register{
+    display: none;
   }
 }
