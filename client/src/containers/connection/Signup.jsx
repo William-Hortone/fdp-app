@@ -1,10 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaArrowLeft } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { images } from "../../constants";
 import "./connection.css";
 
 const Signup = () => {
+  const [inputs, setInputs] = useState({
+    username: "",
+    password: "",
+    email: "",
+  });
+
+  //  Function onchange
+  const handleOnChange = (e) => {
+    const { name, value } = e.target;
+    setInputs((prevInputs) => ({
+      ...prevInputs,
+      [name]: value,
+    }));
+  };
 
   const goBack = () => {
     window.history.back();
@@ -15,12 +29,11 @@ const Signup = () => {
       <div className="app__signIn">
         <div className="app__signIn-container">
           <div className="app__signIn-container-form">
-         
-              <div className="go-back-btn" onClick={goBack}>
-                <FaArrowLeft color="black" size={17} /> Retourer
-              </div>
-              
-        {/* Sing Up form */}
+            <div className="go-back-btn" onClick={goBack}>
+              <FaArrowLeft color="black" size={17} /> Retourer
+            </div>
+
+            {/* Sing Up form */}
             <form>
               <h1>S'isncrire</h1>
               <label>Nom</label>
@@ -28,21 +41,24 @@ const Signup = () => {
                 type="text"
                 className="input"
                 name="name"
-                placeholder="Enter your name"
+                value={inputs.username}
+                placeholder="Entrer votre nom"
               />
               <label>Email</label>
               <input
                 type="email"
                 className="input"
                 name="email"
-                placeholder="Enter your email"
+                value={inputs.email}
+                placeholder="Entrer votre email"
               />
-              <label>Password</label>
+              <label>Mot de passe</label>
               <input
                 type="password"
                 name="password"
+                value={inputs.password}
                 className="input"
-                placeholder="Enter your password"
+                placeholder="Entrer votre mot de passe"
               />
               <button type="submit" className="login-btn">
                 S'inscrire

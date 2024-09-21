@@ -3,10 +3,13 @@ import "./App.css";
 import { About, Home, Products } from "./pages";
 import { Routes, Route } from "react-router-dom";
 import { Connection, Login, Signup } from "./containers";
+import { UserProvider } from "./hooks/context/UserContext";
 
 const App = () => {
   return (
     <>
+    <UserProvider>
+
       <div className="App">
         <Routes>
           <Route path="/connection" element={<Connection />} >
@@ -18,6 +21,7 @@ const App = () => {
           <Route path="/about" element={<About />} />
         </Routes>
       </div>
+    </UserProvider>
     </>
   );
 };
