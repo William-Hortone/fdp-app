@@ -1,10 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaArrowLeft } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { images } from "../../constants";
 import "./connection.css";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { TailSpin } from "react-loader-spinner";
 
 const Signup = () => {
+  const [inputs, setInputs] = useState({
+    username: "",
+    password: "",
+    email: "",
+  });
+  const [isLoading, setIsLoading] = useState(false);
+
+  const navigate = useNavigate();
+  //  Function onchange
+  const handleOnChange = (e) => {
+    const { name, value } = e.target;
+    setInputs((prevInputs) => ({
+      ...prevInputs,
+      [name]: value,
+    }));
+    console.log("the vallue is ", value);
+  };
+
+  // Function to signUp
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+    setIsLoading(true)
+    try {
+      const response = await axios.post(
+        "http://localhost:5003/api/users/createUser",
+        inputs
+      );
+      console.log("the response is ", response);
+      if (response) {
+        toast.success("User created successfully");
+        setIsLoading(false)
+        navigate("/connection/login");
+      }
+    } catch (error) {
+      setIsLoading(false)
+      toast.error("Error creating user");
+    }
+  };
 
   const goBack = () => {
     window.history.back();
@@ -12,37 +53,51 @@ const Signup = () => {
 
   return (
     <>
+      {isLoading ? (
+        <div className="loading-container">
+          <div className="loading">
+            <TailSpin color="#a90a0a" height={100} width={100} />
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
       <div className="app__signIn">
         <div className="app__signIn-container">
           <div className="app__signIn-container-form">
-         
-              <div className="go-back-btn" onClick={goBack}>
-                <FaArrowLeft color="black" size={17} /> Retourer
-              </div>
-              
-        {/* Sing Up form */}
-            <form>
+            <div className="go-back-btn" onClick={goBack}>
+              <FaArrowLeft color="black" size={17} /> Retourner
+            </div>
+
+            {/* Sing Up form */}
+            <form onSubmit={handleSignUp}>
               <h1>S'isncrire</h1>
               <label>Nom</label>
               <input
                 type="text"
                 className="input"
-                name="name"
-                placeholder="Enter your name"
+                name="username"
+                onChange={handleOnChange}
+                value={inputs.username}
+                placeholder="Entrer votre nom"
               />
               <label>Email</label>
               <input
                 type="email"
                 className="input"
                 name="email"
-                placeholder="Enter your email"
+                value={inputs.email}
+                placeholder="Entrer votre email"
+                onChange={handleOnChange}
               />
-              <label>Password</label>
+              <label>Mot de passe</label>
               <input
                 type="password"
                 name="password"
+                value={inputs.password}
                 className="input"
-                placeholder="Enter your password"
+                placeholder="Entrer votre mot de passe"
+                onChange={handleOnChange}
               />
               <button type="submit" className="login-btn">
                 S'inscrire
