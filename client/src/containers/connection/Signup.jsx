@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { FaArrowLeft } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { images } from "../../constants";
 import "./connection.css";
-import axios from 'axios'
+import axios from "axios";
+import { toast } from "react-toastify";
+import { TailSpin } from "react-loader-spinner";
 
 const Signup = () => {
   const [inputs, setInputs] = useState({
@@ -11,7 +13,9 @@ const Signup = () => {
     password: "",
     email: "",
   });
+  const [isLoading, setIsLoading] = useState(false);
 
+  const navigate = useNavigate();
   //  Function onchange
   const handleOnChange = (e) => {
     const { name, value } = e.target;
@@ -19,21 +23,29 @@ const Signup = () => {
       ...prevInputs,
       [name]: value,
     }));
-    console.log('the vallue is ', value)
+    console.log("the vallue is ", value);
   };
 
   // Function to signUp
-const handleSignUp =async () =>{
-
-  try {
-  const response = await  axios.post("http://localhost:5003/register", inputs)
-    console.log('the response is ', response)  
-
-  } catch (error) {
-    console.log(error)
-  }
-
-}
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+    setIsLoading(true)
+    try {
+      const response = await axios.post(
+        "http://localhost:5003/api/users/createUser",
+        inputs
+      );
+      console.log("the response is ", response);
+      if (response) {
+        toast.success("User created successfully");
+        setIsLoading(false)
+        navigate("/connection/login");
+      }
+    } catch (error) {
+      setIsLoading(false)
+      toast.error("Error creating user");
+    }
+  };
 
   const goBack = () => {
     window.history.back();
@@ -41,6 +53,15 @@ const handleSignUp =async () =>{
 
   return (
     <>
+      {isLoading ? (
+        <div className="loading-container">
+          <div className="loading">
+            <TailSpin color="#a90a0a" height={100} width={100} />
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
       <div className="app__signIn">
         <div className="app__signIn-container">
           <div className="app__signIn-container-form">

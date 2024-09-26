@@ -1,16 +1,18 @@
 import React from "react";
+import { Route, Routes } from "react-router-dom";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import "./App.css";
-import { About, Home, Products } from "./pages";
-import { Routes, Route } from "react-router-dom";
 import { Connection, Login, Signup } from "./containers";
 import { UserProvider } from "./hooks/context/UserContext";
-
+import { About, Home, Products } from "./pages";
 const App = () => {
   return (
     <>
     <UserProvider>
 
       <div className="App">
+      <ToastContainer />
         <Routes>
           <Route path="/connection" element={<Connection />} >
             <Route path="/connection/login" element={<Login />} />
