@@ -1,11 +1,11 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { FaArrowLeft } from "react-icons/fa6";
+import { TailSpin } from "react-loader-spinner";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { images } from "../../constants";
 import "./connection.css";
-import axios from "axios";
-import { toast } from "react-toastify";
-import { TailSpin } from "react-loader-spinner";
 
 const Signup = () => {
   const [inputs, setInputs] = useState({
@@ -16,6 +16,8 @@ const Signup = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
+
+
   //  Function onchange
   const handleOnChange = (e) => {
     const { name, value } = e.target;
@@ -23,7 +25,7 @@ const Signup = () => {
       ...prevInputs,
       [name]: value,
     }));
-    console.log("the vallue is ", value);
+
   };
 
   // Function to signUp
@@ -35,7 +37,6 @@ const Signup = () => {
         "http://localhost:5003/api/users/createUser",
         inputs
       );
-      console.log("the response is ", response);
       if (response) {
         toast.success("User created successfully");
         setIsLoading(false)
@@ -53,6 +54,7 @@ const Signup = () => {
 
   return (
     <>
+    {/* The loading when registering */}
       {isLoading ? (
         <div className="loading-container">
           <div className="loading">
