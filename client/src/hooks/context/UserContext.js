@@ -1,50 +1,53 @@
 import axios from "axios";
-import React, {createContext, useState} from "react";
+import React, { createContext, useState } from "react";
 import { toast } from "react-toastify";
-import AsyncStorage from "@react-native-async-storage/async-storage"; 
-
 
 export const UserContext = createContext();
 
-export const UserProvider = ({children})=> {
-    const [userInfo, setUserInfo] = useState()
-    const [userToken, setUserToken] = useState(null)
-    // const [isLoading, setIsLoading] = useState()
+export const UserProvider = ({ children }) => {
+    const [userInfo, setUserInfo] = useState(null);
+    const [userToken, setUserToken] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
 
 
-    const handleLogin = async (inputs) =>{
-        console.log('the inputs is', inputs)
+    const handleLogin = async (inputs) => {
+        console.log('the inputs are', inputs);
+        setIsLoading(true)
 
         try {
-            const response = await axios.post('http://localhost:5003/api/users/loginUser', inputs)
+            const response = await axios.post('http://localhost:5003/api/users/loginUser', inputs);
 
-            if(response.status === true){
-                toast.success(response.data.message)
-                console.log('the response is ', response)
-                localStorage.setItem('token', response.data.token)
-
-
-                setUserToken(response.data.token);
-                AsyncStorage.setItem("userToken", response.data.token);
-                AsyncStorage.setItem("userInfo", JSON.stringify(response.data));
-                console.log("the res from back", response.data);
-        
-                setUserInfo(response.data);
-                // setIsLoading(false);
+            if(response.data.status === false){
+        setIsLoading(false) 
+                
+                toast.error(response.data.message);
+                return;
             }
-            
-        } catch (error) {
-            console.log('error', error)
-        }
+            if (response.data.status === true) { 
+        setIsLoading(false) 
 
-    }
+                toast.success("Login Successful");
+                console.log('the response is', response);
+                
+                // Save token and user info in localStorage
+                localStorage.setItem('token', response.data.token);
+                localStorage.setItem('userInfo', JSON.stringify(response.data.user)); 
+                setUserToken(response.data.token);
+                setUserInfo(response.data); 
+                
+                console.log("User info:", response.data);
+            }
+        } catch (error) {
+            console.log('error', error);
+            toast.error("Login failed. Please try again.");
+        }
+    };
 
     return (
         <UserContext.Provider 
-        value={{handleLogin,userToken, userInfo}}
+            value={{ handleLogin, userToken, userInfo }}
         >
             {children}
         </UserContext.Provider>
-    )
-}
-
+    );
+};
