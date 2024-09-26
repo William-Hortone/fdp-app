@@ -3,8 +3,7 @@ const app = express();
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const errorHandler = require("./middleware/errorHandling");
-// const authRouter = require("./routes/auth");
-// const userRouter = require("./routes/user");
+const userRouter = require("./routes/user");
 const cors = require("cors");
 
 dotenv.config();
@@ -29,7 +28,7 @@ mongoose
 
 // Routes
 // app.use("/api/", authRouter);
-// app.use("/api/users/", userRouter);
+app.use("/api/users/", userRouter);
 
 app.get("/", (req, res) => res.send("William Hortone!"));
 

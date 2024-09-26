@@ -1,6 +1,29 @@
 const User = require("../models/User");
+const jwt = require("jsonwebtoken");
+const CryptoJs = require("crypto-js");
+
 
 module.exports = {
+  createUser: async (req, res, next) => {
+    const { username, email, password } = req.body;
+    const newUser = new User({
+      username,
+      email,
+      password: CryptoJs.AES.encrypt(
+        password,
+        process.env.SECRET_KEY
+      ).toString(),
+    });
+
+    try {
+      await newUser.save();
+      res
+        .status(201)
+        .json({ status: true, message: "User created successfully" });
+    } catch (error) {
+      return next(error);
+    }
+  },
   deleteUser: async (req, res, next) => {
     const user_id = req.params.id;
     console.log("deleteUser", user_id);
@@ -15,7 +38,6 @@ module.exports = {
       return next(error);
     }
   },
-
   getUser: (req, res, next) => {
     const user_id = req.params.id;
     console.log("getUser", user_id);
@@ -23,7 +45,6 @@ module.exports = {
     try {
       const user = User.findById(
         { _id: user_id }
-        // { password: 0, _v: 0, createdAt: 0, updatedAt: 0 }
       );
 
       if (!user) {
