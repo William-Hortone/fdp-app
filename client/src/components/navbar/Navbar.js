@@ -1,12 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FaBars, FaFacebookF, FaTimes, FaWhatsapp } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import images from "../../constants/images";
 import "./navbar.css";
+import { UserContext } from "../../hooks/context/UserContext";
+import { FaUserAlt } from "react-icons/fa"; 
+
 
 const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
   const [toggleMenu, setToggleMenu] = useState(false);
   const [isWidthLessThan1000, setIsWidthLessThan1000] = useState(false);
+
+  const { handleLogout, userInfo, userToken } = useContext(UserContext);
 
   useEffect(() => {
     const handleResize = () => {
@@ -30,7 +35,7 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
       color: isActive ? "#A90A0A" : "",
     };
   };
-  // console.log("the body width is ", isWidthLessThan1000);
+
   return (
     <div
       className="app__navbar "
@@ -95,12 +100,24 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
             fontSize={20}
           />
         </a>
-        <Link className="btn-connection" to="/connection/login">
-          Login
-        </Link>
-        <Link className="btn-connection btn-register" to="/connection/signup">
-          Sign Up
-        </Link>
+        {!userToken && (
+          <Link className="btn-connection" to="/connection/login">
+            Login
+          </Link>
+        )}
+        {!userToken && (
+          <Link className="btn-connection btn-register" to="/connection/signup">
+            Sign Up
+          </Link>
+        )}
+        {userToken && (
+          <button
+            className="btn-connection btn-register"
+            onClick={handleLogout}
+          >
+            Logout
+          </button>
+        )}
       </div>
 
       {toggleMenu && (
@@ -112,6 +129,15 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
               onClick={() => setToggleMenu(false)}
             />
             {/* <p onClick={() => setToggleMenu(false)}>close X</p> */}
+            {userInfo &&
+
+            (
+
+          <div className="display-user">
+          <FaUserAlt color="black" />
+            <p>{userInfo? `${userInfo.username}` : ''}</p>
+          </div>
+            )}
           </div>
           <ul className="app__navbar-list-overlay">
             <li>
@@ -135,13 +161,29 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
               </NavLink>
             </li>
           </ul>
-          <Link className="btn-connection" to="/connection/login">
-            Login
-          </Link>
-          <Link className="btn-connection btn-register" to="/connection/signup">
-            Sign Up
-          </Link>
+          {!userToken && (
+            <Link className="btn-connection" to="/connection/login">
+              Login
+            </Link>
+          )}
 
+          {!userToken && (
+            <Link
+              className="btn-connection btn-register"
+              to="/connection/signup"
+            >
+              Sign Up
+            </Link>
+          )}
+
+          {userToken && (
+            <button
+              className="btn-connection btn-register"
+              onClick={handleLogout}
+            >
+              Logout
+            </button>
+          )}
         </div>
       )}
     </div>

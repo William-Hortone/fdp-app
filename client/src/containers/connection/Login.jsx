@@ -3,6 +3,7 @@ import { images } from "../../constants";
 import "./connection.css";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../hooks/context/UserContext";
+import { TailSpin } from "react-loader-spinner";
 
 
 const Login = () => {
@@ -11,7 +12,7 @@ const Login = () => {
     email: "",
   });
 
-  const {handleLogin} = useContext(UserContext)
+  const {handleLogin, isLoading} = useContext(UserContext)
 
 
     //  Function onchange
@@ -29,6 +30,16 @@ const Login = () => {
     }
   return (
     <>
+      {/* The loading when login */}
+        {isLoading ? (
+        <div className="loading-container">
+          <div className="loading">
+            <TailSpin color="#a90a0a" height={100} width={100} />
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
       <div className="app__signIn">
         <div className="app__signIn-container">
           <div className="app__signIn-container-form">
