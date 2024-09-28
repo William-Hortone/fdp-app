@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 export const UserContext = createContext();
@@ -10,6 +10,7 @@ export const UserProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
+  // The login function
   const handleLogin = async (inputs) => {
     console.log("the inputs are", inputs);
     setIsLoading(true);
@@ -27,39 +28,58 @@ export const UserProvider = ({ children }) => {
       }
 
       if (response.data.status === true) {
-        setIsLoading(false);
         toast.success("Login Successful");
-        console.log("the response is", response);
-
+        
         // Save token and user info in localStorage
         localStorage.setItem("token", response.data.token);
-        localStorage.setItem("userInfo", JSON.stringify(response.data.user));
+        localStorage.setItem("userInfo", JSON.stringify(response.data));
         setUserToken(response.data.token);
-        setUserInfo(response.data.user);
-navigate('/')
-        console.log("User info:", response.data);
+        setUserInfo(response.data);
+        
+        setIsLoading(false);
+        navigate("/");
+        
       }
     } catch (error) {
       setIsLoading(false);
-      console.log("error", error);
       toast.error("Login failed. Please try again.");
     }
   };
 
+  // The logout function
   const handleLogout = () => {
     // Clear the token and user info from localStorage
     localStorage.removeItem("token");
     localStorage.removeItem("userInfo");
 
-    // Reset the state variables
     setUserToken(null);
     setUserInfo(null);
 
     toast.success("Logout successful");
   };
 
+  // User monitoring
+  useEffect(() => {
+      const token = localStorage.getItem("token");
+      const userInfoString = localStorage.getItem("userInfo");
+
+      if (token && userInfoString) {
+        const userInfo = JSON.parse(userInfoString);
+        setUserToken(token);
+        setUserInfo(userInfo);
+      } else {
+        setUserToken(null);
+        setUserInfo(null);
+      }
+  },[userToken])
+
+
+
+
   return (
-    <UserContext.Provider value={{ handleLogin, handleLogout, userToken, userInfo }}>
+    <UserContext.Provider
+      value={{ handleLogin, handleLogout, userToken, userInfo , isLoading}}
+    >
       {children}
     </UserContext.Provider>
   );

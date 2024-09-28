@@ -10,7 +10,7 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
   const [toggleMenu, setToggleMenu] = useState(false);
   const [isWidthLessThan1000, setIsWidthLessThan1000] = useState(false);
 
-  const {handleLogout} = useContext(UserContext)
+  const {handleLogout, userInfo, userToken} = useContext(UserContext)
 
   useEffect(() => {
     const handleResize = () => {
@@ -99,15 +99,24 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
             fontSize={20}
           />
         </a>
+        {!userToken && (
+
         <Link className="btn-connection" to="/connection/login">
           Login
         </Link>
+        )}
+        {!userToken && (
+          
         <Link className="btn-connection btn-register" to="/connection/signup">
           Sign Up
         </Link>
+        )}
+        {userToken && (
+          
         <button className="btn-connection btn-register" onClick={handleLogout}>
          Logout
           </button>
+        )}
       </div>
 
       {toggleMenu && (
