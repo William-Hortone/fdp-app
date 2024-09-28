@@ -13,6 +13,7 @@
   animation: navbar-appear 2s forwards ease-out;
   animation-delay: 1s;
 }
+
 @keyframes navbar-appear {
   to {
     top: 50px;
@@ -95,12 +96,28 @@
 }
 .overlay-header {
   width: 100%;
+  position: relative;
   height: 80px;
   background-color: var(--color-red);
   display: flex;
   justify-content: flex-end;
   align-items: center;
   padding: 0 2rem;
+}
+.display-user{
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  transform: translateY(-50%);
+}
+.display-user p{
+  color: white;
+  font-size: 1rem;
+  font-family: var(--font-link);
+  letter-spacing: 2px;
 }
 .app__navbar-list-overlay {
   width: 100%;
