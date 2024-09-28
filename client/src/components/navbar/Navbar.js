@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FaBars, FaFacebookF, FaTimes, FaWhatsapp } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import images from "../../constants/images";
 import "./navbar.css";
+import { UserContext } from "../../hooks/context/UserContext";
+
 
 const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
   const [toggleMenu, setToggleMenu] = useState(false);
   const [isWidthLessThan1000, setIsWidthLessThan1000] = useState(false);
+
+  const {handleLogout} = useContext(UserContext)
 
   useEffect(() => {
     const handleResize = () => {
@@ -101,6 +105,9 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
         <Link className="btn-connection btn-register" to="/connection/signup">
           Sign Up
         </Link>
+        <button className="btn-connection btn-register" onClick={handleLogout}>
+         Logout
+          </button>
       </div>
 
       {toggleMenu && (
@@ -141,6 +148,7 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
           <Link className="btn-connection btn-register" to="/connection/signup">
             Sign Up
           </Link>
+        
 
         </div>
       )}
