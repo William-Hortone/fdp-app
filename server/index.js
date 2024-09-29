@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const errorHandler = require("./middleware/errorHandling");
 const userRouter = require("./routes/user");
+const articleRouter = require("./routes/article");
 const cors = require("cors");
 
 dotenv.config();
@@ -27,8 +28,8 @@ app.use(cors({
 }));
 
 // Routes
-// app.use("/api/", authRouter);
 app.use("/api/users/", userRouter);
+app.use("/api/articles", articleRouter);
 
 app.get("/", (req, res) => res.send("William Hortone!"));
 
