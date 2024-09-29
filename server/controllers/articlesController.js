@@ -2,14 +2,15 @@ const Articles = require("../models/Articles");
 
 module.exports = {
   createArticle: async (res, req, next) => {
-    const { id, name, category, images,quantity } = req.body;
+    const { id, name, category, images,quantity, displayIt } = req.body;
     try {
       const newArticles = new Articles({
         id,
         name,
         category,
         images,
-        quantity
+        quantity,
+        displayIt
       });
       await newArticles.save();
 

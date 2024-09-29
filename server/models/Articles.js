@@ -26,6 +26,11 @@ const ArticleSchema = new mongoose.Schema({
       },
     },
   ],
+
+  displayIt: {
+    type: Boolean,
+    default: true,
+  },
 });
 
 module.exports = mongoose.model("Article", ArticleSchema);
