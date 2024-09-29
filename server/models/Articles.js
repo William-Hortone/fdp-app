@@ -2,12 +2,16 @@ const mongoose = require("mongoose");
 
 const ArticleSchema = new mongoose.Schema({
   id: {
-    type: String,
+    type: Number,
     required: true,
     unique: true,
   },
   name: {
     type: String,
+    required: true,
+  },
+  price: {
+    type: Number,
     required: true,
   },
   quantity: {
@@ -26,7 +30,6 @@ const ArticleSchema = new mongoose.Schema({
       },
     },
   ],
-
   displayIt: {
     type: Boolean,
     default: true,

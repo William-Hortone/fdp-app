@@ -1,16 +1,17 @@
 const Articles = require("../models/Articles");
 
 module.exports = {
-  createArticle: async (res, req, next) => {
-    const { id, name, category, images,quantity, displayIt } = req.body;
+  createArticle: async (req, res, next) => { 
+    const { id, name, category, images, quantity, price, displayIt } = req.body;
     try {
       const newArticles = new Articles({
         id,
         name,
         category,
         images,
+        price,
         quantity,
-        displayIt
+        displayIt,
       });
       await newArticles.save();
 
@@ -22,7 +23,7 @@ module.exports = {
     }
   },
 
-  getAllArticles: async (res, req, next) => {
+  getAllArticles: async (req, res, next) => {
     try {
       const articles = await Articles.find({});
 
