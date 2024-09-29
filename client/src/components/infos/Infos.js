@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { FaPhoneAlt, FaMapMarkedAlt } from "react-icons/fa";
 import "./Infos.css";
 import { UserContext } from "../../hooks/context/UserContext";
-import { FaUserAlt } from "react-icons/fa";
+import { FaUserAlt } from "react-icons/fa"; 
 
 const Infos = ({ color, colorLink, colorBorder }) => {
   const { userInfo } = useContext(UserContext);
