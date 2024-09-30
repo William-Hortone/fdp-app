@@ -4,17 +4,19 @@ import { Link } from "react-router-dom";
 import { CardImage, ProductBox } from "../../components";
 
 const CategoryArticles = ({ articles }) => {
+  console.log('let see articles:', articles);
   return (
     <div className="app__categoryArticle">
       <div className="app__categoryArticle-container">
-        {articles.map((article, index) => (
+        {articles?.map((article, index) => (
           <Link key={index} className="article">
-            <article className="">
+            <article>
               <ProductBox
-                imgOne={article.img[0]}
-                // price={article.price}
+                // Safely accessing images
+                price={article.price}
+                imgOne={article.img?.[0] || 'fallback-image-url'} 
                 name={article.name}
-                imgTow={article.img[1]}
+                imgTow={article.img?.[1] || 'fallback-image-url'}
               />
             </article>
           </Link>

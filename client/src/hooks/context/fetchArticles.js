@@ -3,7 +3,7 @@ import axios from "axios";
 import { BASE_URL } from "../config";
 
 export const HandleFetchArticles = () => {
-  const [data, setData] = useState([]);
+  const [articlesData, setArticlesData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const fetchArticles = async () => {
@@ -11,7 +11,7 @@ export const HandleFetchArticles = () => {
     try {
       const response = await axios.get(`${BASE_URL}/articles/getAllArticles`);
       console.log("The response is", response.data);
-      setData(response.data.articles);
+      setArticlesData(response.data.articles);
     } catch (error) {
       console.error("Error fetching articles:", error);
     } finally {
@@ -27,5 +27,5 @@ export const HandleFetchArticles = () => {
     fetchArticles();
   };
 
-  return { data, refreshArticles, isLoading };
+  return { articlesData, refreshArticles, isLoading };
 };

@@ -11,11 +11,11 @@ import { HandleFetchArticles } from "./hooks/context/fetchArticles";
 
 
 const App = () => {
-  const {data} = HandleFetchArticles()
+  const {articlesData} = HandleFetchArticles()
 
   useEffect(() =>{
-    console.log('the data', data)
-  },[data])
+    console.log('the data', articlesData)
+  },[articlesData])
   return (
     <>
     <UserProvider>
