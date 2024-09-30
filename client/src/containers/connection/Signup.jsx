@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { images } from "../../constants";
 import "./connection.css";
+import { BASE_URL } from "../../hooks/config";
 
 const Signup = () => {
   const [inputs, setInputs] = useState({
@@ -34,7 +35,7 @@ const Signup = () => {
     setIsLoading(true)
     try {
       const response = await axios.post(
-        "http://localhost:5003/api/users/createUser",
+        `${BASE_URL}/users/createUser`,
         inputs
       );
       if (response) {
