@@ -12,65 +12,71 @@ import { FaBars, FaTimes, FaList, FaSlidersH } from "react-icons/fa";
 import { HandleFetchArticles } from "../../hooks/context/fetchArticles";
 import { UserContext } from "../../hooks/context/UserContext";
 
-
 const Products = () => {
-  const {articlesData, refreshArticles} = HandleFetchArticles()
-  const {userToken} = useContext(UserContext)
+  const { articlesData, refreshArticles } = HandleFetchArticles();
+  const { userToken } = useContext(UserContext);
 
-  const [articles, setArticles] = useState(articlesData);
+  const [articles, setArticles] = useState([]);
   // const [items, setItems] = useState([]);
   const [machineNumber, setMachineNumber] = useState([]);
   const [sportNumber, setSportNumber] = useState([]);
   const [casque, setCasque] = useState([]);
   const [accessoires, setAccessoires] = useState([]);
   const [isSmallSCreen, setIsSmallSCreen] = useState(false);
-  
-  
-  useEffect(()=>{
-    refreshArticles()
-  },[])
-//  Function to filter categories
+
+  // Update articles once articlesData is available
+  useEffect(() => {
+    if (articlesData && articlesData.length > 0) {
+      setArticles(articlesData);
+    }
+  }, [articlesData]);
+
+  //  Function to filter categories
   const handleCategory = (category) => {
     if (category === "all") {
       setArticles(articlesData);
       return;
     }
-    const handleFiltedArticle =  articlesData.filter(
+    const handleFiltedArticle = articlesData.filter(
       (article) => category === article.category
     );
 
-    console.log('the cat',handleFiltedArticle)
+    console.log("the cat", handleFiltedArticle);
     setArticles(handleFiltedArticle);
-    
   };
+
+  // useEffect(() => {
+  //   console.log("the articlesData issss", articlesData);
+  //   console.log("the article isss", articles);
+  // }, [articles, articlesData]);
 
   //  set different categories
   useEffect(() => {
-    const itemsNumber = articles.filter(
+    const itemsNumber = articlesData?.filter(
       (articleCat) => articleCat.category === "machines"
     );
-    const sportItems = articles.filter(
+    const sportItems = articlesData?.filter(
       (articleCat) => articleCat.category === "sport"
     );
-    const casqueItems = articles.filter(
+    const casqueItems = articlesData?.filter(
       (articleCat) => articleCat.category === "casque"
     );
-    const accessoiresItems = articles.filter(
+    const accessoiresItems = articlesData?.filter(
       (articleCat) => articleCat.category === "accessoires"
     );
     setMachineNumber(itemsNumber);
     setSportNumber(sportItems);
     setCasque(casqueItems);
     setAccessoires(accessoiresItems);
-  }, [articles]);
+  }, [articlesData]);
 
   const colorLink = "#000000";
   const colorBorder = "#00000034";
 
   return (
     <div className="app__products">
-      {/* <Loader /> */}
       <Infos colorLink={colorLink} colorBorder={colorBorder} />
+
       <div className="app__products-navbar">
         <Navbar
           colorLink={colorLink}
@@ -79,7 +85,7 @@ const Products = () => {
         />
       </div>
 
-{/*  Page Loader  */}
+      {/*  Page Loader  */}
       <div className="app__loader">
         <div className="app__loader-left">
           <span className="app__loader-span_left span"></span>
@@ -114,6 +120,7 @@ const Products = () => {
           </div>
         </div>
 
+        {/* Categories options slider */}
         <div className="head-category-smallScreen">
           <Slider
             dots={true}
@@ -143,18 +150,16 @@ const Products = () => {
             </article>
           </Slider>
         </div>
-
-        
       </div>
-      <div className="app__products-container">
 
-      {/* Left categories menu */}
+      <div className="app__products-container">
+        {/* Left categories menu */}
         <div className="app__products-container-left category_bigScreen">
           <aside>
             <h3>Catégories</h3>
             <ul>
               <li onClick={() => handleCategory("all")}>
-                Tous <span>{data.length}</span>
+                Tous <span>{articlesData.length}</span>
               </li>
               <li onClick={() => handleCategory("machines")}>
                 machines <span>{machineNumber.length}</span>
@@ -236,7 +241,7 @@ const Products = () => {
             </aside>
           </div>
         )}
-        
+
         {/* Right articles display */}
         <div className="app__products-container-right">
           {/* <CardCategory /> */}
