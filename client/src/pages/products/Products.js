@@ -17,7 +17,7 @@ const Products = () => {
   const {articlesData, refreshArticles} = HandleFetchArticles()
   const {userToken} = useContext(UserContext)
 
-  const [articles, setArticles] = useState(userToken? articlesData: data);
+  const [articles, setArticles] = useState(articlesData);
   // const [items, setItems] = useState([]);
   const [machineNumber, setMachineNumber] = useState([]);
   const [sportNumber, setSportNumber] = useState([]);
@@ -32,14 +32,16 @@ const Products = () => {
 //  Function to filter categories
   const handleCategory = (category) => {
     if (category === "all") {
-      setArticles(userToken? articlesData: data);
+      setArticles(articlesData);
       return;
     }
-    const handleFiltedArticle = userToken? articlesData: data.filter(
+    const handleFiltedArticle =  articlesData.filter(
       (article) => category === article.category
     );
 
+    console.log('the cat',handleFiltedArticle)
     setArticles(handleFiltedArticle);
+    
   };
 
   //  set different categories

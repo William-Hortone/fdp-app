@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { CardImage, ProductBox } from "../../components";
 
 const CategoryArticles = ({ articles }) => {
-  console.log('let see articles:', articles);
+  // console.log('let see articles:', articles[0].images[0].img);
   return (
     <div className="app__categoryArticle">
       <div className="app__categoryArticle-container">
@@ -14,9 +14,9 @@ const CategoryArticles = ({ articles }) => {
               <ProductBox
                 // Safely accessing images
                 price={article.price}
-                imgOne={article.img?.[0] || 'fallback-image-url'} 
+                imgOne={article.images[0].img} 
                 name={article.name}
-                imgTow={article.img?.[1] || 'fallback-image-url'}
+                imgTow={article.images[1].img}
               />
             </article>
           </Link>
