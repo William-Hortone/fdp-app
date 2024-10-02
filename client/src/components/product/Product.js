@@ -9,8 +9,8 @@ const Product = ({ imgOne, imgTow }) => {
         <div className="hot-article">
           <p>HOT</p>
         </div>
-        <img className="product-img-one img" src={imgOne} alt="Banner Image " />
-        <img className="product-img-tow img" src={imgTow} alt="Banner Image " />
+        <img className="product-img-one img" src={imgOne} alt="Banner" />
+        <img className="product-img-tow img" src={imgTow} alt="Banner" />
       </div>
     </div>
   );

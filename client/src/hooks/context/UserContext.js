@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import {BASE_URL} from './../config';
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
@@ -17,7 +18,7 @@ export const UserProvider = ({ children }) => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5003/api/users/loginUser",
+        `${BASE_URL}/users/loginUser`,
         inputs
       );
 
