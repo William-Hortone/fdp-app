@@ -9,14 +9,14 @@ const ProductBox = ({ article, imgOne, imgTow, price, name }) => {
 
   return (
     <>
-      <div className="app__productBox"  onClick={() => setShowProduct(true)}>
+      <div className="app__productBox" >
         <div className="app__productBox-carousel">
-          <div className="carousel-content-box">
+          <div className="carousel-content-box" onClick={() => setShowProduct(true)}>
             <Product imgOne={imgOne} imgTow={imgTow} />
           </div>
           <div className="carousel-content-description">
             <h3>{name}</h3>
-            <h3>{price}</h3>
+            <h3>{price} Fcfa</h3>
             <div className="star">
               <StarRatings
                 rating={rating}

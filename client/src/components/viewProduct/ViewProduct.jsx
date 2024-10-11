@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./viewProduct.css";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -6,14 +6,70 @@ import "slick-carousel/slick/slick-theme.css";
 import { images } from "../../constants";
 import Button from "../button/Button";
 import { IoCloseSharp } from "react-icons/io5";
+import  axios  from "axios";
+import { BASE_URL } from "../../hooks/config";
+import { UserContext } from "../../hooks/context/UserContext";
+import { toast } from "react-toastify";
 
 const ViewProduct = ({ article, setShowProduct }) => {
+  const { userInfo } = useContext(UserContext);
+
   var settings = {
     dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+  };
+
+  const [userId, setUserId] = useState();
+  const [productId, setProductId] = useState();
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [quantity, setQuantity] = useState(0);
+
+  const handleReduceQuantity = () => {
+    const newQuantity = quantity - 1;
+    setQuantity(newQuantity);
+    if (newQuantity < 0) {
+      setQuantity(0);
+    }
+  };
+  const handleAddQuantity = () => {
+    const newQuantity = quantity + 1;
+    setQuantity(newQuantity);
+  };
+
+  useEffect(() => {
+    setProductId(article._id);
+    console.log('the article is now', article._id)
+
+  }, [article._id]);
+  
+  useEffect(() => {
+    setUserId(userInfo.id);
+    console.log('the user is now', userInfo)
+  }, [userInfo.id]);
+
+  useEffect(() => {
+    setTotalPrice(quantity * article.price);
+    // console.log('the user is now', userInfo)
+  }, [quantity,article.price]);
+
+  //  Function to add item to the cart
+  const handleAddToCart = async () => {
+    try {
+      const response = await axios.put(
+        `${BASE_URL}/users/addToCart/${userId}`,
+        { productId, quantity, totalPrice }
+      );
+      if (response) {
+        console.log("response", response);
+      }
+    } catch (error) {
+      console.log("error", error)
+  
+      toast.error(error);
+    }
   };
   return (
     <>
@@ -38,11 +94,16 @@ const ViewProduct = ({ article, setShowProduct }) => {
 
           <div className="details-content">
             <div className="">
-              <button className="btn-article">-</button>
-              <p className="product-unit">5</p>
-              <button className="btn-article">+</button>
+              <button className="btn-article" onClick={handleReduceQuantity}>
+                -
+              </button>
+              <p className="product-unit">{quantity}</p>
+              <button className="btn-article" onClick={handleAddQuantity}>
+                +
+              </button>
             </div>
             <Button
+              onClick={handleAddToCart}
               bgTwo="#dcca87"
               bgOne="#a90a0a"
               colorOne="#fff"
@@ -53,8 +114,12 @@ const ViewProduct = ({ article, setShowProduct }) => {
           </div>
         </div>
 
-        <button className="close-btn" >
-          <IoCloseSharp  size={25} color="black" onClick={() =>setShowProduct(false)} />
+        <button className="close-btn">
+          <IoCloseSharp
+            size={25}
+            color="black"
+            onClick={() => setShowProduct(false)}
+          />
         </button>
       </div>
     </>

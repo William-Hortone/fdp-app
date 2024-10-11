@@ -24,6 +24,10 @@ const UserSchema = new mongoose.Schema({
       productId: {
         type: String,
       },
+      totalPrice: {
+        type: Number,
+        default: 0,
+      },
       quantity: {
         type: Number,
         default:0,
