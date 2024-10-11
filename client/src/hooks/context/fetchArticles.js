@@ -13,6 +13,7 @@ export const HandleFetchArticles = () => {
       console.log("The response is", response.data);
       setArticlesData(response.data.articles);
     } catch (error) {
+      setIsLoading(false);
       console.error("Error fetching articles:", error);
     } finally {
       setIsLoading(false);
