@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { images } from "../../constants";
 import Button from "../button/Button";
 import { IoCloseSharp } from "react-icons/io5";
-import  axios  from "axios";
+import axios from "axios";
 import { BASE_URL } from "../../hooks/config";
 import { UserContext } from "../../hooks/context/UserContext";
 import { toast } from "react-toastify";
@@ -27,6 +27,7 @@ const ViewProduct = ({ article, setShowProduct }) => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [quantity, setQuantity] = useState(0);
 
+  //  function to reduce the quantity 
   const handleReduceQuantity = () => {
     const newQuantity = quantity - 1;
     setQuantity(newQuantity);
@@ -34,6 +35,7 @@ const ViewProduct = ({ article, setShowProduct }) => {
       setQuantity(0);
     }
   };
+  //  function to add the quantity 
   const handleAddQuantity = () => {
     const newQuantity = quantity + 1;
     setQuantity(newQuantity);
@@ -41,19 +43,16 @@ const ViewProduct = ({ article, setShowProduct }) => {
 
   useEffect(() => {
     setProductId(article._id);
-    console.log('the article is now', article._id)
-
   }, [article._id]);
-  
+
   useEffect(() => {
     setUserId(userInfo.id);
-    console.log('the user is now', userInfo)
   }, [userInfo.id]);
 
+  //  set the total price
   useEffect(() => {
     setTotalPrice(quantity * article.price);
-    // console.log('the user is now', userInfo)
-  }, [quantity,article.price]);
+  }, [quantity, article.price]);
 
   //  Function to add item to the cart
   const handleAddToCart = async () => {
@@ -63,11 +62,9 @@ const ViewProduct = ({ article, setShowProduct }) => {
         { productId, quantity, totalPrice }
       );
       if (response) {
-        console.log("response", response);
+        toast.success("Article added to cart successfully");
       }
     } catch (error) {
-      console.log("error", error)
-  
       toast.error(error);
     }
   };

@@ -4,8 +4,21 @@ import { Link, NavLink } from "react-router-dom";
 import images from "../../constants/images";
 import "./navbar.css";
 import { UserContext } from "../../hooks/context/UserContext";
-import { FaUserAlt } from "react-icons/fa"; 
+import { FaUserAlt } from "react-icons/fa";
+import { BsCartCheck } from "react-icons/bs";
+import Badge from '@mui/material/Badge';
+import { styled } from '@mui/material/styles';
+import IconButton from '@mui/material/IconButton';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
+const StyledBadge = styled(Badge)(({ theme }) => ({
+  '& .MuiBadge-badge': {
+    right: -3,
+    top: 13,
+    border: `2px solid ${theme.palette.background.paper}`,
+    padding: '0 4px',
+  },
+}));
 
 const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
   const [toggleMenu, setToggleMenu] = useState(false);
@@ -26,9 +39,6 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
     };
   }, []);
 
-  // let bodyWidthView = document.body.style.width;
-
-  // if (bodyWidthView <= 800px)
   const navLinkStyle = ({ isActive }) => {
     return {
       fontWeight: isActive ? "bold" : "normal",
@@ -48,12 +58,7 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
           onClick={() => setToggleMenu(true)}
         />
       </div>
-      {/* <button
-        className="app__navbar-burger-btm"
-        onClick={() => setToggleMenu(true)}
-      >
-        click
-      </button> */}
+
       <div className="app__navbar-logo">
         <img src={images.logo} alt="logo images" />
       </div>
@@ -81,6 +86,17 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
       </ul>
 
       <div className="app__navbar-icons">
+      {userToken && (
+
+        <div>
+        <IconButton aria-label="cart">
+      <StyledBadge badgeContent={4} color="secondary">
+        <ShoppingCartIcon />
+      </StyledBadge>
+    </IconButton>
+        </div>
+      )}
+
         <a
           className="social-icon"
           href="https://www.facebook.com/Fournisseurdeproximite"
@@ -119,7 +135,7 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
           </button>
         )}
       </div>
-
+{/* Navbar on */}
       {toggleMenu && (
         <div className="app__navbar-smallScreen-overlay slide-right">
           <div className="overlay-header">
@@ -128,15 +144,12 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
               fontSize={27}
               onClick={() => setToggleMenu(false)}
             />
-            {/* <p onClick={() => setToggleMenu(false)}>close X</p> */}
-            {userInfo &&
 
-            (
-
-          <div className="display-user">
-          <FaUserAlt color="black" />
-            <p>{userInfo? `${userInfo.username}` : ''}</p>
-          </div>
+            {userInfo && (
+              <div className="display-user">
+                <FaUserAlt color="black" />
+                <p>{userInfo ? `${userInfo.username}` : ""}</p>
+              </div>
             )}
           </div>
           <ul className="app__navbar-list-overlay">
