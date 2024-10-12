@@ -5,11 +5,12 @@ import images from "../../constants/images";
 import "./navbar.css";
 import { UserContext } from "../../hooks/context/UserContext";
 import { FaUserAlt } from "react-icons/fa";
-import { BsCartCheck } from "react-icons/bs";
 import Badge from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+// import { BASE_URL}  from
+
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   '& .MuiBadge-badge': {
@@ -17,15 +18,28 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
     top: 13,
     border: `2px solid ${theme.palette.background.paper}`,
     padding: '0 4px',
+    backgroundColor: 'var(--color-red)',
+    color: 'white',
+  },
+}));
+
+// Style for the icon background
+const StyledIconButton = styled(IconButton)(({ theme }) => ({
+  padding: '10px',
+  borderRadius: '50%',
+  '&:hover': {
+    // Add hover effects if needed
   },
 }));
 
 const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
   const [toggleMenu, setToggleMenu] = useState(false);
+  const [showBadge, setShowBadge] = useState(false);
   const [isWidthLessThan1000, setIsWidthLessThan1000] = useState(false);
 
   const { handleLogout, userInfo, userToken } = useContext(UserContext);
 
+  // Check window width on resize
   useEffect(() => {
     const handleResize = () => {
       const { body } = document;
@@ -39,6 +53,15 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
     };
   }, []);
 
+  // Check if the cart has items and display badge
+  useEffect(() => {
+    if (userInfo?.cart?.length > 0) {
+      setShowBadge(true);
+    } else {
+      setShowBadge(false);
+    }
+  }, [userInfo]);
+
   const navLinkStyle = ({ isActive }) => {
     return {
       fontWeight: isActive ? "bold" : "normal",
@@ -46,10 +69,20 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
     };
   };
 
+  useEffect( () =>{
+    console.log('the info', 
+      
+    )
+  },[])
+
+  const handleGetuser = async() =>{
+    // const response = await axios.get(`${BASE_URL}/${}`)
+ }
+
   return (
     <div
-      className="app__navbar "
-      style={{ borderBottom: ` 1px solid ${colorBorder}` }}
+      className="app__navbar"
+      style={{ borderBottom: `1px solid ${colorBorder}` }}
     >
       <div className="app__navbar-burger-btm">
         <FaBars
@@ -60,7 +93,7 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
       </div>
 
       <div className="app__navbar-logo">
-        <img src={images.logo} alt="logo images" />
+        <img src={images.logo} alt="logo" />
       </div>
       <ul className="app__navbar-list">
         <li style={{ color: `${colorLink}` }}>
@@ -86,16 +119,15 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
       </ul>
 
       <div className="app__navbar-icons">
-      {userToken && (
-
-        <div>
-        <IconButton aria-label="cart">
-      <StyledBadge badgeContent={4} color="secondary">
-        <ShoppingCartIcon />
-      </StyledBadge>
-    </IconButton>
-        </div>
-      )}
+        {userToken && (
+          <StyledIconButton aria-label="cart">
+            {showBadge && (
+              <StyledBadge badgeContent={3} color="secondary">
+                <ShoppingCartIcon style={{ color: 'black' }} />
+              </StyledBadge>
+            )}
+          </StyledIconButton>
+        )}
 
         <a
           className="social-icon"
@@ -135,7 +167,7 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
           </button>
         )}
       </div>
-{/* Navbar on */}
+
       {toggleMenu && (
         <div className="app__navbar-smallScreen-overlay slide-right">
           <div className="overlay-header">
@@ -181,10 +213,7 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
           )}
 
           {!userToken && (
-            <Link
-              className="btn-connection btn-register"
-              to="/connection/signup"
-            >
+            <Link className="btn-connection btn-register" to="/connection/signup">
               Sign Up
             </Link>
           )}
