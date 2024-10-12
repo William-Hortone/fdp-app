@@ -1,18 +1,47 @@
 import React, { useContext, useEffect, useState } from "react";
-import { FaBars, FaFacebookF, FaTimes, FaWhatsapp } from "react-icons/fa";
+import {
+  FaBars,
+  FaFacebookF,
+  FaTimes,
+  FaWhatsapp,
+  FaUserAlt,
+} from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import images from "../../constants/images";
 import "./navbar.css";
 import { UserContext } from "../../hooks/context/UserContext";
-import { FaUserAlt } from "react-icons/fa"; 
+import Badge from "@mui/material/Badge";
+import { styled } from "@mui/material/styles";
+import IconButton from "@mui/material/IconButton";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { BASE_URL } from "../../hooks/config";
+import axios from "axios";
 
+const StyledBadge = styled(Badge)(({ theme }) => ({
+  "& .MuiBadge-badge": {
+    right: -3,
+    top: 13,
+    border: `2px solid ${theme.palette.background.paper}`,
+    padding: "0 4px",
+    backgroundColor: "var(--color-red)",
+    color: "white",
+  },
+}));
+
+const StyledIconButton = styled(IconButton)(({ theme }) => ({
+  padding: "10px",
+  borderRadius: "50%",
+}));
 
 const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
   const [toggleMenu, setToggleMenu] = useState(false);
+  const [badgeNumber, setBadgeNumber] = useState(0);
+  const [userId, setUserId] = useState();
   const [isWidthLessThan1000, setIsWidthLessThan1000] = useState(false);
 
   const { handleLogout, userInfo, userToken } = useContext(UserContext);
 
+  // Check window width on resize
   useEffect(() => {
     const handleResize = () => {
       const { body } = document;
@@ -26,20 +55,37 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
     };
   }, []);
 
-  // let bodyWidthView = document.body.style.width;
+  useEffect(() => {
+    setUserId(userInfo?.id);
+  }, [userInfo]);
 
-  // if (bodyWidthView <= 800px)
-  const navLinkStyle = ({ isActive }) => {
-    return {
-      fontWeight: isActive ? "bold" : "normal",
-      color: isActive ? "#A90A0A" : "",
-    };
+  // Fetch user data and update cart badge
+  const handleGetUser = async () => {
+    if (userId) {
+      try {
+        const response = await axios.get(`${BASE_URL}/users/getUser/${userId}`);
+        setBadgeNumber(response.data.cart?.length || 0);
+      } catch (error) {
+        console.log("Error fetching user data:", error);
+      }
+    }
   };
+
+  useEffect(() => {
+    if (userId) {
+      handleGetUser();
+    }
+  }, [userId]);
+
+  const navLinkStyle = ({ isActive }) => ({
+    fontWeight: isActive ? "bold" : "normal",
+    color: isActive ? "#A90A0A" : "",
+  });
 
   return (
     <div
-      className="app__navbar "
-      style={{ borderBottom: ` 1px solid ${colorBorder}` }}
+      className="app__navbar"
+      style={{ borderBottom: `1px solid ${colorBorder}` }}
     >
       <div className="app__navbar-burger-btm">
         <FaBars
@@ -48,14 +94,9 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
           onClick={() => setToggleMenu(true)}
         />
       </div>
-      {/* <button
-        className="app__navbar-burger-btm"
-        onClick={() => setToggleMenu(true)}
-      >
-        click
-      </button> */}
+
       <div className="app__navbar-logo">
-        <img src={images.logo} alt="logo images" />
+        <img src={images.logo} alt="logo" />
       </div>
       <ul className="app__navbar-list">
         <li style={{ color: `${colorLink}` }}>
@@ -81,6 +122,14 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
       </ul>
 
       <div className="app__navbar-icons">
+        {userToken && (
+          <StyledIconButton aria-label="cart">
+            <StyledBadge badgeContent={badgeNumber} color="secondary">
+              <ShoppingCartIcon style={{ color: "black" }} />
+            </StyledBadge>
+          </StyledIconButton>
+        )}
+
         <a
           className="social-icon"
           href="https://www.facebook.com/Fournisseurdeproximite"
@@ -101,14 +150,17 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
           />
         </a>
         {!userToken && (
-          <Link className="btn-connection" to="/connection/login">
-            Login
-          </Link>
-        )}
-        {!userToken && (
-          <Link className="btn-connection btn-register" to="/connection/signup">
-            Sign Up
-          </Link>
+          <>
+            <Link className="btn-connection" to="/connection/login">
+              Login
+            </Link>
+            <Link
+              className="btn-connection btn-register"
+              to="/connection/signup"
+            >
+              Sign Up
+            </Link>
+          </>
         )}
         {userToken && (
           <button
@@ -120,6 +172,7 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
         )}
       </div>
 
+      {/* Navbar on small screen */}
       {toggleMenu && (
         <div className="app__navbar-smallScreen-overlay slide-right">
           <div className="overlay-header">
@@ -128,15 +181,11 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
               fontSize={27}
               onClick={() => setToggleMenu(false)}
             />
-            {/* <p onClick={() => setToggleMenu(false)}>close X</p> */}
-            {userInfo &&
-
-            (
-
-          <div className="display-user">
-          <FaUserAlt color="black" />
-            <p>{userInfo? `${userInfo.username}` : ''}</p>
-          </div>
+            {userInfo && (
+              <div className="display-user">
+                <FaUserAlt color="black" />
+                <p>{userInfo.username}</p>
+              </div>
             )}
           </div>
           <ul className="app__navbar-list-overlay">
@@ -162,20 +211,18 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
             </li>
           </ul>
           {!userToken && (
-            <Link className="btn-connection" to="/connection/login">
-              Login
-            </Link>
+            <>
+              <Link className="btn-connection" to="/connection/login">
+                Login
+              </Link>
+              <Link
+                className="btn-connection btn-register"
+                to="/connection/signup"
+              >
+                Sign Up
+              </Link>
+            </>
           )}
-
-          {!userToken && (
-            <Link
-              className="btn-connection btn-register"
-              to="/connection/signup"
-            >
-              Sign Up
-            </Link>
-          )}
-
           {userToken && (
             <button
               className="btn-connection btn-register"

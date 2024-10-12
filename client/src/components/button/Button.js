@@ -1,16 +1,16 @@
 import React from "react";
 import "./button.css";
 
-const Button = () => {
+const Button = ({text, btnType, onClick,bgOne,colorOne, colorTwo, bgTwo}) => {
   return (
-    <div className="app__button">
-      <div className="app__button-box-one box-btn">
-        <p>Voir plus</p>
+    <button className="app__button" type={btnType} onClick={onClick}>
+      <div style={{backgroundColor:bgOne, color:colorOne}} className="app__button-box-one box-btn">
+        <p>{text}</p>
       </div>
-      <div className="app__button-box-tow box-btn">
-        <p>Voir plus</p>
+      <div style={{backgroundColor:bgTwo, color:colorTwo}} className="app__button-box-tow box-btn">
+        <p>{text}</p>
       </div>
-    </div>
+    </button>
   );
 };
 

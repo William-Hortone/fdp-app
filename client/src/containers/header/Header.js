@@ -12,7 +12,13 @@ const Header = () => {
         <div className="app__header-container">
           <h2>POUR HOMME</h2>
           <Link to="/products">
-            <Button />
+          <Button 
+              text='Voir Plus'
+              btnType='button'
+              bgOne="#fff" 
+              bgTwo="#a90a0a" 
+
+            />
           </Link>
         </div>
       </div>
@@ -22,7 +28,12 @@ const Header = () => {
         <div className="app__header-container">
           <h2>POUR FEMMES</h2>
           <Link to="/products">
-            <Button />
+            <Button 
+              text='Voir Plus'
+              btnType='button'
+              bgOne="#fff" 
+              bgTwo="#a90a0a" 
+            />
           </Link>
         </div>
       </div>

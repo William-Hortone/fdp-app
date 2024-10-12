@@ -7,6 +7,8 @@
   align-items: center;
   overflow: hidden;
   cursor: pointer;
+  border: none;
+  border-radius: 4px;
 }
 .app__button:hover .app__button-box-one p {
   transform: translateY(100%);
@@ -22,16 +24,18 @@
   justify-content: center;
 }
 .box-btn p {
-  font-size: 1.5rem;
-  font-family: var(--font-link);
+  font-size: 1rem;
+  /* font-family: var(--font-link); */
   letter-spacing: 2px;
-  font-weight: 100;
+  font-weight: 600;
 }
 .app__button-box-one {
   height: 100%;
   position: relative;
-  background-color: #fff;
-  color: #000;
+  font-weight:300 ;
+
+  /* background-color: #fff; */
+  /* color: #000; */
   /* transition: all .5s ease; */
 }
 .app__button-box-one p {
@@ -42,7 +46,8 @@
   position: absolute;
   top: 100%;
   left: 0;
-  background-color: var(--color-red);
+  font-weight:300 ;
+  /* background-color: var(--color-red); */
   color: #fff;
   transition: all 0.3s ease;
 }
@@ -58,7 +63,7 @@
     height: 45px;
   }
   .box-btn p {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
   }
 }
 @media screen and (max-width: 550px) {

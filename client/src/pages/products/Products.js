@@ -11,9 +11,11 @@ import "slick-carousel/slick/slick-theme.css";
 import { FaBars, FaTimes, FaList, FaSlidersH } from "react-icons/fa";
 import { HandleFetchArticles } from "../../hooks/context/fetchArticles";
 import { UserContext } from "../../hooks/context/UserContext";
+import { TailSpin } from "react-loader-spinner";
+
 
 const Products = () => {
-  const { articlesData, refreshArticles } = HandleFetchArticles();
+  const { articlesData, refreshArticles, isLoading } = HandleFetchArticles();
   const { userToken } = useContext(UserContext);
 
   const [articles, setArticles] = useState([]);
@@ -28,6 +30,9 @@ const Products = () => {
   useEffect(() => {
     if (articlesData && articlesData.length > 0) {
       setArticles(articlesData);
+    }else{
+      setArticles(data);
+
     }
   }, [articlesData]);
 
@@ -45,11 +50,7 @@ const Products = () => {
     setArticles(handleFiltedArticle);
   };
 
-  // useEffect(() => {
-  //   console.log("the articlesData issss", articlesData);
-  //   console.log("the article isss", articles);
-  // }, [articles, articlesData]);
-
+ 
   //  set different categories
   useEffect(() => {
     const itemsNumber = articlesData?.filter(
@@ -243,6 +244,7 @@ const Products = () => {
         )}
 
         {/* Right articles display */}
+   
         <div className="app__products-container-right">
           {/* <CardCategory /> */}
           <div

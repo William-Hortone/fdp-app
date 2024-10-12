@@ -23,8 +23,8 @@
   justify-content: center;
 }
 .box-btn p {
-  font-size: 1.5rem;
-  font-size: var(--font-base);
+  /* font-size: 1.5rem; */
+  /* font-size: var(--font-base); */
 }
 .app__buttonBorder-box-one {
   height: 100%;
