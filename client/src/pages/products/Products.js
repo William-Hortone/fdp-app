@@ -30,6 +30,9 @@ const Products = () => {
   useEffect(() => {
     if (articlesData && articlesData.length > 0) {
       setArticles(articlesData);
+    }else{
+      setArticles(data);
+
     }
   }, [articlesData]);
 

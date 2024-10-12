@@ -1,30 +1,36 @@
 import React, { useContext, useEffect, useState } from "react";
-import { FaBars, FaFacebookF, FaTimes, FaWhatsapp, FaUserAlt } from "react-icons/fa";
+import {
+  FaBars,
+  FaFacebookF,
+  FaTimes,
+  FaWhatsapp,
+  FaUserAlt,
+} from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import images from "../../constants/images";
 import "./navbar.css";
 import { UserContext } from "../../hooks/context/UserContext";
-import Badge from '@mui/material/Badge';
-import { styled } from '@mui/material/styles';
-import IconButton from '@mui/material/IconButton';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import Badge from "@mui/material/Badge";
+import { styled } from "@mui/material/styles";
+import IconButton from "@mui/material/IconButton";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { BASE_URL } from "../../hooks/config";
 import axios from "axios";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
-  '& .MuiBadge-badge': {
+  "& .MuiBadge-badge": {
     right: -3,
     top: 13,
     border: `2px solid ${theme.palette.background.paper}`,
-    padding: '0 4px',
-    backgroundColor: 'var(--color-red)',
-    color: 'white',
+    padding: "0 4px",
+    backgroundColor: "var(--color-red)",
+    color: "white",
   },
 }));
 
 const StyledIconButton = styled(IconButton)(({ theme }) => ({
-  padding: '10px',
-  borderRadius: '50%',
+  padding: "10px",
+  borderRadius: "50%",
 }));
 
 const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
@@ -58,9 +64,9 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
     if (userId) {
       try {
         const response = await axios.get(`${BASE_URL}/users/getUser/${userId}`);
-        setBadgeNumber(response.data.cart?.length || 0);  // Fallback to 0 if cart is undefined
+        setBadgeNumber(response.data.cart?.length || 0);
       } catch (error) {
-        console.log('Error fetching user data:', error);
+        console.log("Error fetching user data:", error);
       }
     }
   };
@@ -77,9 +83,16 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
   });
 
   return (
-    <div className="app__navbar" style={{ borderBottom: `1px solid ${colorBorder}` }}>
+    <div
+      className="app__navbar"
+      style={{ borderBottom: `1px solid ${colorBorder}` }}
+    >
       <div className="app__navbar-burger-btm">
-        <FaBars color="#fff" fontSize={27} onClick={() => setToggleMenu(true)} />
+        <FaBars
+          color="#fff"
+          fontSize={27}
+          onClick={() => setToggleMenu(true)}
+        />
       </div>
 
       <div className="app__navbar-logo">
@@ -112,38 +125,62 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
         {userToken && (
           <StyledIconButton aria-label="cart">
             <StyledBadge badgeContent={badgeNumber} color="secondary">
-              <ShoppingCartIcon style={{ color: 'black' }} />
+              <ShoppingCartIcon style={{ color: "black" }} />
             </StyledBadge>
           </StyledIconButton>
         )}
 
-        <a className="social-icon" href="https://www.facebook.com/Fournisseurdeproximite">
-          <FaFacebookF color={isWidthLessThan1000 ? `${colorIcon}` : `${colorLink}`} fontSize={20} />
+        <a
+          className="social-icon"
+          href="https://www.facebook.com/Fournisseurdeproximite"
+        >
+          <FaFacebookF
+            color={isWidthLessThan1000 ? `${colorIcon}` : `${colorLink}`}
+            fontSize={20}
+          />
         </a>
-        <a className="social-icon" target="blank" href="https://wa.me/24177066605">
-          <FaWhatsapp color={isWidthLessThan1000 ? `${colorIcon}` : `${colorLink}`} fontSize={20} />
+        <a
+          className="social-icon"
+          target="blank"
+          href="https://wa.me/24177066605"
+        >
+          <FaWhatsapp
+            color={isWidthLessThan1000 ? `${colorIcon}` : `${colorLink}`}
+            fontSize={20}
+          />
         </a>
         {!userToken && (
           <>
             <Link className="btn-connection" to="/connection/login">
               Login
             </Link>
-            <Link className="btn-connection btn-register" to="/connection/signup">
+            <Link
+              className="btn-connection btn-register"
+              to="/connection/signup"
+            >
               Sign Up
             </Link>
           </>
         )}
         {userToken && (
-          <button className="btn-connection btn-register" onClick={handleLogout}>
+          <button
+            className="btn-connection btn-register"
+            onClick={handleLogout}
+          >
             Logout
           </button>
         )}
       </div>
 
+      {/* Navbar on small screen */}
       {toggleMenu && (
         <div className="app__navbar-smallScreen-overlay slide-right">
           <div className="overlay-header">
-            <FaTimes color="#fff" fontSize={27} onClick={() => setToggleMenu(false)} />
+            <FaTimes
+              color="#fff"
+              fontSize={27}
+              onClick={() => setToggleMenu(false)}
+            />
             {userInfo && (
               <div className="display-user">
                 <FaUserAlt color="black" />
@@ -178,13 +215,19 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
               <Link className="btn-connection" to="/connection/login">
                 Login
               </Link>
-              <Link className="btn-connection btn-register" to="/connection/signup">
+              <Link
+                className="btn-connection btn-register"
+                to="/connection/signup"
+              >
                 Sign Up
               </Link>
             </>
           )}
           {userToken && (
-            <button className="btn-connection btn-register" onClick={handleLogout}>
+            <button
+              className="btn-connection btn-register"
+              onClick={handleLogout}
+            >
               Logout
             </button>
           )}

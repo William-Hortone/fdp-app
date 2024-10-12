@@ -1,19 +1,16 @@
-import React, { useContext, useEffect, useState } from "react";
-import "./viewProduct.css";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import { images } from "../../constants";
-import Button from "../button/Button";
-import { IoCloseSharp } from "react-icons/io5";
 import axios from "axios";
+import React, { useContext, useEffect, useState } from "react";
+import { IoCloseSharp } from "react-icons/io5";
+import Slider from "react-slick";
+import { toast } from "react-toastify";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
 import { BASE_URL } from "../../hooks/config";
 import { UserContext } from "../../hooks/context/UserContext";
-import { toast } from "react-toastify";
+import Button from "../button/Button";
+import "./viewProduct.css";
 
 const ViewProduct = ({ article, setShowProduct }) => {
-  const { userInfo } = useContext(UserContext);
-
   var settings = {
     dots: true,
     infinite: true,
@@ -22,24 +19,13 @@ const ViewProduct = ({ article, setShowProduct }) => {
     slidesToScroll: 1,
   };
 
+  const { userInfo } = useContext(UserContext); 
+  console.log("useeeee",userInfo)
+
   const [userId, setUserId] = useState();
   const [productId, setProductId] = useState();
   const [totalPrice, setTotalPrice] = useState(0);
-  const [quantity, setQuantity] = useState(0);
-
-  //  function to reduce the quantity 
-  const handleReduceQuantity = () => {
-    const newQuantity = quantity - 1;
-    setQuantity(newQuantity);
-    if (newQuantity < 0) {
-      setQuantity(0);
-    }
-  };
-  //  function to add the quantity 
-  const handleAddQuantity = () => {
-    const newQuantity = quantity + 1;
-    setQuantity(newQuantity);
-  };
+  const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
     setProductId(article._id);
@@ -54,8 +40,29 @@ const ViewProduct = ({ article, setShowProduct }) => {
     setTotalPrice(quantity * article.price);
   }, [quantity, article.price]);
 
+  
+  //  function to reduce the quantity 
+  const handleReduceQuantity = () => {
+    const newQuantity = quantity - 1;
+    setQuantity(newQuantity);
+    if (newQuantity < 1) {
+      setQuantity(1);
+    }
+  };
+
+  //  function to add the quantity 
+  const handleAddQuantity = () => {
+    const newQuantity = quantity + 1;
+    setQuantity(newQuantity);
+  };
+
+ 
+
   //  Function to add item to the cart
   const handleAddToCart = async () => {
+    if(!userInfo.token){
+      toast.error('Please Sign In Fist')
+    }
     try {
       const response = await axios.put(
         `${BASE_URL}/users/addToCart/${userId}`,
@@ -68,6 +75,8 @@ const ViewProduct = ({ article, setShowProduct }) => {
       toast.error(error);
     }
   };
+
+
   return (
     <>
       <div className="app__viewProduct">
