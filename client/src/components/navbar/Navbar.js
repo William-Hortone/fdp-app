@@ -1,16 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
-import { FaBars, FaFacebookF, FaTimes, FaWhatsapp } from "react-icons/fa";
+import { FaBars, FaFacebookF, FaTimes, FaWhatsapp, FaUserAlt } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import images from "../../constants/images";
 import "./navbar.css";
 import { UserContext } from "../../hooks/context/UserContext";
-import { FaUserAlt } from "react-icons/fa";
 import Badge from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-// import { BASE_URL}  from
-
+import { BASE_URL } from "../../hooks/config";
+import axios from "axios";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   '& .MuiBadge-badge': {
@@ -23,18 +22,15 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
   },
 }));
 
-// Style for the icon background
 const StyledIconButton = styled(IconButton)(({ theme }) => ({
   padding: '10px',
   borderRadius: '50%',
-  '&:hover': {
-    // Add hover effects if needed
-  },
 }));
 
 const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
   const [toggleMenu, setToggleMenu] = useState(false);
-  const [showBadge, setShowBadge] = useState(false);
+  const [badgeNumber, setBadgeNumber] = useState(0);
+  const [userId, setUserId] = useState();
   const [isWidthLessThan1000, setIsWidthLessThan1000] = useState(false);
 
   const { handleLogout, userInfo, userToken } = useContext(UserContext);
@@ -53,43 +49,37 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
     };
   }, []);
 
-  // Check if the cart has items and display badge
   useEffect(() => {
-    if (userInfo?.cart?.length > 0) {
-      setShowBadge(true);
-    } else {
-      setShowBadge(false);
-    }
+    setUserId(userInfo?.id);
   }, [userInfo]);
 
-  const navLinkStyle = ({ isActive }) => {
-    return {
-      fontWeight: isActive ? "bold" : "normal",
-      color: isActive ? "#A90A0A" : "",
-    };
+  // Fetch user data and update cart badge
+  const handleGetUser = async () => {
+    if (userId) {
+      try {
+        const response = await axios.get(`${BASE_URL}/users/getUser/${userId}`);
+        setBadgeNumber(response.data.cart?.length || 0);  // Fallback to 0 if cart is undefined
+      } catch (error) {
+        console.log('Error fetching user data:', error);
+      }
+    }
   };
 
-  useEffect( () =>{
-    console.log('the info', 
-      
-    )
-  },[])
+  useEffect(() => {
+    if (userId) {
+      handleGetUser();
+    }
+  }, [userId]);
 
-  const handleGetuser = async() =>{
-    // const response = await axios.get(`${BASE_URL}/${}`)
- }
+  const navLinkStyle = ({ isActive }) => ({
+    fontWeight: isActive ? "bold" : "normal",
+    color: isActive ? "#A90A0A" : "",
+  });
 
   return (
-    <div
-      className="app__navbar"
-      style={{ borderBottom: `1px solid ${colorBorder}` }}
-    >
+    <div className="app__navbar" style={{ borderBottom: `1px solid ${colorBorder}` }}>
       <div className="app__navbar-burger-btm">
-        <FaBars
-          color="#fff"
-          fontSize={27}
-          onClick={() => setToggleMenu(true)}
-        />
+        <FaBars color="#fff" fontSize={27} onClick={() => setToggleMenu(true)} />
       </div>
 
       <div className="app__navbar-logo">
@@ -121,48 +111,30 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
       <div className="app__navbar-icons">
         {userToken && (
           <StyledIconButton aria-label="cart">
-            {showBadge && (
-              <StyledBadge badgeContent={3} color="secondary">
-                <ShoppingCartIcon style={{ color: 'black' }} />
-              </StyledBadge>
-            )}
+            <StyledBadge badgeContent={badgeNumber} color="secondary">
+              <ShoppingCartIcon style={{ color: 'black' }} />
+            </StyledBadge>
           </StyledIconButton>
         )}
 
-        <a
-          className="social-icon"
-          href="https://www.facebook.com/Fournisseurdeproximite"
-        >
-          <FaFacebookF
-            color={isWidthLessThan1000 ? `${colorIcon}` : `${colorLink}`}
-            fontSize={20}
-          />
+        <a className="social-icon" href="https://www.facebook.com/Fournisseurdeproximite">
+          <FaFacebookF color={isWidthLessThan1000 ? `${colorIcon}` : `${colorLink}`} fontSize={20} />
         </a>
-        <a
-          className="social-icon"
-          target="blank"
-          href="https://wa.me/24177066605"
-        >
-          <FaWhatsapp
-            color={isWidthLessThan1000 ? `${colorIcon}` : `${colorLink}`}
-            fontSize={20}
-          />
+        <a className="social-icon" target="blank" href="https://wa.me/24177066605">
+          <FaWhatsapp color={isWidthLessThan1000 ? `${colorIcon}` : `${colorLink}`} fontSize={20} />
         </a>
         {!userToken && (
-          <Link className="btn-connection" to="/connection/login">
-            Login
-          </Link>
-        )}
-        {!userToken && (
-          <Link className="btn-connection btn-register" to="/connection/signup">
-            Sign Up
-          </Link>
+          <>
+            <Link className="btn-connection" to="/connection/login">
+              Login
+            </Link>
+            <Link className="btn-connection btn-register" to="/connection/signup">
+              Sign Up
+            </Link>
+          </>
         )}
         {userToken && (
-          <button
-            className="btn-connection btn-register"
-            onClick={handleLogout}
-          >
+          <button className="btn-connection btn-register" onClick={handleLogout}>
             Logout
           </button>
         )}
@@ -171,16 +143,11 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
       {toggleMenu && (
         <div className="app__navbar-smallScreen-overlay slide-right">
           <div className="overlay-header">
-            <FaTimes
-              color="#fff"
-              fontSize={27}
-              onClick={() => setToggleMenu(false)}
-            />
-
+            <FaTimes color="#fff" fontSize={27} onClick={() => setToggleMenu(false)} />
             {userInfo && (
               <div className="display-user">
                 <FaUserAlt color="black" />
-                <p>{userInfo ? `${userInfo.username}` : ""}</p>
+                <p>{userInfo.username}</p>
               </div>
             )}
           </div>
@@ -207,22 +174,17 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
             </li>
           </ul>
           {!userToken && (
-            <Link className="btn-connection" to="/connection/login">
-              Login
-            </Link>
+            <>
+              <Link className="btn-connection" to="/connection/login">
+                Login
+              </Link>
+              <Link className="btn-connection btn-register" to="/connection/signup">
+                Sign Up
+              </Link>
+            </>
           )}
-
-          {!userToken && (
-            <Link className="btn-connection btn-register" to="/connection/signup">
-              Sign Up
-            </Link>
-          )}
-
           {userToken && (
-            <button
-              className="btn-connection btn-register"
-              onClick={handleLogout}
-            >
+            <button className="btn-connection btn-register" onClick={handleLogout}>
               Logout
             </button>
           )}

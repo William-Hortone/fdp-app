@@ -117,22 +117,21 @@ module.exports = {
       return next(error);
     }
   },
-  getUser: (req, res, next) => {
-    const user_id = req.params.id;
-    console.log("getUser", user_id);
+  getUser: async (req, res, next) => {
+    const user_id = req.params.userId;
 
     try {
-      const user = User.findById({ _id: user_id });
+      const user = await User.findById(user_id);
 
       if (!user) {
-        return restart
+        return res
           .status(401)
-          .json({ status: false, message: "User  does not exist" });
+          .json({ status: false, message: "User does not exist" }); 
       }
 
       res.status(200).json(user);
     } catch (error) {
-      return next(error);
+      next(error);
     }
   },
 };
