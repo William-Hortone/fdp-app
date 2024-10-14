@@ -11,15 +11,13 @@ import "slick-carousel/slick/slick-theme.css";
 import { FaBars, FaTimes, FaList, FaSlidersH } from "react-icons/fa";
 import { HandleFetchArticles } from "../../hooks/context/fetchArticles";
 import { UserContext } from "../../hooks/context/UserContext";
-import { TailSpin } from "react-loader-spinner";
 
 
 const Products = () => {
-  const { articlesData, refreshArticles, isLoading } = HandleFetchArticles();
+  const { articlesData, isLoading } = HandleFetchArticles();
   const { userToken } = useContext(UserContext);
 
   const [articles, setArticles] = useState([]);
-  // const [items, setItems] = useState([]);
   const [machineNumber, setMachineNumber] = useState([]);
   const [sportNumber, setSportNumber] = useState([]);
   const [casque, setCasque] = useState([]);
