@@ -38,4 +38,21 @@ module.exports = {
       return next(error);
     }
   },
+  getArticle: async (req, res, next) => {
+    const item_id = req.params.itemId;
+
+    try {
+      const article = await Articles.findById(item_id);
+
+      if (!article) {
+        return res
+          .status(401)
+          .json({ status: false, message: "User does not exist" });
+      }
+
+      res.status(200).json(article);
+    } catch (error) {
+      next(error);
+    }
+  },
 };

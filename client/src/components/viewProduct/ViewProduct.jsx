@@ -21,7 +21,7 @@ const ViewProduct = ({ article, setShowProduct }) => {
   };
 
   const { userInfo } = useContext(UserContext); 
-  console.log("useeeee",userInfo)
+  // console.log("useeeee",userInfo)
 
   const [userId, setUserId] = useState();
   const [productId, setProductId] = useState();

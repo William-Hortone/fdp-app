@@ -20,6 +20,9 @@ box-shadow: -61px -178px 187px -69px rgba(0,0,0,0.28);
     align-items: center;
     /* background: #07495b; */
     padding: 1rem 0;
+    border-bottom: 2px solid #0000005e;
+    margin-bottom: 1rem; 
+
 }
 .app__cart h2{
     font-family: var(--font-base);
@@ -44,7 +47,10 @@ font-size: 13px;
     width: 100%;
     height: 70%;
     /* background: green; */
-    overflow: hidden;
+    overflow-y: scroll;
+    margin-bottom: 2rem;
+
+    overflow-x: hidden;
 }
 .app__cart--container-content{
     position: absolute;
@@ -52,8 +58,9 @@ font-size: 13px;
     left: 0;
     width: 100%;
     height: auto;
-    background: rgb(17, 71, 150);
-    overflow-y: scroll;
+    /* background: rgb(17, 71, 150); */
+    overflow-y: hidden;
+    margin-bottom: 2rem;
 }
 .app__cart--content{
     width: 100%;
