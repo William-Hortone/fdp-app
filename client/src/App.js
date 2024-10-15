@@ -11,16 +11,16 @@ import { HandleFetchArticles } from "./hooks/context/fetchArticles";
 
 
 const App = () => {
-  const {articlesData} = HandleFetchArticles()
+  // const {articlesData} = HandleFetchArticles()
 
-  useEffect(() =>{
-    console.log('the data', articlesData)
-  },[articlesData])
+
+
   return (
     <>
     <UserProvider>
 
       <div className="App">
+    
       <ToastContainer />
         <Routes>
           <Route path="/connection" element={<Connection />} >
