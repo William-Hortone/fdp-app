@@ -2,6 +2,7 @@ import React from "react";
 import "./cart.css";
 import { IoCloseSharp } from "react-icons/io5";
 import Button from "../button/Button";
+import CartItem from "./CartItem";
 
 
 const Cart = ({setShowCart, showCart}) => {
@@ -19,7 +20,7 @@ const Cart = ({setShowCart, showCart}) => {
       </div>
       <div className="app__cart--container">
       <div className="app__cart--container-content">
-<p>Product</p>
+<CartItem />
       </div>
       </div>
       <div className="app__cart--content">

@@ -13,6 +13,8 @@ import CardCategory from "./cardCategory/CardCategory";
 import Loader from "./loader/Loader";
 import ViewProduct from "./viewProduct/ViewProduct";
 import Cart from "./cart/Cart";
+import CartItem from "./cart/CartItem";
+
 
 export {
   Button,
@@ -29,5 +31,6 @@ export {
   CardCategory,
   Loader,
   ViewProduct,
-  Cart
+  Cart,
+  CartItem
 };
