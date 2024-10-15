@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import './CartItem.css';
 import axios from "axios";
 import { BASE_URL } from "../../hooks/config";
-
+import { MdOutlineDeleteOutline } from "react-icons/md"
 
 const CartItem = ({item}) => {
     const [quantity, setQuantity]= useState(item?.quantity)
@@ -13,7 +13,7 @@ const CartItem = ({item}) => {
         setItemId(item?.productId)
 
 console.log('My quantity',item)
-// console.log('My product',product)
+console.log('My product',product)
     },[product, item])
 
 
@@ -42,7 +42,7 @@ console.log('My quantity',item)
   return (
     <div className="app__cartItem">
       <div className="app__cartItem-img">
-        <img src="" alt="article product" />
+        <img src={product?.images[0].img} alt="article product" />
       </div>
 
       <div className="app__cartItem-container">
@@ -61,6 +61,11 @@ console.log('My quantity',item)
             +
           </button>
         </div>
+      </div>
+
+      {/* Delete btn */}
+      <div className="delete-item">
+      <MdOutlineDeleteOutline color="#a90a0a"  size={20}/>
       </div>
     </div>
   );

@@ -48,14 +48,16 @@ const Cart = ({ setShowCart, showCart }) => {
     <div className={showCart ? "app__cart show-cart" : "app__cart"}>
       <div className="app__cart--header">
         <h2>Panier</h2>
-        <IoCloseSharp size={25} color="black" onClick={() => setShowCart(false)} />
+        <IoCloseSharp
+          size={25}
+          color="black"
+          onClick={() => setShowCart(false)}
+        />
       </div>
       <div className="app__cart--container">
         <div className="app__cart--container-content">
           {items?.map((item, index) => (
-            
             <CartItem key={index} item={item} />
-
           ))}
         </div>
       </div>
