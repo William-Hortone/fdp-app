@@ -12,7 +12,7 @@ import "./viewProduct.css";
 import Cart from "../cart/Cart";
 
 const ViewProduct = ({ article, setShowProduct }) => {
-  var settings = {
+  const settings = {
     dots: true,
     infinite: true,
     speed: 500,
@@ -20,14 +20,13 @@ const ViewProduct = ({ article, setShowProduct }) => {
     slidesToScroll: 1,
   };
 
-  const { userInfo } = useContext(UserContext); 
-  // console.log("useeeee",userInfo)
-
+  const { userInfo } = useContext(UserContext);
   const [userId, setUserId] = useState();
   const [productId, setProductId] = useState();
   const [totalPrice, setTotalPrice] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [showCart, setShowCart] = useState(false);
+  const [cartUpdated, setCartUpdated] = useState(false); // Trigger for refreshing cart
 
   useEffect(() => {
     setProductId(article._id);
@@ -37,49 +36,42 @@ const ViewProduct = ({ article, setShowProduct }) => {
     setUserId(userInfo.id);
   }, [userInfo.id]);
 
-  //  set the total price
+  // Update the total price whenever quantity or price changes
   useEffect(() => {
     setTotalPrice(quantity * article.price);
   }, [quantity, article.price]);
 
-  
-  //  function to reduce the quantity 
   const handleReduceQuantity = () => {
     const newQuantity = quantity - 1;
-    setQuantity(newQuantity);
-    if (newQuantity < 1) {
-      setQuantity(1);
-    }
+    setQuantity(newQuantity < 1 ? 1 : newQuantity);
   };
 
-  //  function to add the quantity 
   const handleAddQuantity = () => {
-    const newQuantity = quantity + 1;
-    setQuantity(newQuantity);
+    setQuantity(quantity + 1);
   };
 
- 
-
-  //  Function to add item to the cart
+  // Function to add item to the cart
   const handleAddToCart = async () => {
-    if(!userInfo.token){
-      toast.error('Please Sign In Fist')
+    if (!userInfo.token) {
+      toast.error('Please Sign In First');
+      return;
     }
-    // try {
-    //   const response = await axios.put(
-    //     `${BASE_URL}/users/addToCart/${userId}`,
-    //     { productId, quantity, totalPrice }
-    //   );
-    //   if (response) {
-    //     toast.success("Article added to cart successfully");
-    //     setShowCart(true);
-    //   }
-    // } catch (error) {
-    //   toast.error(error);
-    // }
-    setShowCart(true);
-  };
+    try {
+      const response = await axios.put(
+        `${BASE_URL}/users/addToCart/${userId}`,
+        { productId, quantity, totalPrice }
+      );
+      if (response) {
+        toast.success("Article added to cart successfully");
+        setCartUpdated(true);
+        setShowCart(true); 
+      }
+    } catch (error) {
+      toast.error(error.response?.data.message || "Error adding to cart");
+    }
+    // setShowCart(true); 
 
+  };
 
   return (
     <>
@@ -98,9 +90,9 @@ const ViewProduct = ({ article, setShowProduct }) => {
         <div className="app__viewProduct-details">
           <h2>{article.name}</h2>
           <p>
-            Prix: <em> {article.price} Fcfa </em>
+            Prix: <em>{article.price} Fcfa</em>
           </p>
-          <p>Category:{article.category}</p>
+          <p>Category: {article.category}</p>
 
           <div className="details-content">
             <div className="">
@@ -133,7 +125,8 @@ const ViewProduct = ({ article, setShowProduct }) => {
         </button>
       </div>
 
-      <Cart showCart={showCart} setShowCart={setShowCart} />
+      {/* Pass the cartUpdated flag to trigger the Cart component to refresh */}
+      <Cart showCart={showCart} setShowCart={setShowCart} cartUpdated={cartUpdated} setCartUpdated={setCartUpdated} />
     </>
   );
 };
