@@ -126,7 +126,7 @@ module.exports = {
       if (!user) {
         return res
           .status(401)
-          .json({ status: false, message: "User does not exist" }); 
+          .json({ status: false, message: "User does not exist" });
       }
 
       res.status(200).json(user);

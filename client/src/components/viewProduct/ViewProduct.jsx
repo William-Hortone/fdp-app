@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
-import { IoCloseSharp } from "react-icons/io5";
+import { IoCloseSharp } from "react-icons/io5"; 
 import Slider from "react-slick";
 import { toast } from "react-toastify";
 import "slick-carousel/slick/slick-theme.css";
@@ -9,6 +9,7 @@ import { BASE_URL } from "../../hooks/config";
 import { UserContext } from "../../hooks/context/UserContext";
 import Button from "../button/Button";
 import "./viewProduct.css";
+import Cart from "../cart/Cart";
 
 const ViewProduct = ({ article, setShowProduct }) => {
   var settings = {
@@ -20,12 +21,13 @@ const ViewProduct = ({ article, setShowProduct }) => {
   };
 
   const { userInfo } = useContext(UserContext); 
-  console.log("useeeee",userInfo)
+  // console.log("useeeee",userInfo)
 
   const [userId, setUserId] = useState();
   const [productId, setProductId] = useState();
   const [totalPrice, setTotalPrice] = useState(0);
   const [quantity, setQuantity] = useState(1);
+  const [showCart, setShowCart] = useState(false);
 
   useEffect(() => {
     setProductId(article._id);
@@ -63,17 +65,19 @@ const ViewProduct = ({ article, setShowProduct }) => {
     if(!userInfo.token){
       toast.error('Please Sign In Fist')
     }
-    try {
-      const response = await axios.put(
-        `${BASE_URL}/users/addToCart/${userId}`,
-        { productId, quantity, totalPrice }
-      );
-      if (response) {
-        toast.success("Article added to cart successfully");
-      }
-    } catch (error) {
-      toast.error(error);
-    }
+    // try {
+    //   const response = await axios.put(
+    //     `${BASE_URL}/users/addToCart/${userId}`,
+    //     { productId, quantity, totalPrice }
+    //   );
+    //   if (response) {
+    //     toast.success("Article added to cart successfully");
+    //     setShowCart(true);
+    //   }
+    // } catch (error) {
+    //   toast.error(error);
+    // }
+    setShowCart(true);
   };
 
 
@@ -128,6 +132,8 @@ const ViewProduct = ({ article, setShowProduct }) => {
           />
         </button>
       </div>
+
+      <Cart showCart={showCart} setShowCart={setShowCart} />
     </>
   );
 };
