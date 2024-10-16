@@ -16,6 +16,8 @@ import IconButton from "@mui/material/IconButton";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { BASE_URL } from "../../hooks/config";
 import axios from "axios";
+import CartItem from "../cart/CartItem";
+import Cart from "../cart/Cart";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -35,8 +37,11 @@ const StyledIconButton = styled(IconButton)(({ theme }) => ({
 
 const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
   const [toggleMenu, setToggleMenu] = useState(false);
+  const [showCart, setShowCart] = useState(false);
   const [badgeNumber, setBadgeNumber] = useState(0);
   const [userId, setUserId] = useState();
+  const [items, setItems] = useState([]);
+
   const [isWidthLessThan1000, setIsWidthLessThan1000] = useState(false);
 
   const { handleLogout, userInfo, userToken } = useContext(UserContext);
@@ -65,17 +70,43 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
       try {
         const response = await axios.get(`${BASE_URL}/users/getUser/${userId}`);
         setBadgeNumber(response.data.cart?.length || 0);
+        setItems(response.data?.cart || []);
       } catch (error) {
         console.log("Error fetching user data:", error);
       }
     }
   };
 
+  // Fetch the cart data for the user
+  // const handleGetUser = async () => {
+  //   if (userId) {
+  //     try {
+  //       const response = await axios.get(`${BASE_URL}/users/getUser/${userId}`);
+  //       setItems(response.data?.cart || []);
+  //     } catch (error) {
+  //       console.log("Error fetching user data:", error);
+  //     }
+  //   }
+  // };
+
+  // Handle cart update when cartUpdated changes
   useEffect(() => {
     if (userId) {
       handleGetUser();
+      // cartUpdated
+      // setCartUpdated(false);
     }
   }, [userId]);
+
+  useEffect(() => {
+    console.log("Cart", items);
+  }, [items]);
+
+  // useEffect(() => {
+  //   if (userId) {
+  //     handleGetUser();
+  //   }
+  // }, [userId]);
 
   const navLinkStyle = ({ isActive }) => ({
     fontWeight: isActive ? "bold" : "normal",
@@ -123,7 +154,10 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
 
       <div className="app__navbar-icons">
         {userToken && (
-          <StyledIconButton aria-label="cart">
+          <StyledIconButton
+            aria-label="cart"
+            onClick={() => setShowCart(true)}
+          >
             <StyledBadge badgeContent={badgeNumber} color="secondary">
               <ShoppingCartIcon style={{ color: "black" }} />
             </StyledBadge>
@@ -233,6 +267,17 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
           )}
         </div>
       )}
+
+      {/* Show the cart */}
+      {/* {showTheCart  &&  (
+      )} */}
+
+        {/* items?.map((item, index) => {
+          return <CartItem key={index} item={item} userId={userId} />;
+        }) */}
+      {showCart && <Cart showCart={showCart} />
+        
+        }
     </div>
   );
 };

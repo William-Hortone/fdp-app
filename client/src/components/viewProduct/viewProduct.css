@@ -86,3 +86,10 @@
   
 }
 
+.leRotateSkateInLeft span { animation-name: leRotateSkateInLeft }
+@keyframes leRotateSkateInLeft {
+    from {
+        transform: scaleX(0.2) translateX(-100px);
+        opacity: 0;
+    }
+}

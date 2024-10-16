@@ -26,7 +26,7 @@ const ViewProduct = ({ article, setShowProduct }) => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [showCart, setShowCart] = useState(false);
-  const [cartUpdated, setCartUpdated] = useState(false); // Trigger for refreshing cart
+  const [cartUpdated, setCartUpdated] = useState(false);
 
   useEffect(() => {
     setProductId(article._id);
@@ -67,10 +67,8 @@ const ViewProduct = ({ article, setShowProduct }) => {
         setShowCart(true); 
       }
     } catch (error) {
-      toast.error(error.response?.data.message || "Error adding to cart");
+      toast.error(error.response?.data || "Error adding to cart");
     }
-    // setShowCart(true); 
-
   };
 
   return (
@@ -88,7 +86,7 @@ const ViewProduct = ({ article, setShowProduct }) => {
         </div>
 
         <div className="app__viewProduct-details">
-          <h2>{article.name}</h2>
+          <h2 className="cssanimation leRotateSkateInLeft sequence">{article.name}</h2>
           <p>
             Prix: <em>{article.price} Fcfa</em>
           </p>
@@ -125,7 +123,6 @@ const ViewProduct = ({ article, setShowProduct }) => {
         </button>
       </div>
 
-      {/* Pass the cartUpdated flag to trigger the Cart component to refresh */}
       <Cart showCart={showCart} setShowCart={setShowCart} cartUpdated={cartUpdated} setCartUpdated={setCartUpdated} />
     </>
   );

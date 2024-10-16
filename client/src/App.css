@@ -39,6 +39,14 @@ html {
   outline: none;
   cursor: pointer;
 }
+/* Text animation */
+.leRotateSkateInLeft span { animation-name: leRotateSkateInLeft }
+@keyframes leRotateSkateInLeft {
+    from {
+        transform: scaleX(0.2) translateX(-100px);
+        opacity: 0;
+    }
+}
 @media screen and (min-width: 2000px) {
   .custom__button,
   .p__cormorant {

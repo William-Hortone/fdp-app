@@ -9,8 +9,8 @@ import { UserContext } from "../../hooks/context/UserContext";
 
 const Cart = ({ setShowCart, showCart, cartUpdated, setCartUpdated }) => {
   const [userId, setUserId] = useState();
-  const [items, setItems] = useState([]); // Cart items state
-  const { userInfo, userToken } = useContext(UserContext);
+  const [items, setItems] = useState([]);
+  const { userInfo } = useContext(UserContext);
 
   useEffect(() => {
     if (userInfo?.id) {
@@ -23,28 +23,27 @@ const Cart = ({ setShowCart, showCart, cartUpdated, setCartUpdated }) => {
     if (userId) {
       try {
         const response = await axios.get(`${BASE_URL}/users/getUser/${userId}`);
-        setItems(response.data?.cart || []); // Update items state, which will trigger re-render
+        setItems(response.data?.cart || []); 
       } catch (error) {
         console.log("Error fetching user data:", error);
       }
     }
   };
 
-  // Trigger cart refresh when the cartUpdated flag changes
+  // Handle cart update when cartUpdated changes
   useEffect(() => {
     if (userId && cartUpdated) {
       handleGetUser();
-      setCartUpdated(false); // Reset the flag after cart has been updated
+      setCartUpdated(false); 
     }
   }, [userId, cartUpdated]);
 
+  // Function to remove an item from the cart state
+  const handleRemoveFromCart = (removedItemId) => {
+    const updatedItems = items.filter(item => item.productId !== removedItemId);
+    setItems(updatedItems); 
+  };
 
-    // Callback to handle item removal from cart
-    const handleRemoveFromCart = (removedItemId) => {
-        // Filter out the removed item from the cart
-        const updatedItems = items.filter(item => item.productId !== removedItemId);
-        setItems(updatedItems); // This will trigger the re-render automatically
-      };
   return (
     <div className={showCart ? "app__cart show-cart" : "app__cart"}>
       <div className="app__cart--header">
@@ -54,7 +53,12 @@ const Cart = ({ setShowCart, showCart, cartUpdated, setCartUpdated }) => {
       <div className="app__cart--container">
         <div className="app__cart--container-content">
           {items?.map((item, index) => (
-            <CartItem key={index} item={item} userId={userId} onRemove={handleRemoveFromCart} />
+            <CartItem
+              key={index}
+              item={item}
+              userId={userId}
+              onRemove={handleRemoveFromCart}
+            />
           ))}
         </div>
       </div>
