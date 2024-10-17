@@ -134,7 +134,6 @@
 @media screen and (max-width: 1050px) {
   .app__navbar {
     background-color: #222222;
-    /* position: relative; */
   }
   .app__navbar-list {
     display: none;
