@@ -71,11 +71,11 @@ const CartItem = ({ item, userId, onRemove }) => {
 
       <div className="app__cartItem-container">
         <div className="container-header">
-        {/* <div class="cssanimation leRotateSkateInLeft sequence"> Example </div> */}
+
           <h2 className="cssanimation leRotateSkateInLeft sequence">{product?.name}</h2>
         </div>
-        <p>Category : {product?.category} </p>
-        <p>Prix: {totalPrice} Fcfa</p>
+        <p>Category : <span >{product?.category} </span> </p>
+        <p>Prix:  <span>{totalPrice}</span>  Fcfa</p>
         <div className="cartItem-quantity">
           <button className="btn-article" onClick={handleReduceQuantity}>
             -

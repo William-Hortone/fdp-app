@@ -14,6 +14,7 @@ import Loader from "./loader/Loader";
 import ViewProduct from "./viewProduct/ViewProduct";
 import Cart from "./cart/Cart";
 import CartItem from "./cart/CartItem";
+import BlurEffect from "./BlurEffect";
 
 
 export {
@@ -32,5 +33,6 @@ export {
   Loader,
   ViewProduct,
   Cart,
-  CartItem
+  CartItem,
+  BlurEffect
 };

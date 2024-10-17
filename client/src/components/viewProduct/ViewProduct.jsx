@@ -16,6 +16,7 @@ const ViewProduct = ({ article, setShowProduct }) => {
     dots: true,
     infinite: true,
     speed: 500,
+    // top: 550,
     slidesToShow: 1,
     slidesToScroll: 1,
   };
@@ -63,7 +64,7 @@ const ViewProduct = ({ article, setShowProduct }) => {
       );
       if (response) {
         toast.success("Article added to cart successfully");
-        setCartUpdated(true);
+        setCartUpdated(true); 
         setShowCart(true); 
       }
     } catch (error) {
@@ -71,11 +72,15 @@ const ViewProduct = ({ article, setShowProduct }) => {
     }
   };
 
+
+
+
+
   return (
     <>
       <div className="app__viewProduct">
         <div className="app__viewProduct-slider">
-          <Slider {...settings}>
+          <Slider {...settings} className="slider-container">
             <div className="product-slider">
               <img src={article.images[0].img} alt="machine" />
             </div>
@@ -86,11 +91,13 @@ const ViewProduct = ({ article, setShowProduct }) => {
         </div>
 
         <div className="app__viewProduct-details">
+
+          <h2 className="cssanimation hu__hu__">Fournisseur de Proximite</h2>
           <h2 className="cssanimation leRotateSkateInLeft sequence">{article.name}</h2>
           <p>
-            Prix: <em>{article.price} Fcfa</em>
+            Prix: <span>{article.price} Fcfa</span>
           </p>
-          <p>Category: {article.category}</p>
+          <p>Categorie: <span > {article.category} </span></p>
 
           <div className="details-content">
             <div className="">

@@ -18,6 +18,7 @@ import { BASE_URL } from "../../hooks/config";
 import axios from "axios";
 import CartItem from "../cart/CartItem";
 import Cart from "../cart/Cart";
+import BlurEffect from "../BlurEffect";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -38,9 +39,11 @@ const StyledIconButton = styled(IconButton)(({ theme }) => ({
 const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
   const [toggleMenu, setToggleMenu] = useState(false);
   const [showCart, setShowCart] = useState(false);
+  const [showBlur, setShowBlur] = useState(false);
   const [badgeNumber, setBadgeNumber] = useState(0);
   const [userId, setUserId] = useState();
   const [items, setItems] = useState([]);
+  const [cartUpdated, setCartUpdated] = useState(false);
 
   const [isWidthLessThan1000, setIsWidthLessThan1000] = useState(false);
 
@@ -113,7 +116,14 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
     color: isActive ? "#A90A0A" : "",
   });
 
+  const handleViewCart =()=>{
+    setShowCart(true)
+    setCartUpdated(true); 
+    setShowBlur(true); 
+
+  }
   return (
+    <>
     <div
       className="app__navbar"
       style={{ borderBottom: `1px solid ${colorBorder}` }}
@@ -156,7 +166,7 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
         {userToken && (
           <StyledIconButton
             aria-label="cart"
-            onClick={() => setShowCart(true)}
+            onClick={handleViewCart}
           >
             <StyledBadge badgeContent={badgeNumber} color="secondary">
               <ShoppingCartIcon style={{ color: "black" }} />
@@ -275,10 +285,15 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
         {/* items?.map((item, index) => {
           return <CartItem key={index} item={item} userId={userId} />;
         }) */}
-      {showCart && <Cart showCart={showCart} />
+      {showCart &&       <Cart showCart={showCart} setShowCart={setShowCart} cartUpdated={cartUpdated} setCartUpdated={setCartUpdated} />
+
         
         }
+        
     </div>
+
+    <BlurEffect showBlur={showCart} />
+    </>
   );
 };
 
