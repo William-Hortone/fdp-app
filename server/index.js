@@ -14,25 +14,26 @@ mongoose
   .then(() => console.log("Database connected"))
   .catch((err) => console.error("Database connection error:", err));
 
-  app.use(express.json({ limit: "10mb" }));
-  app.use(express.urlencoded({ limit: "10mb", extended: true }));
+app.use(express.json({ limit: "10mb" }));
+app.use(express.urlencoded({ limit: "10mb", extended: true }));
 
-  app.use(errorHandler);
+app.use(errorHandler);
 
 // Enable CORS for all routes
-app.use(cors({
-  origin: "http://localhost:3000",
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true 
-}));
+app.use(
+  cors({
+    origin: "https://fdp-app-client.vercel.app/",
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
+  })
+);
 
 // Routes
 app.use("/api/users/", userRouter);
 app.use("/api/articles", articleRouter);
 
 app.get("/", (req, res) => res.send("William Hortone!"));
-
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`App listening on port ${port}!`));

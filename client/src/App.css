@@ -39,6 +39,46 @@ html {
   outline: none;
   cursor: pointer;
 }
+.app__blur{
+  width: 75%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 100%;
+  background: rgba(0, 0, 0, 0.187);
+  background-color: red;
+  transition: left 0.4s ease;
+  /* filter: blur(115px); */
+  backdrop-filter: blur(5px);
+  background: rgba(255, 255, 255, 0.3);
+  z-index: 11;
+}
+
+.app__blur.show-blur{
+  left: 0;
+  bottom: 0;
+}
+
+.hu__hu__ { animation: hu__hu__ infinite 2s ease-in-out }
+@keyframes hu__hu__ {
+    50% { transform: translateY(30px) }
+}
+/* Text animation */
+.leRotateSkateInLeft span { animation-name: leRotateSkateInLeft }
+@keyframes leRotateSkateInLeft {
+    from {
+        transform: scaleX(0.2) translateX(-100px);
+        opacity: 0;
+    }
+}
+
+.leRotateSkateInLeft span { animation-name: leRotateSkateInLeft }
+@keyframes leRotateSkateInLeft {
+    from {
+        transform: scaleX(0.2) translateX(-100px);
+        opacity: 0;
+    }
+}
 @media screen and (min-width: 2000px) {
   .custom__button,
   .p__cormorant {

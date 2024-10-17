@@ -16,6 +16,9 @@ import IconButton from "@mui/material/IconButton";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { BASE_URL } from "../../hooks/config";
 import axios from "axios";
+import CartItem from "../cart/CartItem";
+import Cart from "../cart/Cart";
+import BlurEffect from "../BlurEffect";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -33,10 +36,15 @@ const StyledIconButton = styled(IconButton)(({ theme }) => ({
   borderRadius: "50%",
 }));
 
-const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
+const Navbar = ({ colorLink, colorIcon, colorBorder, cartColor }) => {
   const [toggleMenu, setToggleMenu] = useState(false);
+  const [showCart, setShowCart] = useState(false);
+  const [showBlur, setShowBlur] = useState(false);
   const [badgeNumber, setBadgeNumber] = useState(0);
   const [userId, setUserId] = useState();
+  const [items, setItems] = useState([]);
+  const [cartUpdated, setCartUpdated] = useState(false);
+
   const [isWidthLessThan1000, setIsWidthLessThan1000] = useState(false);
 
   const { handleLogout, userInfo, userToken } = useContext(UserContext);
@@ -45,7 +53,7 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
   useEffect(() => {
     const handleResize = () => {
       const { body } = document;
-      setIsWidthLessThan1000(body.clientWidth < 1050);
+      setIsWidthLessThan1000(body.clientWidth < 1051);
     };
     handleResize();
     window.addEventListener("resize", handleResize);
@@ -65,24 +73,57 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
       try {
         const response = await axios.get(`${BASE_URL}/users/getUser/${userId}`);
         setBadgeNumber(response.data.cart?.length || 0);
+        setItems(response.data?.cart || []);
       } catch (error) {
         console.log("Error fetching user data:", error);
       }
     }
   };
 
+  // Fetch the cart data for the user
+  // const handleGetUser = async () => {
+  //   if (userId) {
+  //     try {
+  //       const response = await axios.get(`${BASE_URL}/users/getUser/${userId}`);
+  //       setItems(response.data?.cart || []);
+  //     } catch (error) {
+  //       console.log("Error fetching user data:", error);
+  //     }
+  //   }
+  // };
+
+  // Handle cart update when cartUpdated changes
   useEffect(() => {
     if (userId) {
       handleGetUser();
+      // cartUpdated
+      // setCartUpdated(false);
     }
   }, [userId]);
+
+  useEffect(() => {
+    console.log("Cart", items);
+  }, [items]);
+
+  // useEffect(() => {
+  //   if (userId) {
+  //     handleGetUser();
+  //   }
+  // }, [userId]);
 
   const navLinkStyle = ({ isActive }) => ({
     fontWeight: isActive ? "bold" : "normal",
     color: isActive ? "#A90A0A" : "",
   });
 
+  const handleViewCart =()=>{
+    setShowCart(true)
+    setCartUpdated(true); 
+    setShowBlur(true); 
+
+  }
   return (
+    <>
     <div
       className="app__navbar"
       style={{ borderBottom: `1px solid ${colorBorder}` }}
@@ -123,9 +164,12 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
 
       <div className="app__navbar-icons">
         {userToken && (
-          <StyledIconButton aria-label="cart">
+          <StyledIconButton
+            aria-label="cart"
+            onClick={handleViewCart}
+          >
             <StyledBadge badgeContent={badgeNumber} color="secondary">
-              <ShoppingCartIcon style={{ color: "black" }} />
+              <ShoppingCartIcon style={isWidthLessThan1000 ?{ color: 'white' }: { color: cartColor }} />
             </StyledBadge>
           </StyledIconButton>
         )}
@@ -233,7 +277,16 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
           )}
         </div>
       )}
+
+      {showCart &&       <Cart showCart={showCart} setShowCart={setShowCart} cartUpdated={cartUpdated} setCartUpdated={setCartUpdated} />
+
+        
+        }
+        
     </div>
+
+    <BlurEffect showBlur={showCart} /> 
+    </>
   );
 };
 

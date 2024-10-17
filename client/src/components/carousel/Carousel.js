@@ -1,16 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-// import "bootstrap/dist/css/bootstrap.min.css";
-// import "bootstrap/dist/css/bootstrap.css";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-// import "../../bootstrap-custom.css";
-// import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { Product, ProductBox } from "../../components";
 import { images, data } from "../../constants";
 import StarRatings from "react-star-ratings";
-
 import "./carousel.css";
 
 const Carousel = ({ linkImg, img }) => {
@@ -55,6 +50,8 @@ const Carousel = ({ linkImg, img }) => {
             </div>
           </div>
         </div>
+
+        {/* Carousel for the big screen */}
         <div className="app__carousel-container carousel-largeScreen">
           <div className="app__carousel-container_box">
             <div className="carousel-content">
@@ -129,6 +126,8 @@ const Carousel = ({ linkImg, img }) => {
         </div>
       </Slider>
 
+      {/* Carousel for the small  screen */}
+
       <Slider dots={true} infinite={true} speed={500} className="slider-tow">
         <div className="carousel-content">
           <ProductBox imgOne={images.machine23} imgTow={images.machine18} />
@@ -182,5 +181,5 @@ const Carousel = ({ linkImg, img }) => {
     </div>
   );
 };
-//  https://wpbingosite.com/wordpress/prido/wp-content/uploads/2022/01/banner-16.jpg
+
 export default Carousel;

@@ -134,4 +134,58 @@ module.exports = {
       next(error);
     }
   },
+  // removeItem : async (req, res, next) => {
+  
+  //   const { userId,itemId } = req.params;
+
+  //   try {
+  //     const user = await User.findById(userId);
+
+  //     if (!user) {
+  //       return res
+  //        .status(404)
+  //        .json({ status: false, message: "User not found" });
+  //     }
+
+  //     const itemSelected = user.cart.findByIdAndDelete({id: itemId});
+      
+     
+  //     await user.save();
+      
+  //     return res
+  //      .status(200)
+  //      .json({ message: "Product removed from cart", cart: user.cart });
+
+  //   } catch (error) {
+      
+  //   }
+  // }
+  removeItem: async (req, res, next) => {
+    const { userId, itemId } = req.params;
+  
+    try {
+      const user = await User.findById(userId);
+  
+      if (!user) {
+        return res.status(404).json({ status: false, message: "User not found" });
+      }
+  
+      // Find the index of the item in the cart
+      const itemIndex = user.cart.findIndex((item) => item.productId === itemId);
+  
+      if (itemIndex === -1) {
+        return res.status(404).json({ status: false, message: "Item not found in cart" });
+      }
+  
+      // Remove the item from the cart
+      user.cart.splice(itemIndex, 1);
+  
+      await user.save();
+  
+      return res.status(200).json({ message: "Product removed from cart", cart: user.cart });
+    } catch (error) {
+      return res.status(500).json({ status: false, message: "Error removing item from cart" });
+    }
+  }
+  
 };
