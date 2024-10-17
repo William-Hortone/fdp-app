@@ -36,7 +36,7 @@ const StyledIconButton = styled(IconButton)(({ theme }) => ({
   borderRadius: "50%",
 }));
 
-const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
+const Navbar = ({ colorLink, colorIcon, colorBorder, cartColor }) => {
   const [toggleMenu, setToggleMenu] = useState(false);
   const [showCart, setShowCart] = useState(false);
   const [showBlur, setShowBlur] = useState(false);
@@ -53,7 +53,7 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
   useEffect(() => {
     const handleResize = () => {
       const { body } = document;
-      setIsWidthLessThan1000(body.clientWidth < 1050);
+      setIsWidthLessThan1000(body.clientWidth < 1051);
     };
     handleResize();
     window.addEventListener("resize", handleResize);
@@ -169,7 +169,7 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
             onClick={handleViewCart}
           >
             <StyledBadge badgeContent={badgeNumber} color="secondary">
-              <ShoppingCartIcon style={{ color: "black" }} />
+              <ShoppingCartIcon style={isWidthLessThan1000 ?{ color: 'white' }: { color: cartColor }} />
             </StyledBadge>
           </StyledIconButton>
         )}
@@ -278,13 +278,6 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
         </div>
       )}
 
-      {/* Show the cart */}
-      {/* {showTheCart  &&  (
-      )} */}
-
-        {/* items?.map((item, index) => {
-          return <CartItem key={index} item={item} userId={userId} />;
-        }) */}
       {showCart &&       <Cart showCart={showCart} setShowCart={setShowCart} cartUpdated={cartUpdated} setCartUpdated={setCartUpdated} />
 
         
@@ -292,7 +285,7 @@ const Navbar = ({ colorLink, colorIcon, colorBorder }) => {
         
     </div>
 
-    <BlurEffect showBlur={showCart} />
+    <BlurEffect showBlur={showCart} /> 
     </>
   );
 };

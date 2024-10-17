@@ -49,17 +49,6 @@ const Cart = ({ setShowCart, showCart, cartUpdated, setCartUpdated }) => {
   };
 
 
-
-  // function App() {
-  //   return (
-  //     <CssVarsProvider theme={theme}>
-
-  //       {/* <Skeleton />{' '} */}
-  //       {/* The Skeleton component will have the wave animation by default */}
-  //     </CssVarsProvider>
-  //   );
-  // }
-
   return (
     <>
       <div className={showCart ? "app__cart show-cart" : "app__cart"}>
@@ -71,6 +60,7 @@ const Cart = ({ setShowCart, showCart, cartUpdated, setCartUpdated }) => {
             onClick={() => setShowCart(false)}
           />
         </div>
+        
         <div className="app__cart--container">
           <div className="app__cart--container-content">
             {items?.map((item, index) => (

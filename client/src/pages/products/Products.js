@@ -81,6 +81,7 @@ const Products = () => {
           colorLink={colorLink}
           colorIcon="#ffffff"
           colorBorder={colorBorder}
+          cartColor='#000000'
         />
       </div>
 

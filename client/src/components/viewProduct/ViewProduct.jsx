@@ -16,7 +16,6 @@ const ViewProduct = ({ article, setShowProduct }) => {
     dots: true,
     infinite: true,
     speed: 500,
-    // top: 550,
     slidesToShow: 1,
     slidesToScroll: 1,
   };

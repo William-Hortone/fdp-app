@@ -22,14 +22,18 @@
   border-bottom: 2px solid #0000005e;
   margin-bottom: 1rem;
 }
-.app__cart h2 {
-  font-family: var(--font-base);
+.app__cart--header h2 {
+  font-family: var(--font-link);
+  text-transform: uppercase;
+}
+.app__cart--container h2 {
+  font-family: var(--font-alt);
   text-transform: uppercase;
 }
 .app__cart h3 {
-  font-family: var(--font-alt);
+  font-family: var(--font-link);
   text-transform: uppercase;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
 }
 .app__cart h4 {
   font-family: var(--font-base);
