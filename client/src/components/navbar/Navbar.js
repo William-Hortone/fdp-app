@@ -80,18 +80,7 @@ const Navbar = ({ colorLink, colorIcon, colorBorder, cartColor }) => {
     }
   };
 
-  // Fetch the cart data for the user
-  // const handleGetUser = async () => {
-  //   if (userId) {
-  //     try {
-  //       const response = await axios.get(`${BASE_URL}/users/getUser/${userId}`);
-  //       setItems(response.data?.cart || []);
-  //     } catch (error) {
-  //       console.log("Error fetching user data:", error);
-  //     }
-  //   }
-  // };
-
+ 
   // Handle cart update when cartUpdated changes
   useEffect(() => {
     if (userId) {
@@ -105,11 +94,6 @@ const Navbar = ({ colorLink, colorIcon, colorBorder, cartColor }) => {
     console.log("Cart", items);
   }, [items]);
 
-  // useEffect(() => {
-  //   if (userId) {
-  //     handleGetUser();
-  //   }
-  // }, [userId]);
 
   const navLinkStyle = ({ isActive }) => ({
     fontWeight: isActive ? "bold" : "normal",
