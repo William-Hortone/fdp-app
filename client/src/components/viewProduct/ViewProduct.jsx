@@ -29,7 +29,7 @@ const ViewProduct = ({ article, setShowProduct }) => {
   const [cartUpdated, setCartUpdated] = useState(false);
 
   useEffect(() => {
-    setProductId(article._id);
+    setProductId(article._id || 0);
   }, [article._id]);
 
   useEffect(() => {
