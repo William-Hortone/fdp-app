@@ -1,8 +1,7 @@
-import React, { useState } from "react";
-import "./categoryArticle.css";
+import React from "react";
 import { Link } from "react-router-dom";
-import { CardImage, ProductBox, ViewProduct } from "../../components";
-import { data } from "../../constants";
+import { ProductBox } from "../../components";
+import "./categoryArticle.css";
 
 const CategoryArticles = ({ articles }) => {
 

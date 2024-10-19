@@ -3,7 +3,7 @@ import StarRatings from "react-star-ratings";
 import { Product } from "../";
 import "./productBox.css";
 
-const ProductCarouselBox = ({ article, imgOne, imgTow, price, name }) => {
+const ProductCarouselBox = ({  imgOne, imgTow, price, name }) => {
   const [rating, setRating] = useState(4);
 
   return (

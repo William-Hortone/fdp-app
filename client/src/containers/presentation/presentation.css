@@ -49,6 +49,7 @@
 .app__presentation-container-tow {
   width: 100%;
   flex: 1;
+  min-height: 100px;
   /* height: 30vh; */
   display: flex;
   align-items: center;

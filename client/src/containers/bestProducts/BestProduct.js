@@ -1,13 +1,7 @@
-import React, { useRef, useState } from "react";
+import React from "react";
+import { Carousel } from "../../components";
 import "./bestProduct.css";
-import { Product, Carousel } from "../../components";
-import { images, data } from "../../constants";
 
-import {
-  BsInstagram,
-  BsArrowLeftShort,
-  BsArrowRightShort,
-} from "react-icons/bs";
 
 const BestProduct = () => {
   return (
