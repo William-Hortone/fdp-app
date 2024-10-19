@@ -15,6 +15,7 @@ import ViewProduct from "./viewProduct/ViewProduct";
 import Cart from "./cart/Cart";
 import CartItem from "./cart/CartItem";
 import BlurEffect from "./BlurEffect";
+import ProductCarouselBox from "./productBox/ProductCarrouselBox";
 
 
 export {
@@ -34,5 +35,6 @@ export {
   ViewProduct,
   Cart,
   CartItem,
-  BlurEffect
+  BlurEffect,
+  ProductCarouselBox
 };

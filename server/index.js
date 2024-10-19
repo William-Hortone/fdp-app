@@ -22,7 +22,8 @@ app.use(errorHandler);
 // Enable CORS for all routes
 app.use(
   cors({
-    origin: "https://fdp-app-client.vercel.app",
+    // origin: "https://fdp-app-client.vercel.app",
+    origin: "http://localhost:5003",
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
