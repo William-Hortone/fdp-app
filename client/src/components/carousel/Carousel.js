@@ -1,23 +1,16 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Product, ProductCarouselBox } from "../../components";
-import { images, data } from "../../constants";
-import StarRatings from "react-star-ratings";
+import "slick-carousel/slick/slick.css";
+import { ProductCarouselBox } from "../../components";
+import { data, images } from "../../constants";
 import "./carousel.css";
 
-const Carousel = ({ linkImg, img }) => {
-  const [rating, setRating] = useState(4);
+const Carousel = () => {
 
-
-  const handleSliderClick =() =>{
-
-  }
   return (
     <div className="app__carousel">
-      <Slider dots={true} infinite={true} speed={500} className="slider disable-click" onClick={(e) => e.stopPropagation()}   >
+      <Slider dots={true} infinite={true} speed={500} className="slider disable-click" >
         <div className="app__carousel-container carousel-largeScreen">
           <div className="app__carousel-container_box">
             <div className="carousel-content">
@@ -92,95 +85,23 @@ const Carousel = ({ linkImg, img }) => {
             </div>
           </div>
         </div>
-        <div className="app__carousel-container carousel-largeScreen">
-          <div className="app__carousel-container_box">
-            <div className="carousel-content">
-              <ProductCarouselBox
-                price={data[15].price}
-                name={data[15].name}
-                imgOne={images.corde}
-                imgTow={images.corde3}
-              />
-            </div>
-            <div className="carousel-content">
-              <ProductCarouselBox
-                // // price={data[16].price}
-                name={data[16].name}
-                imgOne={images.corde10}
-                imgTow={images.corde9}
-              />
-            </div>
-            <div className="carousel-content">
-              <ProductCarouselBox
-                // // price={data[17].price}
-                name={data[17].name}
-                imgOne={images.sport4}
-                imgTow={images.sport7}
-              />
-            </div>
-            <div className="carousel-content">
-              <ProductCarouselBox
-                // // price={data[16].price}
-                name={data[16].name}
-                imgOne={images.corde12}
-                imgTow={images.corde11}
-              />
-            </div>
-          </div>
-        </div>
+        
+
       </Slider>
 
       {/* Carousel for the small  screen */}
 
       <Slider dots={true} infinite={true} speed={500} className="slider-tow">
-        <div className="carousel-content">
-          <ProductCarouselBox imgOne={images.machine23} imgTow={images.machine18} />
+      {data.map((item, index) =>{
+        return(
+          <div className="carousel-content" key={index}>
+          <ProductCarouselBox imgOne={item.images[0].img} imgTow={item.images[1].img} name={item.name} price={item.price}/>
         </div>
-        <div className="carousel-content">
-          <ProductCarouselBox imgOne={images.machine3} imgTow={images.machine15} />
-        </div>
-        <div className="carousel-content">
-          <ProductCarouselBox imgOne={images.machine16} imgTow={images.machine17} />
-        </div>
-        <div className="carousel-content">
-          <ProductCarouselBox imgOne={images.machine20} imgTow={images.machine5} />
-        </div>
-        <div className="carousel-content">
-          <ProductCarouselBox imgOne={images.casque7} imgTow={images.casque8} />
-        </div>
-        <div className="carousel-content">
-          <ProductCarouselBox imgOne={images.casque1} imgTow={images.casque} />
-        </div>
-        <div className="carousel-content">
-          <ProductCarouselBox imgOne={images.casque3} imgTow={images.casque2} />
-        </div>
-        <div className="carousel-content">
-          <ProductCarouselBox imgOne={images.casque} imgTow={images.casque4} />
-        </div>
-        <div className="carousel-content">
-          <ProductCarouselBox imgOne={images.casque7} imgTow={images.casque8} />
-        </div>
-        <div className="carousel-content">
-          <ProductCarouselBox imgOne={images.casque1} imgTow={images.casque} />
-        </div>
-        <div className="carousel-content">
-          <ProductCarouselBox imgOne={images.casque3} imgTow={images.casque2} />
-        </div>
-        <div className="carousel-content">
-          <ProductCarouselBox imgOne={images.casque} imgTow={images.casque4} />
-        </div>
-        <div className="carousel-content">
-          <ProductCarouselBox imgOne={images.corde} imgTow={images.corde3} />
-        </div>
-        <div className="carousel-content">
-          <ProductCarouselBox imgOne={images.corde10} imgTow={images.corde9} />
-        </div>
-        <div className="carousel-content">
-          <ProductCarouselBox imgOne={images.sport4} imgTow={images.sport7} />
-        </div>
-        <div className="carousel-content">
-          <ProductCarouselBox imgOne={images.corde12} imgTow={images.corde11} />
-        </div>
+        )
+      })
+
+      }
+
       </Slider>
     </div>
   );
