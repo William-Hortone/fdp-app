@@ -29,12 +29,16 @@ const ViewProduct = ({ article, setShowProduct }) => {
   const [cartUpdated, setCartUpdated] = useState(false);
 
   useEffect(() => {
-    setProductId(article._id || 0);
+    setProductId(article._id);
   }, [article._id]);
 
   useEffect(() => {
-    setUserId(userInfo.id);
-  }, [userInfo.id]);
+    if(!userInfo){
+      setUserId(0);
+
+    }
+    setUserId(userInfo?.id);
+  }, [userInfo?.id, userInfo]);
 
   // Update the total price whenever quantity or price changes
   useEffect(() => {
@@ -52,7 +56,7 @@ const ViewProduct = ({ article, setShowProduct }) => {
 
   // Function to add item to the cart
   const handleAddToCart = async () => {
-    if (!userInfo.token) {
+    if (!userInfo?.token || userInfo?.token === null) {
       toast.error('Please Sign In First');
       return;
     }
@@ -78,6 +82,8 @@ const ViewProduct = ({ article, setShowProduct }) => {
   return (
     <>
       <div className="app__viewProduct">
+      <h2 className="cssanimation hu__hu__ title">Fournisseur de Proximite</h2>
+
         <div className="app__viewProduct-slider">
           <Slider {...settings} className="slider-container">
             <div className="product-slider">

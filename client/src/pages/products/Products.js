@@ -1,21 +1,20 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Navbar, Infos, CardCategory, Loader } from "../../components";
+import { FaSlidersH, FaTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import "./products.css";
-import { images } from "../../constants";
-import { CategoryArticles, Footer } from "../../containers";
-import { data } from "../../constants";
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { FaBars, FaTimes, FaList, FaSlidersH } from "react-icons/fa";
+import "slick-carousel/slick/slick.css";
+import { CardCategory, Infos, Navbar } from "../../components";
+import { data, images } from "../../constants";
+import { CategoryArticles, Footer } from "../../containers";
 import { HandleFetchArticles } from "../../hooks/context/fetchArticles";
-import { UserContext } from "../../hooks/context/UserContext";
+// import { UserContext } from "../../hooks/context/UserContext";
+import "./products.css";
 
 
 const Products = () => {
   const { articlesData, isLoading } = HandleFetchArticles();
-  const { userToken } = useContext(UserContext);
+  // const { userToken } = useContext(UserContext); 
 
   const [articles, setArticles] = useState([]);
   const [machineNumber, setMachineNumber] = useState([]);

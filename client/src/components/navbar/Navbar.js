@@ -36,7 +36,7 @@ const StyledIconButton = styled(IconButton)(({ theme }) => ({
   borderRadius: "50%",
 }));
 
-const Navbar = ({ colorLink, colorIcon, colorBorder, cartColor }) => {
+const Navbar = ({ colorLink, colorIcon,borderColor, colorBorder, cartColor }) => {
   const [toggleMenu, setToggleMenu] = useState(false);
   const [showCart, setShowCart] = useState(false);
   const [showBlur, setShowBlur] = useState(false);
@@ -85,14 +85,13 @@ const Navbar = ({ colorLink, colorIcon, colorBorder, cartColor }) => {
   useEffect(() => {
     if (userId) {
       handleGetUser();
-      // cartUpdated
       // setCartUpdated(false);
     }
   }, [userId]);
 
-  useEffect(() => {
-    console.log("Cart", items);
-  }, [items]);
+  // useEffect(() => {
+  //   console.log("Cart", items);
+  // }, [items]);
 
 
   const navLinkStyle = ({ isActive }) => ({
@@ -179,10 +178,11 @@ const Navbar = ({ colorLink, colorIcon, colorBorder, cartColor }) => {
         </a>
         {!userToken && (
           <>
-            <Link className="btn-connection" to="/connection/login">
+            <Link className="btn-connection btn-login" to="/connection/login" style={{border:`1px solid ${colorBorder}`, color: colorLink}}>
               Login
             </Link>
             <Link
+
               className="btn-connection btn-register"
               to="/connection/signup"
             >

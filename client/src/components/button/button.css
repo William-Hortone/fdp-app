@@ -6,6 +6,7 @@
   flex-direction: column;
   align-items: center;
   overflow: hidden;
+
   cursor: pointer;
   border: none;
   border-radius: 4px;
@@ -49,26 +50,29 @@
   transition: all 0.3s ease;
 }
 @media screen and (max-width: 1050px) {
-  .app__button {
+  /* .app__button {
     width: 180px;
     height: 50px;
-  }
+  } */
 }
 @media screen and (max-width: 850px) {
-  .app__button {
+  /* .app__button {
     width: 150px;
     height: 45px;
-  }
+
+  } */
   .box-btn p {
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
 }
 @media screen and (max-width: 550px) {
   .app__button {
-    width: 110px;
-    height: 40px;
+     width: fit-content;
+     min-width: 125px;
+     max-height: 40px;
+    
   }
   .box-btn p {
-    font-size: 1rem;
+    font-size: .8rem;
   }
 }
