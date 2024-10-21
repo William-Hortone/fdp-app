@@ -18,6 +18,7 @@ const Cart = ({ setShowCart, showCart, cartUpdated, setCartUpdated }) => {
     if (userInfo?.id) {
       setUserId(userInfo.id);
     }
+    
   }, [userInfo]);
 
   // Fetch the cart data for the user

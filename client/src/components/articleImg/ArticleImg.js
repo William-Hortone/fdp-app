@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./articleImg.css";
 
-const ArticleImg = ({ linkImg, img }) => {
+const ArticleImg = ({ img }) => {
   return (
     <div className="app__articleImg">
       <div className="app__articleImg-box">
@@ -11,11 +11,10 @@ const ArticleImg = ({ linkImg, img }) => {
             <h3>ELECTRONICS</h3>
           </div>
         </Link>
-
-        <img className="card-img" src={img} alt="Banner Image " />
+        <img className="card-img" src={img} alt="Banner" />
       </div>
     </div>
   );
 };
-//  https://wpbingosite.com/wordpress/prido/wp-content/uploads/2022/01/banner-16.jpg
+
 export default ArticleImg;

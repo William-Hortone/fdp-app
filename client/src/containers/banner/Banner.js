@@ -1,7 +1,6 @@
 import React from "react";
-import "./banner.css";
-import { images } from "../../constants";
 import { ButtonBorder } from "../../components";
+import "./banner.css";
 
 const Banner = () => {
   return (

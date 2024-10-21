@@ -6,7 +6,6 @@
   flex-direction: column;
   align-items: center;
   overflow: hidden;
-
   cursor: pointer;
   border: none;
   border-radius: 4px;
@@ -24,7 +23,6 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-
 }
 .box-btn p {
   font-size: 1rem;
@@ -35,7 +33,7 @@
 .app__button-box-one {
   height: 100%;
   position: relative;
-  font-weight:300 ;
+  font-weight: 300;
 }
 .app__button-box-one p {
   position: absolute;
@@ -45,34 +43,23 @@
   position: absolute;
   top: 100%;
   left: 0;
-  font-weight:300 ;
+  font-weight: 300;
   color: #fff;
   transition: all 0.3s ease;
 }
-@media screen and (max-width: 1050px) {
-  /* .app__button {
-    width: 180px;
-    height: 50px;
-  } */
-}
-@media screen and (max-width: 850px) {
-  /* .app__button {
-    width: 150px;
-    height: 45px;
 
-  } */
+@media screen and (max-width: 850px) {
   .box-btn p {
     font-size: 1rem;
   }
 }
 @media screen and (max-width: 550px) {
   .app__button {
-     width: fit-content;
-     min-width: 125px;
-     max-height: 40px;
-    
+    width: fit-content;
+    min-width: 125px;
+    max-height: 40px;
   }
   .box-btn p {
-    font-size: .8rem;
+    font-size: 0.8rem;
   }
 }

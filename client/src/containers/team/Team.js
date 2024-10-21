@@ -6,7 +6,7 @@ const Team = () => {
   return (
     <div className="app__team">
       <div className="app__team-container">
-        <img src={images.logo} alt="photo image" className="team-img" />
+        <img src={images.logo} alt="logo" className="team-img" />
 
         <h3>Founisseur de proximite</h3>
         <p>
