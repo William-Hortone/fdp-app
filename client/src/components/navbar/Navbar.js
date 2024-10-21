@@ -1,24 +1,23 @@
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import Badge from "@mui/material/Badge";
+import IconButton from "@mui/material/IconButton";
+import { styled } from "@mui/material/styles";
+import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import {
   FaBars,
   FaFacebookF,
   FaTimes,
-  FaWhatsapp,
   FaUserAlt,
+  FaWhatsapp,
 } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import images from "../../constants/images";
-import "./navbar.css";
-import { UserContext } from "../../hooks/context/UserContext";
-import Badge from "@mui/material/Badge";
-import { styled } from "@mui/material/styles";
-import IconButton from "@mui/material/IconButton";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { BASE_URL } from "../../hooks/config";
-import axios from "axios";
-import CartItem from "../cart/CartItem";
-import Cart from "../cart/Cart";
+import { UserContext } from "../../hooks/context/UserContext";
 import BlurEffect from "../BlurEffect";
+import Cart from "../cart/Cart";
+import "./navbar.css";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -89,9 +88,6 @@ const Navbar = ({ colorLink, colorIcon,borderColor, colorBorder, cartColor }) =>
     }
   }, [userId]);
 
-  // useEffect(() => {
-  //   console.log("Cart", items);
-  // }, [items]);
 
 
   const navLinkStyle = ({ isActive }) => ({

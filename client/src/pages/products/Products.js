@@ -8,7 +8,6 @@ import { CardCategory, Infos, Navbar } from "../../components";
 import { data, images } from "../../constants";
 import { CategoryArticles, Footer } from "../../containers";
 import { HandleFetchArticles } from "../../hooks/context/fetchArticles";
-// import { UserContext } from "../../hooks/context/UserContext";
 import "./products.css";
 
 

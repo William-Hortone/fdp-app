@@ -7,7 +7,6 @@ const BestProduct = () => {
   return (
     <div className="app__bestProduct">
       <h2> Mieux Vendus</h2>
-
       <Carousel />
     </div>
   );
