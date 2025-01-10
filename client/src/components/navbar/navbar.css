@@ -52,6 +52,7 @@
 .app__navbar-burger-btm {
   width: auto;
   height: 60px;
+  margin-right: 10px;
   display: none;
   cursor: pointer;
 }
@@ -156,6 +157,9 @@
   }
 }
 @media screen and (max-width: 550px) {
+  .app__navbar {
+    padding-inline: 1rem;
+  }
   .app__navbar-logo {
     width: 70px;
     height: 70px;
@@ -165,5 +169,10 @@
   }
   .app__navbar-burger-btm {
     justify-content: flex-start;
+  }
+  .btn-connection{
+    font-size: 10px;
+    /* padding: 1.5rem  0.5rem; */
+   
   }
 }
