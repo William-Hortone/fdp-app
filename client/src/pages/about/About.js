@@ -2,17 +2,17 @@ import React from "react";
 import "./about.css";
 import { Infos, Navbar } from "../../components";
 import { Description, Footer, Team } from "../../containers";
+import { images } from "../../constants";
 
 const About = () => {
   return (
     <div className="app__about">
-      <Infos colorLink="#000000" colorBorder="#000000" />
-
+      <Infos colorLink="#000000" colorBorder="#E5E5E5" />
  
-      <Navbar cartColor="#000000" colorBorder="#000000" colorIcon="#ffffff" colorLink="#000000" />
+      <Navbar cartColor="#000000" borderColor2="#E5E5E5" colorBorder="#000000" colorIcon="#ffffff" colorLink="#000000" />
       <div className="app__about-about_us">
         <img
-          src="	https://wpbingosite.com/wordpress/prido/wp-content/uploads/2022/01/background-11.jpg"
+          src={images.banner3}
           alt=""
         />
         <h2>A propos de Nous</h2>

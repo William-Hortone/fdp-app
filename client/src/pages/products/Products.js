@@ -80,6 +80,7 @@ const Products = () => {
           colorIcon="#ffffff"
           colorBorder={colorBorder}
           cartColor='#000000'
+          borderColor2="#E5E5E5"
         />
       </div>
 
