@@ -59,6 +59,9 @@ import lavage2 from "../assets/lavage2.jpg";
 import lavage3 from "../assets/lavage3.jpg";
 import lavage4 from "../assets/lavage4.jpg";
 import accessoire from "../assets/accessoire.jpg";
+import banner1 from "../assets/banner1.png";
+import banner2 from "../assets/banner2.png";
+import banner3 from "../assets/banner3.jpg";
 
 export default {
   logo,
@@ -122,4 +125,7 @@ export default {
   lavage3,
   lavage4,
   accessoire,
+  banner1,
+  banner2,
+  banner3,
 };

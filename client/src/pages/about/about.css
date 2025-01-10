@@ -6,9 +6,10 @@
 }
 .app__about-about_us {
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 130px);
   position: relative;
   top: 130px;
+
 }
 .app__about-about_us img {
   width: 100%;

@@ -8,7 +8,7 @@ const Infos = ({ color, colorLink, colorBorder }) => {
   const { userInfo } = useContext(UserContext);
 
   return (
-    <div className="app__infos ">
+    <div className="app__infos " style={{ borderBottom: `1px solid ${colorBorder}`}}>
       <div className="app__infos-left">
         <p style={{ color: `${colorLink}` }}> fournisseurdp@gmail.com | </p>
         <p style={{ color: `${colorLink}` }}>

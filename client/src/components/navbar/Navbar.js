@@ -35,7 +35,7 @@ const StyledIconButton = styled(IconButton)(({ theme }) => ({
   borderRadius: "50%",
 }));
 
-const Navbar = ({ colorLink, colorIcon,borderColor, colorBorder, cartColor }) => {
+const Navbar = ({ colorLink, colorIcon,borderColor2, colorBorder, cartColor }) => {
   const [toggleMenu, setToggleMenu] = useState(false);
   const [showCart, setShowCart] = useState(false);
   const [showBlur, setShowBlur] = useState(false);
@@ -105,7 +105,7 @@ const Navbar = ({ colorLink, colorIcon,borderColor, colorBorder, cartColor }) =>
     <>
     <div
       className="app__navbar"
-      style={{ borderBottom: `1px solid ${colorBorder}` }}
+      style={{ borderBottom: `1px solid ${borderColor2}` }}
     >
       <div className="app__navbar-burger-btm">
         <FaBars
