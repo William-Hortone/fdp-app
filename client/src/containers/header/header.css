@@ -9,7 +9,7 @@
   height: 100%;
   position: relative;
   overflow: hidden;
-
+  background: #475569;
 }
 .app__header-left span {
   position: absolute;
@@ -79,6 +79,7 @@
   flex-direction: column;
   gap: 2rem;
   opacity: 0;
+
   animation: box-appearance 0s 1s forwards;
 }
 .app__header-container h2 {
@@ -102,7 +103,6 @@
     opacity: 1;
   }
 }
-
 
 @media screen and (max-width: 1050px) {
   .app__header {
