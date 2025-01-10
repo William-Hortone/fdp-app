@@ -6,7 +6,7 @@
   /* flex-direction: column; */
   justify-content: center;
   align-items: center;
-  background: url("https://wpbingosite.com/wordpress/prido/wp-content/uploads/2022/04/add-1.jpg");
+  background: url('../../assets/banner3.jpg');
   background-position: center center;
   background-size: cover;
 }
