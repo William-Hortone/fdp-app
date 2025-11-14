@@ -91,11 +91,11 @@ const Footer = ({ color, colorLink }) => {
         <p style={{ color: `${colorLink}` }}>
           Developed by
           <a
-            href="https://williamhortone.com/"
+            href="https://wantechpro.com/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            William Hortone
+            WanTech
           </a>
         </p>
       </div>
